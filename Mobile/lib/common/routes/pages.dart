@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_binding.dart';
+import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_view.dart';
 
 import '../../pages/sign_in_up/sign_in/signin_binding.dart';
 import '../../pages/sign_in_up/sign_in/signin_view.dart';
@@ -10,6 +12,11 @@ class AppPages {
       name: AppRoutes.SIGNIN,
       page: () => SignInPage(),
       binding:  SignInBinding()
+    ),
+    GetPage(
+        name: AppRoutes.SIGNUP,
+        page: () => SignUpPage(),
+        binding:  SignUpBinding()
     )
   ];
 }
