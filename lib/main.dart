@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_in/signin_view.dart';
 
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'JobPilot App',
       theme: ThemeData(
-        fontFamily: 'Roboto Regular',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        //fontFamily: 'Roboto Regular',
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
