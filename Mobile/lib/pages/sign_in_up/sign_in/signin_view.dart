@@ -36,7 +36,7 @@ class SignInPage extends GetView<SignInController> {
                 ),
       
                 const Text(
-                  'Chào mừng bạn đến với JobPilot',
+                  'Chào mừng bạn đến với JobHehe',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
