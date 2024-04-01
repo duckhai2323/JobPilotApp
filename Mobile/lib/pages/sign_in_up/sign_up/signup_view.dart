@@ -11,6 +11,8 @@ class SignUpPage extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     var text1Controller = TextEditingController();
     var text2Controller = TextEditingController();
+    var text3Controller = TextEditingController();
+    var text4Controller = TextEditingController();
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -41,7 +43,7 @@ class SignUpPage extends GetView<SignUpController> {
               ),
 
               const Padding(
-                padding: EdgeInsets.only(top: 25,bottom: 10),
+                padding: EdgeInsets.only(top: 25),
                 child: Text(
                   'Đăng ký',
                   style: TextStyle(
@@ -69,7 +71,7 @@ class SignUpPage extends GetView<SignUpController> {
                     fillColor: AppColors.bgTextFeild,
                     hintText: 'Họ và tên',
                     hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
-                    prefixIcon: const Icon(Icons.email_outlined,size: 20,color: AppColors.placeHolderColor),
+                    prefixIcon: const Icon(Icons.perm_identity_sharp,size: 20,color: AppColors.placeHolderColor),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: const BorderSide(
@@ -99,7 +101,7 @@ class SignUpPage extends GetView<SignUpController> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
-                  controller: text1Controller,
+                  controller: text2Controller,
                   obscureText: false,
                   keyboardType: TextInputType.emailAddress,
                   style: const TextStyle(
@@ -143,7 +145,7 @@ class SignUpPage extends GetView<SignUpController> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
                 child: TextFormField(
-                  controller: text2Controller,
+                  controller: text3Controller,
                   obscureText: true,
                   keyboardType: TextInputType.visiblePassword,
                   style: const TextStyle(
@@ -155,10 +157,10 @@ class SignUpPage extends GetView<SignUpController> {
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     filled: true,
                     fillColor: AppColors.bgTextFeild,
-                    hintText: 'Password',
-                    hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
+                    hintText: 'Mật khẩu',
+                  hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
                     prefixIcon: const Icon(Icons.lock_outline,size: 20,color: AppColors.placeHolderColor),
-                    suffixIcon: Icon(Icons.visibility,color: AppColors.placeHolderColor,size: 23,),
+                    suffixIcon: Icon(Icons.visibility_off_outlined,color: AppColors.placeHolderColor,size: 23,),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: const BorderSide(
@@ -186,9 +188,9 @@ class SignUpPage extends GetView<SignUpController> {
               ),
 
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
-                  controller: text2Controller,
+                  controller: text4Controller,
                   obscureText: true,
                   keyboardType: TextInputType.visiblePassword,
                   style: const TextStyle(
@@ -200,10 +202,10 @@ class SignUpPage extends GetView<SignUpController> {
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     filled: true,
                     fillColor: AppColors.bgTextFeild,
-                    hintText: 'Password',
+                    hintText: 'Nhập lại mật khẩu',
                     hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
                     prefixIcon: const Icon(Icons.lock_outline,size: 20,color: AppColors.placeHolderColor),
-                    suffixIcon: Icon(Icons.visibility,color: AppColors.placeHolderColor,size: 23,),
+                    suffixIcon: Icon(Icons.visibility_off_outlined,color: AppColors.placeHolderColor,size: 23,),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: const BorderSide(
@@ -226,6 +228,27 @@ class SignUpPage extends GetView<SignUpController> {
                             width: 1.0
                         )
                     ),
+                  ),
+                ),
+              ),
+
+              Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(left: 35,right:35,top: 20),
+                child: RichText(
+                  text: const TextSpan(
+                    text: 'Tôi đã đọc và đồng ý với ',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.primaryColor2,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Điều khoản dịch vụ ', style: TextStyle(color: AppColors.primaryColor1,)),
+                      TextSpan(text: 'và ', style: TextStyle(color: AppColors.primaryColor2,)),
+                      TextSpan(text: 'Chính sách bảo mật ', style: TextStyle(color: AppColors.primaryColor1,)),
+                      TextSpan(text: 'của JobPilot', style: TextStyle(color: AppColors.primaryColor1,)),
+                    ],
                   ),
                 ),
               ),
