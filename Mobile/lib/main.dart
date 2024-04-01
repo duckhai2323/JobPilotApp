@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      initialRoute: AppRoutes.SIGNUP,
+      initialRoute: AppRoutes.HOME,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
     );
