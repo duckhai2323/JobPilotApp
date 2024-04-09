@@ -1,9 +1,15 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
+import 'package:jobpilot_app/pages/application/home/blog_item.dart';
+import 'package:jobpilot_app/pages/application/home/company_item.dart';
 import 'package:jobpilot_app/pages/application/home/home_controller.dart';
+import 'package:jobpilot_app/pages/application/home/jobmain_item.dart';
+import 'package:jobpilot_app/pages/application/home/jobsub_item.dart';
 
 class HomePage extends GetView<HomeController> {
 
@@ -145,184 +151,211 @@ class HomePage extends GetView<HomeController> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
                   (_, int index) {
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(bottom: 10,left: 15,right: 15),
-                  padding: EdgeInsets.only(bottom: 10,top: 15,left: 15,right: 15),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      color: AppColors.primaryColor1, // Màu của viền
-                      width: 1, // Độ dày của viền
+                return JobMainItem();
+              },
+              childCount: 3,
+            ),
+          ),
+
+          SliverToBoxAdapter(
+              child: Container(
+                margin: EdgeInsets.only(left: 15,right:15,top: 15),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      'Việc làm hấp dẫn',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryColor2,
+                      ),
                     ),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 70,
-                            height: 70,
-                            decoration: BoxDecoration(
-                                color:Colors.white,
-                                borderRadius: BorderRadius.circular(8),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.3),
-                                    spreadRadius: 0.25,
-                                    blurRadius: 2,
-                                    offset: Offset(0,2),
-                                  )
-                                ]
-                            ),
-                            child: Image.asset(
-                              'assets/images/sun.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
 
-                          Container(
-                            margin: EdgeInsets.only(left: 10),
-                            width: MediaQuery.of(context).size.width - 175,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Fresher Developer FrontEnd',
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.primaryColor2
-                                  ),
-                                ),
-
-                                //SizedBox(height: 5,),
-
-                                const Text(
-                                  'CÔNG TY CỔ PHẦN SUN ASTERISK',
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColors.primaryColor2
-                                  ),
-                                ),
-
-                                SizedBox(height: 5,),
-
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                                      decoration: BoxDecoration(
-                                        color: AppColors.bgSearch,
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      child: const Center(
-                                        child: Text(
-                                          'Hà Nội',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                              color: AppColors.primaryColor2
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-
-                                    SizedBox(width: 10,),
-
-                                    Container(
-                                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                                      decoration: BoxDecoration(
-                                        color: AppColors.bgSearch,
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      child: const Center(
-                                        child: Text(
-                                          '3 năm',
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                              color: AppColors.primaryColor2
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                SizedBox(height: 8,),
-
-                                Row(
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                                      decoration: BoxDecoration(
-                                        color: Color.fromRGBO(243, 249, 245, 1),
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      child: const Center(
-                                        child: Text(
-                                          '300 USD',
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              color: AppColors.primaryColor1
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Icon(Icons.bookmark_outline_rounded, color: AppColors.placeHolderColor,size: 30,),
-                        ],
+                    Text(
+                      'Xem tất cả',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryColor1,
                       ),
-                      Divider(color: AppColors.bgTextFeild,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(Icons.access_time_filled,size: 20,color: AppColors.placeHolderColor,),
-                          SizedBox(width: 5,),
-                          RichText(
-                            text: const TextSpan(
-                              text: 'Còn ',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: AppColors.placeHolderColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              children: <TextSpan>[
-                                TextSpan(text: '29 ', style: TextStyle(color: AppColors.primaryColor2,)),
-                                TextSpan(text: 'ngày để ứng tuyển'),
-                              ],
-                            ),
-                          ),
-                        ],
+                    ),
+                  ],
+                ),
+              )
+          ),
+
+          SliverToBoxAdapter(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 610,
+                  child: PageView(
+                    children: <Widget>[
+                      ListView.builder(
+                        padding: EdgeInsets.only(top: 10),
+                        itemCount: 4,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (BuildContext context, index) {
+                          return JobSubItem();
+                        },
                       ),
+                      ListView.builder(
+                        padding: EdgeInsets.only(top: 10),
+                        itemCount: 4,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (BuildContext context, index) {
+                          return JobSubItem();
+                        },
+                      ),
+                      ListView.builder(
+                        padding: EdgeInsets.only(top: 10),
+                        itemCount: 4,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (BuildContext context, index) {
+                          return JobSubItem();
+                        },
+                      ),
+                      ListView.builder(
+                        padding: EdgeInsets.only(top: 10),
+                        itemCount: 4,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (BuildContext context, index) {
+                          return JobSubItem();
+                        },
+                      ),
+                      ListView.builder(
+                        padding: EdgeInsets.only(top: 10),
+                        itemCount: 4,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (BuildContext context, index) {
+                          return JobSubItem();
+                        },
+                      )
                     ],
                   ),
-                );
-              },
-              childCount: 10,
+                ),
+                DotsIndicator(
+                  dotsCount: 5,
+                  position:1,
+                  decorator: DotsDecorator(
+                    activeColor:AppColors.primaryColor1,
+                    size: const Size.square(8.0),
+                    activeSize: const Size(10.0, 10.0),
+                    activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          SliverToBoxAdapter(
+              child: Container(
+                margin: EdgeInsets.only(left: 15,right:15,top: 5,bottom: 10),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      'Top Công ty hàng đầu',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryColor2,
+                      ),
+                    ),
+
+                    Text(
+                      'Xem tất cả',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryColor1,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+          ),
+
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            sliver: SliverGrid(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: MediaQuery.of(context).size.width/2,
+                mainAxisSpacing: 15,
+                crossAxisSpacing: 15,
+                  childAspectRatio: 0.85,
+          ),
+          delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+              return CompanyItem();
+            },
+            childCount: 6,
+          ),
+        ),
+      ),
+
+          SliverToBoxAdapter(
+              child: Container(
+                margin: EdgeInsets.only(left: 15,right:15,top: 10,bottom: 10),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      'Kinh nghiệm thành công',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryColor2,
+                      ),
+                    ),
+
+                    Text(
+                      'Xem tất cả',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryColor1,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+          ),
+
+          SliverToBoxAdapter(
+            child: Container(
+              height: 300,
+              child: ListView.builder(
+                itemCount: 5,
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, index) {
+                  return BlogItem();
+                },
+              ),
+            ),
+          ),
+
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 50,
             ),
           ),
         ],
