@@ -12,159 +12,162 @@ class SignInPage extends GetView<SignInController> {
   Widget build(BuildContext context) {
     var text1Controller = TextEditingController();
     var text2Controller = TextEditingController();
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 60,bottom: 5),
-                  child: SizedBox(
-                    width: 135,
-                    height: 112,
-                    child: Image.asset(
-                      'assets/images/app-logo.png',
-                      fit: BoxFit.cover,
-                    ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 60,bottom: 5),
+                child: SizedBox(
+                  width: 135,
+                  height: 112,
+                  child: Image.asset(
+                    'assets/images/app-logo.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
-      
-                const Text(
-                  'Chào mừng bạn đến với JobHehe',
+              ),
+
+              const Text(
+                'Chào mừng bạn đến với JobHehe',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.primaryColor2,
+                ),
+              ),
+
+              const Padding(
+                padding: EdgeInsets.only(top: 25,bottom: 10),
+                child: Text(
+                  'Đăng nhập',
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.primaryColor2,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.primaryColor2
                   ),
                 ),
-      
-                const Padding(
-                  padding: EdgeInsets.only(top: 25,bottom: 10),
-                  child: Text(
-                    'Đăng nhập',
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.primaryColor2
+              ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: TextFormField(
+                  controller: text1Controller,
+                  obscureText: false,
+                  keyboardType: TextInputType.emailAddress,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    color: AppColors.primaryColor2
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                    filled: true,
+                    fillColor: AppColors.bgTextFeild,
+                    hintText: 'Email',
+                    hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
+                    prefixIcon: const Icon(Icons.email_outlined,size: 20,color: AppColors.placeHolderColor),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                      borderSide: const BorderSide(
+                        color: AppColors.bgTextFeild,
+                        width: 1.0
+                      )
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: const BorderSide(
+                            color: AppColors.primaryColor1,
+                            width: 1.0
+                        )
+                    ),
+
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: const BorderSide(
+                            color: AppColors.bgTextFeild,
+                            width: 1.0
+                        )
                     ),
                   ),
                 ),
-      
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: TextFormField(
-                    controller: text1Controller,
-                    obscureText: false,
-                    keyboardType: TextInputType.emailAddress,
-                    style: const TextStyle(
+              ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+                child: TextFormField(
+                  controller: text2Controller,
+                  obscureText: true,
+                  keyboardType: TextInputType.visiblePassword,
+                  style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
                       color: AppColors.primaryColor2
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(vertical: 8),
-                      filled: true,
-                      fillColor: AppColors.bgTextFeild,
-                      hintText: 'Email',
-                      hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
-                      prefixIcon: const Icon(Icons.email_outlined,size: 20,color: AppColors.placeHolderColor),
-                      border: OutlineInputBorder(
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                    filled: true,
+                    fillColor: AppColors.bgTextFeild,
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
+                    prefixIcon: const Icon(Icons.lock_outline,size: 20,color: AppColors.placeHolderColor),
+                    suffixIcon: Icon(Icons.visibility,color: AppColors.placeHolderColor,size: 23,),
+                    border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: const BorderSide(
-                          color: AppColors.bgTextFeild,
-                          width: 1.0
+                            color: AppColors.bgTextFeild,
+                            width: 1.0
                         )
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: const BorderSide(
-                              color: AppColors.primaryColor1,
-                              width: 1.0
-                          )
-                      ),
-      
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: const BorderSide(
-                              color: AppColors.bgTextFeild,
-                              width: 1.0
-                          )
-                      ),
                     ),
-                  ),
-                ),
-      
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
-                  child: TextFormField(
-                    controller: text2Controller,
-                    obscureText: true,
-                    keyboardType: TextInputType.visiblePassword,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                        color: AppColors.primaryColor2
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: const BorderSide(
+                            color: AppColors.primaryColor1,
+                            width: 1.0
+                        )
                     ),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(vertical: 8),
-                      filled: true,
-                      fillColor: AppColors.bgTextFeild,
-                      hintText: 'Password',
-                      hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
-                      prefixIcon: const Icon(Icons.lock_outline,size: 20,color: AppColors.placeHolderColor),
-                      suffixIcon: Icon(Icons.visibility,color: AppColors.placeHolderColor,size: 23,),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: const BorderSide(
-                              color: AppColors.bgTextFeild,
-                              width: 1.0
-                          )
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: const BorderSide(
-                              color: AppColors.primaryColor1,
-                              width: 1.0
-                          )
-                      ),
-      
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: const BorderSide(
-                              color: AppColors.bgTextFeild,
-                              width: 1.0
-                          )
-                      ),
-                    ),
-                  ),
-                ),
 
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin:const EdgeInsets.symmetric(horizontal: 30),
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Quên mật khẩu?',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primaryColor1
-                        ),
-                      ),
-                    ],
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: const BorderSide(
+                            color: AppColors.bgTextFeild,
+                            width: 1.0
+                        )
+                    ),
                   ),
                 ),
+              ),
 
-                Container(
+              Container(
+                width: MediaQuery.of(context).size.width,
+                margin:const EdgeInsets.symmetric(horizontal: 30),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Quên mật khẩu?',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor1
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              InkWell(
+                onTap: (){
+                  controller.HandleHomePage();
+                },
+                child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: 45,
                   margin:EdgeInsets.symmetric(horizontal: 30,vertical: 20),
@@ -191,81 +194,86 @@ class SignInPage extends GetView<SignInController> {
                     ),
                   ),
                 ),
+              ),
 
-                const Text(
-                  'Hoặc đăng nhập bằng',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.placeHolderColor,
-                  ),
+              const Text(
+                'Hoặc đăng nhập bằng',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.placeHolderColor,
                 ),
+              ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 10,bottom: 20),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 5),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
+              Padding(
+                padding: const EdgeInsets.only(top: 10,bottom: 20),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        border: Border.all(
+                          width: 1,
+                          color: AppColors.placeHolderColor
+                        )
+                      ),
+                      child: Image.asset(
+                        'assets/images/facebook-logo.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+
+                    Container(
+                      width: 50,
+                      height: 50,
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(28),
                           border: Border.all(
-                            width: 1,
-                            color: AppColors.placeHolderColor
+                              width: 1,
+                              color: AppColors.placeHolderColor
                           )
-                        ),
-                        child: Image.asset(
-                          'assets/images/facebook-logo.png',
-                          fit: BoxFit.cover,
-                        ),
                       ),
+                      child: Image.asset(
+                        'assets/images/google-logo.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
 
-                      Container(
-                        width: 50,
-                        height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 5),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(28),
-                            border: Border.all(
-                                width: 1,
-                                color: AppColors.placeHolderColor
-                            )
-                        ),
-                        child: Image.asset(
-                          'assets/images/google-logo.png',
-                          fit: BoxFit.cover,
-                        ),
+                    Container(
+                      width: 50,
+                      height: 50,
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(28),
+                          border: Border.all(
+                              width: 1,
+                              color: AppColors.placeHolderColor
+                          )
                       ),
-
-                      Container(
-                        width: 50,
-                        height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 5),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(28),
-                            border: Border.all(
-                                width: 1,
-                                color: AppColors.placeHolderColor
-                            )
-                        ),
-                        child: Image.asset(
-                          'assets/images/linkedin-logo.png',
-                          fit: BoxFit.cover,
-                        ),
+                      child: Image.asset(
+                        'assets/images/linkedin-logo.png',
+                        fit: BoxFit.cover,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
+              ),
 
-                RichText(
+              InkWell(
+                onTap: (){
+                  controller.HandlePageSignup();
+                },
+                child: RichText(
                   text: const TextSpan(
                     text: 'Bạn chưa có tài khoản? ',
                     style: TextStyle(
@@ -278,23 +286,23 @@ class SignInPage extends GetView<SignInController> {
                     ],
                   ),
                 ),
+              ),
 
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 70,vertical: 8),
-                  child: Divider(),
-                ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 70,vertical: 8),
+                child: Divider(),
+              ),
 
-                const Text(
-                  'Trải nghiệm không cần tài đăng nhập',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.primaryColor1
-                  ),
+              const Text(
+                'Trải nghiệm không cần tài đăng nhập',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.primaryColor1
                 ),
-              ],
-            )
-          ),
+              ),
+            ],
+          )
         ),
       ),
     );
