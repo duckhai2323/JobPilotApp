@@ -20,6 +20,7 @@ class HomePage extends GetView<HomeController> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            automaticallyImplyLeading: false,
             pinned: true,
             backgroundColor: Colors.white,
             toolbarHeight: 70,
