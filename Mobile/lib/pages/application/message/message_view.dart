@@ -54,10 +54,9 @@ class MessagePage extends GetView<MessageController> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          ListContact(),
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: ListContact(),
       ),
     );
   }
