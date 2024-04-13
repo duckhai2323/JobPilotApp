@@ -88,8 +88,13 @@ class HomePage extends GetView<HomeController> {
                           ],
                       ),
 
-                      child: Center(
-                        child: Icon(Icons.edit_location_alt_outlined,size: 25, color: AppColors.primaryColor1,),
+                      child: InkWell(
+                        onTap: (){
+                          controller.HandleNotifiPage();
+                        },
+                        child: const Center(
+                          child: Icon(Icons.notifications_active,size: 25, color: AppColors.primaryColor1,),
+                        ),
                       ),
                     )
                   ],
@@ -152,7 +157,7 @@ class HomePage extends GetView<HomeController> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
                   (_, int index) {
-                return JobMainItem();
+                return InkWell(onTap: () {controller.HandleJobdetails();},child: JobMainItem());
               },
               childCount: 3,
             ),
