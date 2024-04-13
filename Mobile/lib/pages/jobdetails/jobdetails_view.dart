@@ -7,7 +7,7 @@ class JobDetailsPage extends GetView<JobDetailsController> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text('Hoancunammet')),
+      body: Center(child: Text('Hoanpm')),
     );
   }
 }
