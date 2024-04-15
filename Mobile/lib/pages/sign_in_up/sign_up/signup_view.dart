@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobpilot_app/common/candidate.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_controller.dart';
 
 import '../../../common/colors/colors.dart';
@@ -56,6 +57,7 @@ class SignUpPage extends GetView<SignUpController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
               child: TextFormField(
+                autofocus: true,
                 controller: text1Controller,
                 obscureText: false,
                 keyboardType: TextInputType.emailAddress,
@@ -100,6 +102,7 @@ class SignUpPage extends GetView<SignUpController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: TextFormField(
+                autofocus: true,
                 controller: text2Controller,
                 obscureText: false,
                 keyboardType: TextInputType.emailAddress,
@@ -144,6 +147,7 @@ class SignUpPage extends GetView<SignUpController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
               child: TextFormField(
+                autofocus: true,
                 controller: text3Controller,
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
@@ -189,6 +193,7 @@ class SignUpPage extends GetView<SignUpController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: TextFormField(
+                autofocus: true,
                 controller: text4Controller,
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
@@ -252,29 +257,34 @@ class SignUpPage extends GetView<SignUpController> {
               ),
             ),
 
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 45,
-              margin:EdgeInsets.symmetric(horizontal: 30,vertical: 20),
-              decoration: BoxDecoration(
-                  color: AppColors.primaryColor1,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.4),
-                      spreadRadius: 1,
-                      blurRadius: 2,
-                      offset: Offset(0,1),
-                    )
-                  ]
-              ),
-              child: const Center(
-                child: Text(
-                  'Đăng ký',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500
+            InkWell(
+              onTap: (){
+                controller.registerCandidate(context,text1Controller.text.toString(),text2Controller.text.toString(), text3Controller.text.toString());
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 45,
+                margin:EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                decoration: BoxDecoration(
+                    color: AppColors.primaryColor1,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.4),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: Offset(0,1),
+                      )
+                    ]
+                ),
+                child: const Center(
+                  child: Text(
+                    'Đăng ký',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500
+                    ),
                   ),
                 ),
               ),

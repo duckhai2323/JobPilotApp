@@ -15,7 +15,7 @@ return new class extends Migration
             if (Schema::hasColumn('users','id')) {
                 $table->dropColumn('id');
             }
-            $table->mediumInteger('candidate_id')->unsigned();
+            $table->mediumInteger('candidate_id');
             $table->primary('candidate_id')->autoIncrement();
             $table->renameColumn('email','candidate_email')->unique();
             $table->renameColumn('password','candidate_password');
