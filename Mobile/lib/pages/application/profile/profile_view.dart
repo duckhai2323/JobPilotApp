@@ -286,7 +286,7 @@ class ProfilePage extends GetView<ProfileController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ItemGrid(Icon(Icons.shopping_bag,size: 30,color: AppColors.primaryColor1,),'Việc làm đã ứng tuyển', '10'),
+                  ItemGrid(Icon(Icons.business_center,size: 30,color: AppColors.primaryColor1,),'Việc làm đã ứng tuyển', '10'),
                   ItemGrid(Icon(Icons.bookmarks_rounded,size: 30,color: AppColors.primaryColor1,),'Việc làm đã lưu', '13')
                 ],
               ),
@@ -302,8 +302,8 @@ class ProfilePage extends GetView<ProfileController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ItemGrid(Icon(Icons.shopping_bag,size: 30,color: AppColors.primaryColor1,),'Việc làm phù hợp với bạn', '10'),
-                  ItemGrid(Icon(Icons.shopping_bag,size: 30,color: AppColors.primaryColor1,),'Việc làm đã ứng tuyển', '10'),
+                  ItemGrid(Icon(Icons.check_circle,size: 30,color: AppColors.primaryColor1,),'Việc làm phù hợp', '10'),
+                  ItemGrid(Icon(Icons.groups,size: 30,color: AppColors.primaryColor1,),'Công ty đang theo dõi', '10'),
                 ],
               ),
             ),
@@ -318,8 +318,8 @@ class ProfilePage extends GetView<ProfileController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ItemGrid(Icon(Icons.shopping_bag,size: 30,color: AppColors.primaryColor1,),'Việc làm đã ứng tuyển', '10'),
-                  ItemGrid(Icon(Icons.shopping_bag,size: 30,color: AppColors.primaryColor1,),'Việc làm đã ứng tuyển', '10'),
+                  ItemGrid(Icon(Icons.visibility,size: 30,color: AppColors.primaryColor1,),'NTD đã xem hồ sơ', '10'),
+                  ItemGrid(Icon(Icons.settings,size: 30,color: AppColors.primaryColor1,),'Cài đặt gợi ý việc làm', '10'),
                 ],
               ),
             ),
@@ -334,7 +334,7 @@ class ProfilePage extends GetView<ProfileController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ItemGrid(Icon(Icons.shopping_bag,size: 30,color: AppColors.primaryColor1,),'Việc làm đã ứng tuyển', '10'),
+                  ItemGrid(Icon(Icons.notifications_rounded,size: 30,color: AppColors.primaryColor1,),'Thông báo việc làm', '10'),
                 ],
               ),
             ),
@@ -364,6 +364,11 @@ class ProfilePage extends GetView<ProfileController> {
 
             ItemSetting(const Icon(Icons.stars_outlined,size: 26,color: AppColors.placeHolderColor),'Nâng cấp tài khoản'),
             ItemSetting(const Icon(Icons.card_giftcard_rounded,size: 26,color: AppColors.placeHolderColor),'Kích hoạt quà tặng'),
+            ItemSetting(const Icon(Icons.key,size: 26,color: AppColors.placeHolderColor),'Đổi mật khẩu'),
+            ItemSetting(const Icon(Icons.security,size: 26,color: AppColors.placeHolderColor),'Cài đặt bảo mật'),
+            ItemSetting(const Icon(Icons.alternate_email,size: 26,color: AppColors.placeHolderColor),'Cài đặt thông báo trong email'),
+            ItemSetting(const Icon(Icons.lock_outline,size: 26,color: AppColors.placeHolderColor),'Vô hiệu hóa tài khoản'),
+            ItemSetting(const Icon(Icons.logout,size: 26,color: AppColors.placeHolderColor),'Đăng xuất tài khoản'),
 
             const SizedBox(
               height: 30,
