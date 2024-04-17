@@ -12,8 +12,16 @@ import '../../../common/api/api_backend.dart';
 import '../../../common/routes/names.dart';
 
 class SignInController extends GetxController {
-
-  Future<void> signInCandidate(BuildContext context,String candidate_email, String candidate_password) async {
+  var text1Controller = TextEditingController();
+  var text2Controller = TextEditingController();
+  var obscureText_ = true.obs;
+  void ClickVisible(){
+    if(obscureText_.value) {obscureText_.value = false;}
+    else {obscureText_.value = true;}
+  }
+  Future<void> signInCandidate(BuildContext context) async {
+    String candidate_email = text1Controller.text.toString();
+    String candidate_password = text2Controller.text.toString();
     try {
       var headers = {'Content-Type' : 'application/json'};
       var url = Uri.parse(ApiEndPoints.baseUrl+ApiEndPoints.authAccount.SIGNIN_CANDIDATE);
@@ -32,6 +40,8 @@ class SignInController extends GetxController {
       } else if(response.statusCode == 404) {
         Navigator.pop(context);
       }
+      text1Controller.clear();
+      text2Controller.clear();
     } catch (e) {
       print(e);
     }
