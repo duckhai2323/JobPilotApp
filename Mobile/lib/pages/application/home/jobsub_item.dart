@@ -114,7 +114,7 @@ class JobSubItem extends GetView<HomeController> {
                       ),
                       child: const Center(
                         child: Text(
-                          '3 năm',
+                          '8-12 triệu',
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,

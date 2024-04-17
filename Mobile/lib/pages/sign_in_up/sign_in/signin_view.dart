@@ -10,8 +10,6 @@ class SignInPage extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
-    var text1Controller = TextEditingController();
-    var text2Controller = TextEditingController();
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
@@ -35,7 +33,7 @@ class SignInPage extends GetView<SignInController> {
               ),
 
               const Text(
-                'Chào mừng bạn đến với JobHehe',
+                'Chào mừng bạn đến với JobPilot',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -58,7 +56,7 @@ class SignInPage extends GetView<SignInController> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: TextFormField(
-                  controller: text1Controller,
+                  controller: controller.text1Controller,
                   obscureText: false,
                   keyboardType: TextInputType.emailAddress,
                   style: const TextStyle(
@@ -99,11 +97,11 @@ class SignInPage extends GetView<SignInController> {
                 ),
               ),
 
-              Padding(
+              Obx(() => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
                 child: TextFormField(
-                  controller: text2Controller,
-                  obscureText: true,
+                  controller: controller.text2Controller,
+                  obscureText: controller.obscureText_.value,
                   keyboardType: TextInputType.visiblePassword,
                   style: const TextStyle(
                       fontWeight: FontWeight.w500,
@@ -117,7 +115,12 @@ class SignInPage extends GetView<SignInController> {
                     hintText: 'Password',
                     hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
                     prefixIcon: const Icon(Icons.lock_outline,size: 20,color: AppColors.placeHolderColor),
-                    suffixIcon: Icon(Icons.visibility,color: AppColors.placeHolderColor,size: 23,),
+                    suffixIcon: InkWell(
+                      onTap: (){
+                        controller.ClickVisible();
+                      },
+                      child: Icon(controller.obscureText_.value?Icons.visibility_off:Icons.visibility,color: Colors.grey,size: 23,),
+                    ),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: const BorderSide(
@@ -142,7 +145,7 @@ class SignInPage extends GetView<SignInController> {
                     ),
                   ),
                 ),
-              ),
+              ),),
 
               Container(
                 width: MediaQuery.of(context).size.width,
@@ -165,7 +168,7 @@ class SignInPage extends GetView<SignInController> {
 
               InkWell(
                 onTap: (){
-                  controller.signInCandidate(context, text1Controller.text.toString(), text2Controller.text.toString());
+                  controller.signInCandidate(context);
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,

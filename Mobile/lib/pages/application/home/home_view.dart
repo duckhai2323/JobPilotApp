@@ -201,6 +201,10 @@ class HomePage extends GetView<HomeController> {
                 Container(
                   height: 610,
                   child: PageView(
+                    controller: controller.pageController,
+                    onPageChanged: (index){
+                      controller.ChangePageView(index);
+                    },
                     children: <Widget>[
                       ListView.builder(
                         padding: EdgeInsets.only(top: 10),
@@ -255,16 +259,16 @@ class HomePage extends GetView<HomeController> {
                     ],
                   ),
                 ),
-                DotsIndicator(
+                Obx(() => DotsIndicator(
                   dotsCount: 5,
-                  position:1,
+                  position:controller.statePageView.value,
                   decorator: DotsDecorator(
                     activeColor:AppColors.primaryColor1,
                     size: const Size.square(8.0),
                     activeSize: const Size(10.0, 10.0),
                     activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
-                ),
+                )),
               ],
             ),
           ),

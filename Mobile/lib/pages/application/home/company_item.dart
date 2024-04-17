@@ -41,7 +41,7 @@ class CompanyItem extends GetView<HomeController> {
                 ]
             ),
             child: Image.asset(
-              'assets/images/sun.png',
+              'assets/images/logo_fpt.png',
               fit: BoxFit.cover,
             ),
           ),

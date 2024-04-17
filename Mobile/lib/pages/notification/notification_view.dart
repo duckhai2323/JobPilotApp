@@ -4,13 +4,55 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:jobpilot_app/pages/notification/notification_controller.dart';
 
+import '../../common/colors/colors.dart';
+
 class NotificationPage extends GetView<NotificationController> {
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar:AppBar(
-        title: Text('Thông Báo'),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(
+            color: Colors.grey.withOpacity(0.3),
+            height: 1,
+          ),
+        ),
+        title: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.arrow_back_ios),
+                  iconSize: 23,
+                  color: AppColors.primaryColor1,
+                  onPressed: (){
+
+                  },
+                ),
+              ],
+            ),
+            const Text(
+              'Thông báo',
+              style: TextStyle(
+                fontSize: 18,
+                color:  AppColors.primaryColor1,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              width: 30,
+              height: 30,
+            ),
+          ],
+        ),
       ),
       body: ListView(
         children: [
