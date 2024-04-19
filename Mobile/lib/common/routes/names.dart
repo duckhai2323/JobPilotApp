@@ -5,4 +5,5 @@ class AppRoutes {
   static const HOME = '/candidate/home';
   static const NOTIFICATION = '/notification';
   static const JOBDETAILS = '/jobdetails';
+  static const CHAT = '/chat';
 }
