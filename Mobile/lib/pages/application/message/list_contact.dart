@@ -90,7 +90,7 @@ class ListContact extends GetView<MessageController>{
         itemBuilder: (BuildContext context, int index){
           return InkWell(
               onTap:(){
-                //controller.ClickItemChat(controller.listUser[index]);
+                controller.HandleChatPage();
               } ,
               child: ItemUser1());
         },
