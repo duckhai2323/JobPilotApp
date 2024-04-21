@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobpilot_app/common/candidate.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_controller.dart';
 
 import '../../../common/colors/colors.dart';
@@ -9,10 +10,6 @@ class SignUpPage extends GetView<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
-    var text1Controller = TextEditingController();
-    var text2Controller = TextEditingController();
-    var text3Controller = TextEditingController();
-    var text4Controller = TextEditingController();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -56,7 +53,8 @@ class SignUpPage extends GetView<SignUpController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
               child: TextFormField(
-                controller: text1Controller,
+                autofocus: true,
+                controller: controller.text1Controller,
                 obscureText: false,
                 keyboardType: TextInputType.emailAddress,
                 style: const TextStyle(
@@ -100,7 +98,8 @@ class SignUpPage extends GetView<SignUpController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: TextFormField(
-                controller: text2Controller,
+                autofocus: true,
+                controller: controller.text2Controller,
                 obscureText: false,
                 keyboardType: TextInputType.emailAddress,
                 style: const TextStyle(
@@ -141,11 +140,12 @@ class SignUpPage extends GetView<SignUpController> {
               ),
             ),
 
-            Padding(
+            Obx(() => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
               child: TextFormField(
-                controller: text3Controller,
-                obscureText: true,
+                autofocus: true,
+                controller: controller.text3Controller,
+                obscureText: controller.obscureText1_.value,
                 keyboardType: TextInputType.visiblePassword,
                 style: const TextStyle(
                     fontWeight: FontWeight.w500,
@@ -157,9 +157,14 @@ class SignUpPage extends GetView<SignUpController> {
                   filled: true,
                   fillColor: AppColors.bgTextFeild,
                   hintText: 'Mật khẩu',
-                hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
+                  hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
                   prefixIcon: const Icon(Icons.lock_outline,size: 20,color: AppColors.placeHolderColor),
-                  suffixIcon: Icon(Icons.visibility_off_outlined,color: AppColors.placeHolderColor,size: 23,),
+                  suffixIcon: InkWell(
+                    onTap: (){
+                      controller.ClickVisible1();
+                    },
+                    child: Icon(controller.obscureText1_.value?Icons.visibility_off:Icons.visibility,color: Colors.grey,size: 23,),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
                       borderSide: const BorderSide(
@@ -184,13 +189,14 @@ class SignUpPage extends GetView<SignUpController> {
                   ),
                 ),
               ),
-            ),
+            ),),
 
-            Padding(
+            Obx(() => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: TextFormField(
-                controller: text4Controller,
-                obscureText: true,
+                autofocus: true,
+                controller: controller.text4Controller,
+                obscureText: controller.obscureText2_.value,
                 keyboardType: TextInputType.visiblePassword,
                 style: const TextStyle(
                     fontWeight: FontWeight.w500,
@@ -204,7 +210,12 @@ class SignUpPage extends GetView<SignUpController> {
                   hintText: 'Nhập lại mật khẩu',
                   hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w600),
                   prefixIcon: const Icon(Icons.lock_outline,size: 20,color: AppColors.placeHolderColor),
-                  suffixIcon: Icon(Icons.visibility_off_outlined,color: AppColors.placeHolderColor,size: 23,),
+                  suffixIcon: InkWell(
+                    onTap: (){
+                      controller.ClickVisible2();
+                    },
+                    child: Icon(controller.obscureText2_.value?Icons.visibility_off:Icons.visibility,color: Colors.grey,size: 23,),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
                       borderSide: const BorderSide(
@@ -229,7 +240,7 @@ class SignUpPage extends GetView<SignUpController> {
                   ),
                 ),
               ),
-            ),
+            ),),
 
             Container(
               width: MediaQuery.of(context).size.width,
@@ -252,29 +263,34 @@ class SignUpPage extends GetView<SignUpController> {
               ),
             ),
 
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 45,
-              margin:EdgeInsets.symmetric(horizontal: 30,vertical: 20),
-              decoration: BoxDecoration(
-                  color: AppColors.primaryColor1,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.4),
-                      spreadRadius: 1,
-                      blurRadius: 2,
-                      offset: Offset(0,1),
-                    )
-                  ]
-              ),
-              child: const Center(
-                child: Text(
-                  'Đăng ký',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500
+            InkWell(
+              onTap: (){
+                controller.registerCandidate(context);
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 45,
+                margin:EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                decoration: BoxDecoration(
+                    color: AppColors.primaryColor1,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.4),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: Offset(0,1),
+                      )
+                    ]
+                ),
+                child: const Center(
+                  child: Text(
+                    'Đăng ký',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500
+                    ),
                   ),
                 ),
               ),

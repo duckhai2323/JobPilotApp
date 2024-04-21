@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('agents', function (Blueprint $table) {
-            $table->mediumInteger('agent_id')->unsigned()->unique();
+            $table->mediumInteger('agent_id');
             $table->primary('agent_id')->autoIncrement();
             $table->string('agent_name');
             $table->string('agent_email')->unique();

@@ -95,7 +95,7 @@ class ApplicationController extends GetxController{
           radius: 16,
           child: CircleAvatar(
             radius: 14,
-            backgroundImage: AssetImage('assets/images/avatar.jpg'),
+            backgroundImage: NetworkImage('https://yt3.googleusercontent.com/v-fHSvLthvdRlrtXeEbWc1JtuKPa7yUeG668kRdxbX6XAxcw_rlhf8wjRGxht_oepo49SkwnXA=s900-c-k-c0x00ffffff-no-rj'),
           ),
         ),
 
@@ -104,7 +104,7 @@ class ApplicationController extends GetxController{
           radius: 16,
           child: CircleAvatar(
             radius: 14,
-            backgroundImage: AssetImage('assets/images/avatar.jpg'),
+            backgroundImage: NetworkImage('https://yt3.googleusercontent.com/v-fHSvLthvdRlrtXeEbWc1JtuKPa7yUeG668kRdxbX6XAxcw_rlhf8wjRGxht_oepo49SkwnXA=s900-c-k-c0x00ffffff-no-rj'),
           ),
         ),
         label: 'Tài khoản',

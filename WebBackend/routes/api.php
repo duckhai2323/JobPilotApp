@@ -6,6 +6,5 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Faker\Factory;
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/candidate/register',[UserController::class, 'registerUser']);
+Route::post('/candidate/signin',[UserController::class,'signInUser']);

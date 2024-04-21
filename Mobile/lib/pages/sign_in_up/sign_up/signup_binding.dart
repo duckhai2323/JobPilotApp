@@ -5,6 +5,6 @@ class SignUpBinding extends Bindings {
 
   @override
   void dependencies() {
-    return Get.lazyPut(() => SignUpController());
+    Get.lazyPut(() => SignUpController());
   }
 }

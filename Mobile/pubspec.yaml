@@ -38,6 +38,10 @@ dependencies:
   get: ^4.6.6
   moon_icons: ^0.5.0
   dots_indicator: ^3.0.0
+  http: ^1.2.1
+  shared_preferences: ^2.2.3
+  fluttertoast: ^8.2.5
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

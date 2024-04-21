@@ -1,6 +1,12 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:jobpilot_app/pages/application/home/home_binding.dart';
 import 'package:jobpilot_app/pages/application/home/home_view.dart';
+import 'package:jobpilot_app/pages/chat/chat_binding.dart';
+import 'package:jobpilot_app/pages/chat/chat_view.dart';
+import 'package:jobpilot_app/pages/jobdetails/jobdetails_binding.dart';
+import 'package:jobpilot_app/pages/jobdetails/jobdetails_view.dart';
+import 'package:jobpilot_app/pages/notification/notification_binding.dart';
+import 'package:jobpilot_app/pages/notification/notification_view.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_binding.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_view.dart';
 
@@ -31,6 +37,23 @@ class AppPages {
         name: AppRoutes.HOME,
         page: () => HomePage(),
         binding:  HomeBinding()
-    )
+    ),
+    GetPage(
+      name: AppRoutes.NOTIFICATION,
+      page: () => NotificationPage(),
+      binding: NotificationBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.JOBDETAILS,
+      page: ()=>JobDetailsPage(),
+      binding: JobDetailsBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.CHAT,
+      page: ()=>ChatPage(),
+      binding: ChatBinding(),
+    ),
   ];
 }
