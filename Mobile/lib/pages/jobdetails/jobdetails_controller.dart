@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobpilot_app/common/routes/names.dart';
 
 class JobDetailsController extends GetxController{
   late ScrollController scrollController;
@@ -18,4 +19,9 @@ class JobDetailsController extends GetxController{
     return scrollController.hasClients &&
         scrollController.offset > 350;
   }
+
+  void HandleJobdetails () {
+    Get.toNamed(AppRoutes.JOBDETAILS);
+  }
+
 }
