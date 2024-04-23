@@ -169,7 +169,7 @@ class SignInPage extends GetView<SignInController> {
               InkWell(
                 onTap: (){
                   //controller.signInCandidate(context);
-                  controller.HandlePageSignup();
+                  controller.HandleHomePage();
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
