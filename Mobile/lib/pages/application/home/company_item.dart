@@ -6,7 +6,17 @@ import 'package:jobpilot_app/pages/application/home/home_controller.dart';
 import '../../../common/colors/colors.dart';
 
 class CompanyItem extends GetView<HomeController> {
+  final String logo;
+  final String name;
+  final String description;
 
+  const CompanyItem({
+    Key? key,
+    required this.logo,
+    required this.name,
+    required this.description,
+  }) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,13 +51,13 @@ class CompanyItem extends GetView<HomeController> {
                 ]
             ),
             child: Image.asset(
-              'assets/images/logo_fpt.png',
+              logo,
               fit: BoxFit.cover,
             ),
           ),
 
           Text(
-            'FPT Software',
+            name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -59,7 +69,7 @@ class CompanyItem extends GetView<HomeController> {
           ),
 
           Text(
-            'Logistics - Vận tải',
+            description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
