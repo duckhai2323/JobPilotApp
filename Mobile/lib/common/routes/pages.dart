@@ -12,6 +12,8 @@ import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_view.dart';
 
 import '../../pages/application/application_binding.dart';
 import '../../pages/application/application_view.dart';
+import '../../pages/application/cv_manage/cv_manage_binding.dart';
+import '../../pages/application/cv_manage/cv_manage_view.dart';
 import '../../pages/sign_in_up/sign_in/signin_binding.dart';
 import '../../pages/sign_in_up/sign_in/signin_view.dart';
 import 'names.dart';
@@ -55,5 +57,11 @@ class AppPages {
       page: ()=>ChatPage(),
       binding: ChatBinding(),
     ),
-  ];
+
+    GetPage(
+      name: AppRoutes.CVMANAGE,
+      page: ()=>CVManage(),
+      binding: CVManageBinding(),
+    ),
+  ];  
 }
