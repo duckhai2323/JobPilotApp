@@ -137,7 +137,11 @@ class SignInPage extends GetView<SignInController> {
                     ),
                   ),
                 ),
-                Container(
+
+              InkWell(
+                onTap: (){
+                },
+                child: Container(
                   width: MediaQuery.of(context).size.width,
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   child: const Row(
