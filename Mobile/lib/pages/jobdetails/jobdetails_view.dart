@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
+import 'package:jobpilot_app/pages/jobdetails/infor_company.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_controller.dart';
+import 'package:jobpilot_app/pages/jobdetails/relatedjobs_component.dart';
 
 import 'information_component.dart';
 
@@ -252,7 +254,7 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                                                 ),
                                               ),
                                               Text(
-                                                'Cầu giấy, Hà Nội, alo alo alo ',
+                                                'Cầu giấy, Hà Nội',
                                                 maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.center,
@@ -376,8 +378,8 @@ class JobDetailsPage extends GetView<JobDetailsController> {
           body: TabBarView(
             children: [
               InforComponent(),
-              Center(child: Text('Việc làm liên quan'),),
-              Center(child: Text('Công ty'),),
+              RelatedJobs(),
+              InforCompany(),
               Center(child: Text('Mức độ cạnh tranh'),),
             ],
           ),
