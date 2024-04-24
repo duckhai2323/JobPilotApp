@@ -276,7 +276,7 @@ class HomePage extends GetView<HomeController> {
           SliverToBoxAdapter(
               child: Container(
                 margin: EdgeInsets.only(left: 15,right:15,top: 5,bottom: 10),
-                child: const Row(
+                child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -288,8 +288,11 @@ class HomePage extends GetView<HomeController> {
                         color: AppColors.primaryColor2,
                       ),
                     ),
-
-                    Text(
+                      InkWell(
+                        onTap: (){
+                          controller.HandleCompaniesPage();
+                        },
+                      child: Text(
                       'Xem tất cả',
                       style: TextStyle(
                         fontSize: 16,
@@ -297,10 +300,11 @@ class HomePage extends GetView<HomeController> {
                         color: AppColors.primaryColor1,
                       ),
                     ),
-                  ],
-                ),
-              )
-          ),
+                  )
+              ],
+            ),
+          )
+        ),
 
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -313,9 +317,34 @@ class HomePage extends GetView<HomeController> {
           ),
           delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-              return CompanyItem();
-            },
-            childCount: 6,
+                  if (index == 0) {
+                     return CompanyItem(
+                        logo: 'assets/images/logo_fpt.png',
+                        name: 'FPT Sofware',
+                        description: 'Tài chính',
+                      );
+                    } else if (index == 1) {
+                     return CompanyItem(
+                        logo: 'assets/images/ghtk.png',
+                        name: 'Giao Hàng Tiết Kiệm',
+                        description: 'Logistics - Vận tải',
+                     );
+                    } else if (index == 2) {
+                     return CompanyItem(
+                        logo: 'assets/images/sun.png',
+                        name: 'Sun Aterisk',
+                        description: 'Viễn thông',
+                     );
+                    } else if (index == 3) {
+                     return CompanyItem(
+                        logo: 'assets/images/viettel.png',
+                        name: 'Viettel',
+                        description: 'Viễn thông - Công nghệ',
+                     );
+                    }
+              return SizedBox(); // Trả về một widget rỗn
+                },
+                childCount: 4,
           ),
         ),
       ),

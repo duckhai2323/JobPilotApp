@@ -5,6 +5,8 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/pages/application/message/message_view.dart';
 import 'package:jobpilot_app/pages/application/profile/profile_view.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_view.dart';
+
 
 import '../../common/colors/colors.dart';
 import 'application_controller.dart';
@@ -23,7 +25,7 @@ class ApplicationPage extends GetView<ApplicationController>{
         },
         children: [
           HomePage(),
-          Center(child: Text('CV'),),
+          CVManage(),
           MessagePage(),
           Center(child: Text('INTERVIEW'),),
           ProfilePage(),
