@@ -15,4 +15,8 @@ class HomeController extends GetxController {
   void HandleJobdetails () {
     Get.toNamed(AppRoutes.JOBDETAILS);
   }
+
+  void HandleCompaniesPage () {
+    Get.toNamed(AppRoutes.COMPANIES);
+  }
 }

@@ -3,6 +3,8 @@ import 'package:jobpilot_app/pages/application/home/home_binding.dart';
 import 'package:jobpilot_app/pages/application/home/home_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
+import 'package:jobpilot_app/pages/companies/companies_binding.dart';
+import 'package:jobpilot_app/pages/companies/companies_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_binding.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_view.dart';
 import 'package:jobpilot_app/pages/notification/notification_binding.dart';
@@ -63,5 +65,11 @@ class AppPages {
       page: ()=>CVManage(),
       binding: CVManageBinding(),
     ),
-  ];  
+      
+    GetPage(
+      name: AppRoutes.COMPANIES,
+      page: ()=>CompaniesPage(),
+      binding: CompaniesBinding(),
+    ),
+  ];
 }
