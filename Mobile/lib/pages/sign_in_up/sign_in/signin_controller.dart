@@ -70,4 +70,7 @@ class SignInController extends GetxController {
   void HandleHomePage() {
     Get.toNamed(AppRoutes.APPLICATION);
   }
+
 }
+
+  
