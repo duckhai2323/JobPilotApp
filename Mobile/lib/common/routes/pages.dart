@@ -11,7 +11,8 @@ import 'package:jobpilot_app/pages/notification/notification_binding.dart';
 import 'package:jobpilot_app/pages/notification/notification_view.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_binding.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_view.dart';
-
+import '../../pages/jobapplied/jobapplied_binding.dart';
+import '../../pages/jobapplied/jobapplied_view.dart';
 import '../../pages/application/application_binding.dart';
 import '../../pages/application/application_view.dart';
 import '../../pages/application/cv_manage/cv_manage_binding.dart';
@@ -70,6 +71,12 @@ class AppPages {
       name: AppRoutes.COMPANIES,
       page: ()=>CompaniesPage(),
       binding: CompaniesBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.JOBAPPLIED,
+      page: ()=>JobAppliedPage(),
+      binding: JobAppliedBinding(),
     ),
   ];
 }

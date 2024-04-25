@@ -158,6 +158,7 @@ class SignInPage extends GetView<SignInController> {
                     ],
                   ),
                 ),
+              ),
                 InkWell(
                   onTap: () {
                     //controller.signInCandidate(context);

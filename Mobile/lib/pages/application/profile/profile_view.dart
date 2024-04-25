@@ -286,7 +286,12 @@ class ProfilePage extends GetView<ProfileController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ItemGrid(Icon(Icons.business_center,size: 30,color: AppColors.primaryColor1,),'Việc làm đã ứng tuyển', '10'),
+                  InkWell(
+                    child: ItemGrid(Icon(Icons.business_center,size: 30,color: AppColors.primaryColor1,),'Việc làm đã ứng tuyển', '10'),
+                    onTap: () {
+                      controller.HandleJobAppliedPage();
+                    }
+                  ),
                   ItemGrid(Icon(Icons.bookmarks_rounded,size: 30,color: AppColors.primaryColor1,),'Việc làm đã lưu', '13')
                 ],
               ),
