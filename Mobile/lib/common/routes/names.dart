@@ -8,4 +8,5 @@ class AppRoutes {
   static const CHAT = '/chat';
   static const CVMANAGE = '/cvmanage';
   static const COMPANIES = '/companies';
+  static const JOBAPPLIED = '/jobapplied';
 }
