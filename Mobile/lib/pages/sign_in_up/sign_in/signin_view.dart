@@ -86,7 +86,7 @@ class SignInPage extends GetView<SignInController> {
                   ),
                 ),
                 Obx(
-                  () => Padding(
+                      () => Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 10),
                     child: TextFormField(
@@ -138,24 +138,25 @@ class SignInPage extends GetView<SignInController> {
                   ),
                 ),
 
-              InkWell(
-                onTap: (){
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Quên mật khẩu?',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.primaryColor1),
-                      ),
-                    ],
+                InkWell(
+                  onTap: (){
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: const EdgeInsets.symmetric(horizontal: 30),
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Quên mật khẩu?',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.primaryColor1),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 InkWell(
