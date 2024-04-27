@@ -9,8 +9,8 @@ class RelatedJobs extends GetView<JobDetailsController> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget> [
-          SliverToBoxAdapter(
-            child: SizedBox(height: 20), // Khoảng trống bên trên
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 20),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(

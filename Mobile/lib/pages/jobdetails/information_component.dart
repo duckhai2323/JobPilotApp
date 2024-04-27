@@ -1,141 +1,393 @@
+import 'dart:ui';
+
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
+import 'package:jobpilot_app/main.dart';
+import 'package:jobpilot_app/pages/jobdetails/item_warn.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_controller.dart';
+import 'package:jobpilot_app/share/icon_job_details.dart';
+import 'package:jobpilot_app/share/job_detail_content.dart';
 
 class InforComponent extends GetView<JobDetailsController> {
   
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20,),
-            Text(
-              "    Thông tin chung",
-              style: TextStyle(
-              fontFamily: "Roboto",
-              fontSize: 20,
-              fontWeight: FontWeight.bold
+            const SizedBox(height: 15,),
+            const Padding(
+              padding: EdgeInsets.only(left: 15),
+              child: Text(
+                "Thông tin chung",
+                style: TextStyle(
+                fontFamily: "Roboto",
+                fontSize: 16,
+                fontWeight: FontWeight.w600
+                ),
               ),
             ),
-            ListTile(
-                leading: Icon(Icons.calendar_month),
-                iconColor: AppColors.primaryColor1,
-                title: Text(
-                  'Hình thức',
-                  style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 10,
-                    color: AppColors.placeHolderColor
-                  ),
-                  ),
-                subtitle: Text('Toàn thời gian'),
-              ),
-            ListTile(
-                leading: Icon(Icons.group),
-                iconColor: AppColors.primaryColor1,
-                title: Text(
-                  'Số lượng tuyển',
-                  style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 10,
-                    color: AppColors.placeHolderColor
-                  ),
-                  ),
-                subtitle: Text('5 người'),
-              ),
-              ListTile(
-                leading: Icon(Icons.person),
-                iconColor: AppColors.primaryColor1,
-                title: Text(
-                  'Giới tính',
-                  style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 10,
-                    color: AppColors.placeHolderColor
-                  ),
-                  ),
-                subtitle: Text('Không yêu cầu'),
-              ),
-              ListTile(
-                leading: Icon(Icons.auto_graph),
-                iconColor: AppColors.primaryColor1,
-                title: Text(
-                  'Cấp bậc',
-                  style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 10,
-                    color: AppColors.placeHolderColor
-                  ),
-                  ),
-                subtitle: Text('Nhân viên'),
-              ),
-              ListTile(
-                leading: Icon(Icons.hourglass_bottom),
-                iconColor: AppColors.primaryColor1,
-                title: Text(
-                  'Kinh Nghiệm',
-                  style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 10,
-                    color: AppColors.placeHolderColor
-                  ),
-                  ),
-                subtitle: Text('1 Năm'),
-              ),
-              ListTile(
-                leading: Icon(Icons.av_timer),
-                iconColor: AppColors.primaryColor1,
-                title: Text(
-                  'Hạn nộp hồ sơ',
-                  style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 10,
-                    color: AppColors.placeHolderColor
-                  ),
-                  ),
-                subtitle: Text('30/2/2024'),
-              ),
-              SizedBox(height: 20,),
-              Text(
-                "    Mô tả công việc",
+            const SizedBox(height: 5,),
+            IconJobDetails(const Icon(Icons.hourglass_bottom,size: 25,color: AppColors.primaryColor1,), 'Kinh nghiệm', '1 năm'),
+            IconJobDetails(const Icon(Icons.calendar_month,size: 25,color: AppColors.primaryColor1,), 'Hình thức', 'Toàn thời gian'),
+            IconJobDetails(const Icon(Icons.group,size: 25,color: AppColors.primaryColor1,), 'Số lượng tuyển', '5 người'),
+            IconJobDetails(const Icon(Icons.person,size: 25,color: AppColors.primaryColor1,), 'Giới tính', 'Không yêu cầu'),
+            IconJobDetails(const Icon(Icons.auto_graph,size: 25,color: AppColors.primaryColor1,),  'Cấp bậc', 'Nhân viên'),
+            IconJobDetails(const Icon(Icons.av_timer,size: 25,color: AppColors.primaryColor1,),  'Hạn nộp hồ sơ','30/2/2024'),
+              const SizedBox(height: 5,),
+              JobDetailContent('MÔ tả công việc',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
+              JobDetailContent('Yêu cầu ứng viên',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
+              JobDetailContent('Quyền lợi',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
+              JobDetailContent('Địa điểm làm việc',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
+              JobDetailContent('Kỹ năng cần có',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
+            const Padding(
+              padding: EdgeInsets.only(left: 15,top:20),
+              child: Text(
+                "Bí kíp tìm việc an toàn",
                 style: TextStyle(
-                fontFamily: "Roboto",
-                fontSize: 20,
-                fontWeight: FontWeight.bold
+                    fontFamily: "Roboto",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600
                 ),
               ),
-              SizedBox(height: 20,),
-              Text(
-                "    Yêu cầu ứng viên",
-                style: TextStyle(
-                fontFamily: "Roboto",
-                fontSize: 20,
-                fontWeight: FontWeight.bold
+            ),
+
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+              height: 860,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1,
+                  color: Colors.grey.shade300,
                 ),
+                borderRadius: BorderRadius.circular(10)
               ),
-              SizedBox(height: 20,),
-              Text(
-                "    Quyền lợi",
-                style: TextStyle(
-                fontFamily: "Roboto",
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 15),
+                    child: Text(
+                      'Dưới đây là những dấu hiệu của các tổ chức, cá nhân tuyển dụng không minh bạch:',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400
+                      ),
+                    ),
+                  ),
+
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 15,
+                        backgroundColor: AppColors.bgTextFeild,
+                        child: Text(
+                          '1',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Dấu hiệu phổ biến',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Container(
+                    height: 330,
+                    //color: Colors.amber,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 30,
+                          left: 0,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width-60,
+                            height: 250,
+                            //color: Colors.blue,
+                            child: PageView(
+                              controller: controller.pageController,
+                              onPageChanged: (index){
+                                controller.ChangePageView(index);
+                              },
+                              children: <Widget>[
+                                ItemWarn('assets/images/warn1.jpg', 'Nội dung mô tả công việc sơ sài, không đồng nhất với công việc thực tế'),
+                                ItemWarn('assets/images/warn2.jpg', 'Hứa hẹn "việc nhẹ lương cao", không cần bỏ nhiều công sức dễ dàng lấy tiền "khủng"'),
+                                ItemWarn('assets/images/warn3.jpg', 'Yêu cầu tải app, nạp tiền, làm nghiệm vụ'),
+                                ItemWarn('assets/images/warn4.jpg', 'Yêu cầu nộp phí phỏng vấn, phí giữ chỗ...'),
+                                ItemWarn('assets/images/warn5.jpg', 'Yêu cầu ký giấy tờ không rõ ràng hoặc thu giấy tờ gốc'),
+                                ItemWarn('assets/images/warn6.jpg', 'Địa điểm phỏng vấn bất thường'),
+
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        Positioned(
+                          bottom: 0,
+                          child: Obx(() => Container(
+                            width: MediaQuery.of(context).size.width-60,
+                            child: Center(
+                              child: DotsIndicator(
+                                dotsCount: 6,
+                                position:controller.statePageView.value,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                decorator: DotsDecorator(
+                                  activeColor:AppColors.primaryColor1,
+                                  size: const Size.square(9.0),
+                                  activeSize: const Size(10.0, 10.0),
+                                  activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                                ),
+                              ),
+                            ),
+                          )),
+                        ),
+
+                        Positioned(
+                          top: 150,
+                          left: 15,
+                          child: InkWell(
+                            onTap: (){
+                              controller.RevertPageView();
+                            },
+                            child: const CircleAvatar(
+                              radius: 16,
+                              backgroundColor: AppColors.primaryColor1,
+                              child: CircleAvatar(
+                                radius: 14,
+                                backgroundColor: Colors.white,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 8),
+                                  child: Icon(Icons.arrow_back_ios,color: AppColors.primaryColor1,size: 20,),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        Positioned(
+                          top: 150,
+                          right: 15,
+                          child: InkWell(
+                            onTap: (){
+                              controller.NextPageView();
+                            },
+                            child: const CircleAvatar(
+                              radius: 16,
+                              backgroundColor: AppColors.primaryColor1,
+                              child: CircleAvatar(
+                                radius: 14,
+                                backgroundColor: Colors.white,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 4),
+                                  child: Icon(Icons.arrow_forward_ios_outlined,color: AppColors.primaryColor1,size: 20,),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const CircleAvatar(
+                        radius: 15,
+                        backgroundColor: AppColors.bgTextFeild,
+                        child: Text(
+                          '2',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width-110,
+                        child: const Text(
+                          'Cần làm gì khi gặp việc làm, công ty không minh bạch:',
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(MyApp.dot),
+                      Container(
+                        margin: const EdgeInsets.only(left: 3),
+                        width: MediaQuery.of(context).size.width-90,
+                        child: const Text(
+                          'Kiểm tra thông tin về công ty, việc làm trước khi ứng tuyển',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
+                          maxLines: 3,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 10,),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(MyApp.dot),
+                      Container(
+                        margin: EdgeInsets.only(left: 3),
+                        width: MediaQuery.of(context).size.width-90,
+                        child: const Text(
+                          'Báo cáo tin tuyển dụng với JobPilot thông qua nút "Báo cáo tin tuyển dụng" để được hỗ trợ và giúp các ứng viên tránh được rủi ro',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
+                          maxLines: 3,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 10,),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(MyApp.dot),
+                      Container(
+                        margin: EdgeInsets.only(left: 3),
+                        width: MediaQuery.of(context).size.width-90,
+                        child: const Text(
+                          'Hoặc liên hệ với JobPilot thông qua kênh hỗ trợ ứng viên của JobPilot:',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
+                          maxLines: 3,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.email_outlined,color: AppColors.primaryColor1,size: 25,),
+                      SizedBox(width: 5,),
+                      Text(
+                        'Email: ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                          color: AppColors.placeHolderColor
+                        ),
+                      ),
+                      SizedBox(width: 5,),
+                      Text(
+                        'hotro@jobpilot.com',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.primaryColor1
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 10,),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.phone,color: AppColors.primaryColor1,size: 25,),
+                      SizedBox(width: 5,),
+                      Text(
+                        'Hotline: ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15,
+                            color: AppColors.placeHolderColor
+                        ),
+                      ),
+                      SizedBox(width: 5,),
+                      Text(
+                        '(024) 8866 6688',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.primaryColor1
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Container(
+                    margin: const EdgeInsets.only(top: 49),
+                    width: MediaQuery.of(context).size.width-60,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: AppColors.bgTextFeild,
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.flag,size: 25,color: Colors.black,),
+                        SizedBox(width: 15,),
+                        Text(
+                          'Báo cáo tin tuyển dụng',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 20,),
-              Text(
-                "    Địa điểm làm việc",
-                style: TextStyle(
-                fontFamily: "Roboto",
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-                ),
-              ),
+            ),
+
+            const SizedBox(height: 100,),
+
           ],
         ),
       ),

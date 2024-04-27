@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -9,14 +10,67 @@ import 'package:jobpilot_app/pages/jobdetails/relatedjobs_component.dart';
 import 'information_component.dart';
 
 class JobDetailsPage extends GetView<JobDetailsController> {
-
   @override
   Widget build(BuildContext context) {
-    
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     double screenWidth = mediaQueryData.size.width;
     double screenHeight = mediaQueryData.size.height;
     return Scaffold(
+      bottomSheet: Container(
+        height: 70,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.8),
+                spreadRadius: 0.25,
+                blurRadius: 3,
+                offset: Offset(0,2),
+              )
+            ]
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 15),
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: AppColors.primaryColor1,
+                  width: 1,
+                ),
+              ),
+              child: Icon(Icons.bookmark_border,size: 30,color: AppColors.primaryColor1,),
+            ),
+            SizedBox(width: 10,),
+            Container(
+              height: 40,
+              //margin: EdgeInsets.only(left: 70),
+              width: MediaQuery.of(context).size.width-85,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: AppColors.primaryColor1,
+              ),
+              child: Center(
+                child: Text(
+                  'Ứng tuyển ngay',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: DefaultTabController(
         length: 4,
         child: NestedScrollView(
@@ -353,7 +407,7 @@ class JobDetailsPage extends GetView<JobDetailsController> {
               ),
               SliverPersistentHeader(
                 delegate: MySliverPersistentHeaderDelegate (
-                  TabBar(
+                  const TabBar(
                     isScrollable: true,
                     labelColor: AppColors.primaryColor1,
                     dividerColor: AppColors.bgTextFeild,
@@ -379,8 +433,8 @@ class JobDetailsPage extends GetView<JobDetailsController> {
             children: [
               InforComponent(),
               RelatedJobs(),
-              InforCompany(),
-              Center(child: Text('Mức độ cạnh tranh'),),
+              const InforCompany(),
+              const Center(child: Text('Mức độ cạnh tranh'),),
             ],
           ),
         ),
