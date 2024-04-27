@@ -17,8 +17,8 @@ class JobMainItem extends GetView<HomeController> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
         border: Border.all(
-          color: AppColors.primaryColor1, // Màu của viền
-          width: 1, // Độ dày của viền
+          color: AppColors.primaryColor1,
+          width: 1,
         ),
       ),
       child: Column(

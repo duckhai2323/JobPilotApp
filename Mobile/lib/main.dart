@@ -12,7 +12,10 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static const _kFontFam = 'MyFlutterApp';
+  static const String? _kFontPkg = null;
 
+  static const IconData dot = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
