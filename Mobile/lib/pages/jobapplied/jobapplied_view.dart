@@ -12,29 +12,28 @@ class JobAppliedPage extends GetView<JobAppliedController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: Icon(Icons.arrow_back_ios),
+        centerTitle: true,
+        title: const Text(
+          'Việc đã ứng tuyển',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       backgroundColor: AppColors.bgTextFeild,
       body: DefaultTabController(
         length: 3,
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
-              SliverAppBar(
-                leading: Icon(Icons.arrow_back_ios),
-                floating: true,
-                pinned: true,
-                centerTitle: true,
-                title: Text(
-                  'Việc đã ứng tuyển',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
               SliverPersistentHeader(
                 pinned: true,
                 delegate: MySliverPersistentHeaderDelegate(
-                  TabBar(
+                  const TabBar(
                     indicator: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
@@ -60,20 +59,23 @@ class JobAppliedPage extends GetView<JobAppliedController> {
           },
           body: TabBarView(
             children: [
-              Center(child: Text('Bạn chưa ứng tuyển việc làm nào'),),
-              Center(child: Text('Bạn chưa ứng tuyển việc làm nào'),),
+              const Center(child: Text('Bạn chưa ứng tuyển việc làm nào'),),
+              const Center(child: Text('Bạn chưa ứng tuyển việc làm nào'),),
               //Center(child: Text('Tất cả'),),
-              ListView.builder(
-                itemCount: 10,
-                prototypeItem: JobAppliedItem(),
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      controller.HandleJobDetailPage();
-                    },
-                    child: JobAppliedItem()
-                  );
-                },
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: ListView.builder(
+                  itemCount: 10,
+                  prototypeItem: JobAppliedItem(),
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        controller.HandleJobDetailPage();
+                      },
+                      child: JobAppliedItem()
+                    );
+                  },
+                ),
               ),
             ],
           ),
