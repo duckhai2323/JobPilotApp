@@ -15,9 +15,9 @@ class CompaniesPage extends GetView<CompaniesController> {
         title: Text(
           'Top Công ty hàng đầu',
             style: TextStyle(
-            fontSize: 20, 
-            fontWeight: FontWeight.bold, 
-            color: Colors.green, 
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
           ),
         ),
       ),

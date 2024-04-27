@@ -14,7 +14,7 @@ class CVManage extends GetView<CVManageController> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        title: Center(
+        title: const Center(
           child: Text(
             "Quản lý CV",
             style: TextStyle(
@@ -34,34 +34,39 @@ class CVManage extends GetView<CVManageController> {
             child: Column(
               children: [
                 TabBar(
-                    indicator: BoxDecoration(
+                    indicator: const BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
                                 width: 2.0, color: AppColors.primaryColor1))),
-                    labelPadding: EdgeInsets.zero,
+                    indicatorSize: TabBarIndicatorSize.tab,
                     labelColor: AppColors.primaryColor1,
+                    dividerColor: AppColors.bgTextFeild,
+                    unselectedLabelColor: AppColors.placeHolderColor,
+                    labelStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600
+                    ),
                     tabs: [
                       Tab(
-                        child: Container(
+                        child: SizedBox(
                           width: MediaQuery.of(context).size.width / 2,
-                          child: Center(
+                          child: const Center(
                               child: Text(
                             "CV",
                             style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w600
                             ),
                           )),
                         ),
                       ),
                       Tab(
-                        child: Container(
+                        child: SizedBox(
                           width: MediaQuery.of(context).size.width / 2,
-                          child: Center(
+                          child: const Center(
                               child: Text(
                             "Cover letter",
                             style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w700),
+                              fontWeight: FontWeight.w600),
                           )),
                         ),
                       ),
