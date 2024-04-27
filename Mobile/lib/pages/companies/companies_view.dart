@@ -23,44 +23,23 @@ class CompaniesPage extends GetView<CompaniesController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView(
-          children: [
-            CompanyCard(
+        child: ListView.builder(
+          itemCount: 5,
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, index) {
+            return   CompanyCard(
               logo: 'assets/images/logo_fpt.png',
-              name: 'FPT Sofware',
+              name: 'FPT Sofware adfhs sfhf siufhshf sfuhsifh sfhs fhsfusf ishfis sf ushfi ',
               description: 'Tài chính',
-            ),
-             CompanyCard(
-              logo: 'assets/images/ghtk.png',
-              name: 'Giao Hàng Tiết Kiệm',
-              description: 'Logistics - Vận tải',
-            ),
-            CompanyCard(
-              logo: 'assets/images/sun.png',
-              name: 'Sun Aterisk',
-              description: 'Viễn thông',
-            ),
-            CompanyCard(
-              logo: 'assets/images/viettel.png',
-              name: 'Viettel',
-              description: 'Viễn thông - Công nghệ',
-            ),
-            CompanyCard(
-              logo: 'assets/images/vng.png',
-              name: 'VNG',
-              description: 'Phần mềm',
-            ),
-            CompanyCard(
-              logo: 'assets/images/vtbank.png',
-              name: 'VietinBank',
-              description: 'Ngân hàng',
-            ),
-            // Add more CompanyCards for other companies
-          ],
+            );
+          },
         ),
       ),
     );
   }
+
+
 
   }
   class CompanyCard extends GetView<CompaniesController>{
@@ -76,33 +55,43 @@ class CompaniesPage extends GetView<CompaniesController> {
   }) : super(key: key);
    @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
+      margin: const EdgeInsets.only(top: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+      height: 130,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          width: 1,
+          color: Colors.grey.shade300
+        )
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Logo
-            Container( 
-              width: 70,
-              height: 70,
+            Container(
+              width: 75,
+              height: 75,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8), // Độ cong viền
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1), // Màu của bóng
-                    spreadRadius: 2, // Bán kính lan truyền của bóng
-                    blurRadius: 5, // Độ mờ của bóng
-                    offset: Offset(0, 3), // Độ tịnh tiến của bóng
-                  ),
-                ],
+                  color:Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 0.25,
+                      blurRadius: 2,
+                      offset: Offset(0,2),
+                    )
+                  ]
               ),
-            child: Image.asset(
-              logo,
-              fit: BoxFit.contain,
+              child: Image.asset(
+                'assets/images/sun.png',
+                fit: BoxFit.cover,
+              ),
             ),
-            ),
-            SizedBox(width: 10),
+            const SizedBox(width: 20),
             // Texts
             Expanded(
               child: Column(
@@ -110,28 +99,28 @@ class CompaniesPage extends GetView<CompaniesController> {
                 children: [
                   // Name
                   ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxHeight: 70, // Giới hạn chiều cao của name
                     ),
                   child: Text(
                     name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
                     ),
                    ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   // Description
                   ConstrainedBox(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxHeight: 70, // Giới hạn chiều cao của description
                     ),
                   child: Text(
                     description,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 14,color: AppColors.placeHolderColor),
                    ),
                  ),
                 ],
