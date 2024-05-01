@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('interviews', function (Blueprint $table) {
             $table->bigIncrements('interview_id');
             $table->mediumInteger('candidate_id');
-            $table->foreign('candidate_id')->references('candidate_id')->on('users');
+            $table->foreign('candidate_id')->references('candidate_id')->on('candidates');
             $table->mediumInteger('agent_id');
             $table->foreign('agent_id')->references('agent_id')->on('agents');
             $table->bigInteger('job_id')->unsigned();

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('savejobs', function (Blueprint $table) {
             $table->bigIncrements('save_job_id');
             $table->mediumInteger('candidate_id');
-            $table->foreign('candidate_id')->references('candidate_id')->on('users');
+            $table->foreign('candidate_id')->references('candidate_id')->on('candidates');
             $table->bigInteger('job_id')->unsigned();
             $table->foreign('job_id')->references('job_id')->on('jobs');
         });

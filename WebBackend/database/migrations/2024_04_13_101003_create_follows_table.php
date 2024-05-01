@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('follows', function (Blueprint $table) {
             $table->bigIncrements('follow_id');
             $table->mediumInteger('candidate_id');
-            $table->foreign('candidate_id')->references('candidate_id')->on('users');
+            $table->foreign('candidate_id')->references('candidate_id')->on('candidates');
             $table->bigInteger('company_id')->unsigned();
             $table->foreign('company_id')->references('company_id')->on('companies');
         });
