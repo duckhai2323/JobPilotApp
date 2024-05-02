@@ -25,7 +25,6 @@ class SignInController extends GetxController {
     try {
       var headers = {'Content-Type' : 'application/json'};
       var url = Uri.parse(ApiEndPoints.baseUrl+ApiEndPoints.authAccount.SIGNIN_CANDIDATE);
-      int status = 1;
       Map body = {
         'candidate_email' : candidate_email,
         'candidate_password' : candidate_password
