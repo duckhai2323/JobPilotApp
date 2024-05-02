@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cvs', function (Blueprint $table) {
             $table->bigIncrements('cv_id');
-            $table->mediumInteger('candidate_id');
+            $table->bigInteger('candidate_id')->unsigned();
             $table->foreign('candidate_id')->references('candidate_id')->on('candidates');
             $table->string('cv_intro');
             $table->text('cv_skill');

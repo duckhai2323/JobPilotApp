@@ -22,13 +22,13 @@ return new class extends Migration
         });
 
         Schema::create('candidates', function (Blueprint $table) {
-            $table->mediumInteger('candidate_id');
-            $table->primary('candidate_id')->autoIncrement();
+            $table->bigIncrements('candidate_id');
             $table->string('candidate_name');
             $table->string('candidate_email')->unique();
             $table->string('candidate_password');
             $table->string('candidate_image');
             $table->integer('status')->unsigned()->default(1);
+            $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

@@ -29,11 +29,16 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+     
+        $image_logo = asset('images/app-logo.png');
+        $image_side_login = asset('images/image_side_login.png');
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
             ],
+            'image_logo' => $image_logo,
+            'image_side_login' => $image_side_login,
         ];
     }
 }
