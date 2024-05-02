@@ -280,7 +280,7 @@ class HomePage extends GetView<HomeController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text(
+                    const Text(
                       'Top Công ty hàng đầu',
                       style: TextStyle(
                         fontSize: 18,
@@ -292,7 +292,7 @@ class HomePage extends GetView<HomeController> {
                         onTap: (){
                           controller.HandleCompaniesPage();
                         },
-                      child: Text(
+                      child: const Text(
                       'Xem tất cả',
                       style: TextStyle(
                         fontSize: 16,
@@ -309,49 +309,28 @@ class HomePage extends GetView<HomeController> {
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: MediaQuery.of(context).size.width/2,
                 mainAxisSpacing: 15,
                 crossAxisSpacing: 15,
-                  childAspectRatio: 0.85,
-          ),
-          delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  if (index == 0) {
-                     return CompanyItem(
-                        logo: 'assets/images/logo_fpt.png',
-                        name: 'FPT Sofware',
-                        description: 'Tài chính',
-                      );
-                    } else if (index == 1) {
-                     return CompanyItem(
-                        logo: 'assets/images/ghtk.png',
-                        name: 'Giao Hàng Tiết Kiệm',
-                        description: 'Logistics - Vận tải',
-                     );
-                    } else if (index == 2) {
-                     return CompanyItem(
-                        logo: 'assets/images/sun.png',
-                        name: 'Sun Aterisk',
-                        description: 'Viễn thông',
-                     );
-                    } else if (index == 3) {
-                     return CompanyItem(
-                        logo: 'assets/images/viettel.png',
-                        name: 'Viettel',
-                        description: 'Viễn thông - Công nghệ',
-                     );
-                    }
-              return SizedBox(); // Trả về một widget rỗn
+                childAspectRatio: 0.85,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return Obx(() => CompanyItem(
+                    logo: controller.listCompanies[index].company_image,
+                    name: controller.listCompanies[index].company_name,
+                    description: controller.listCompanies[index].company_filed,
+                  ));
                 },
                 childCount: 4,
+              ),
+            ),
           ),
-        ),
-      ),
 
           SliverToBoxAdapter(
               child: Container(
-                margin: EdgeInsets.only(left: 15,right:15,top: 10,bottom: 10),
+                margin: const EdgeInsets.only(left: 15,right:15,top: 10,bottom: 10),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,

@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('agents', function (Blueprint $table) {
-            $table->mediumInteger('agent_id');
-            $table->primary('agent_id')->autoIncrement();
+            $table->bigIncrements('agent_id');
             $table->string('agent_name');
             $table->string('agent_email')->unique();
             $table->string('agent_password');
@@ -21,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('company_id')->unsigned();
             $table->foreign('company_id')->references('company_id')->on('companies');
             $table->integer('status')->unsigned()->default(1);
+            $table->timestamps();
         });
     }
 

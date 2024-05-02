@@ -50,17 +50,14 @@ class CompanyItem extends GetView<HomeController> {
                   )
                 ]
             ),
-            child: Image.asset(
-              logo,
-              fit: BoxFit.cover,
-            ),
+            child: Image.network(logo),
           ),
 
           Text(
             name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 color: AppColors.primaryColor2
@@ -72,7 +69,7 @@ class CompanyItem extends GetView<HomeController> {
             description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: AppColors.placeHolderColor
