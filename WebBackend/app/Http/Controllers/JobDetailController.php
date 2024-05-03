@@ -18,6 +18,7 @@ class JobDetailController extends Controller
             'candidate_number' => 'required|numeric',
             'experience_require' => 'required|string|max:255',
             'work_form' => 'required|string|max:255',
+            'deadline_job' => 'required|string|max:255',
         ]);
 
         $data = $request->all();
@@ -33,6 +34,7 @@ class JobDetailController extends Controller
             'experience_require' => $data['experience_require'],
             'work_form' => $data['work_form'],
             'status' => $data['status'],
+            'deadline_job' => $data['deadline_job'],
         ]);
 
         return response()->json(['message' => 'JobDetail registered successfully'], 200);
@@ -41,7 +43,17 @@ class JobDetailController extends Controller
     public function getListJobs () {
         $jobs = DB::table('job_details')
                     ->join('companies', 'job_details.company_id','=', 'companies.company_id')
-                    ->select('companies.company_image','companies.company_name','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary')
+                    ->select('companies.company_image','companies.company_name','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job')
+                    ->get();
+
+        return response() -> json($jobs,200);
+    }
+
+    public function getListJobsOfCompany (string $company_id) {
+        $jobs = DB::table('job_details')
+                    ->join('companies', 'job_details.company_id','=', 'companies.company_id')
+                    ->where('job_details.company_id',$company_id)
+                    ->select('companies.company_image','companies.company_name','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job')
                     ->get();
 
         return response() -> json($jobs,200);

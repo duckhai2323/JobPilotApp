@@ -4,14 +4,28 @@ import 'package:flutter/material.dart';
 import '../common/colors/colors.dart';
 
 class JobSubItem extends StatelessWidget {
+  final String companyImage;
+  final String companyName;
+  final String jobTitle;
+  final String jobLocation;
+  final String deadline_job;
+  final String salary;
 
+  JobSubItem(
+      this.companyImage,
+      this.companyName,
+      this.jobTitle,
+      this.jobLocation,
+      this.deadline_job,
+      this.salary
+      );
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 140,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(bottom: 10,left: 15,right: 15),
-      padding: EdgeInsets.only(bottom: 10,top: 15,left: 15,right: 15),
+      padding: EdgeInsets.only(bottom: 15,top: 15,left: 15,right: 15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
@@ -46,11 +60,11 @@ class JobSubItem extends StatelessWidget {
                     blurRadius: 2,
                     offset: Offset(0,2),
                   )
-                ]
-            ),
-            child: Image.asset(
-              'assets/images/sun.png',
-              fit: BoxFit.cover,
+                ],
+              image: DecorationImage(
+                image: NetworkImage(companyImage),
+                fit: BoxFit.cover,
+              )
             ),
           ),
 
@@ -62,11 +76,11 @@ class JobSubItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Fresher Developer FrontEnd',
-                  maxLines: 2,
+                Text(
+                  jobTitle,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: AppColors.primaryColor2
@@ -75,33 +89,35 @@ class JobSubItem extends StatelessWidget {
 
                 //SizedBox(height: 5,),
 
-                const Text(
-                  'CÔNG TY CỔ PHẦN SUN ASTERISK',
-                  maxLines: 2,
+                Text(
+                  companyName,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: AppColors.primaryColor2
                   ),
                 ),
 
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    const SizedBox(width: 10,),
+
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
                       decoration: BoxDecoration(
                         color: AppColors.bgSearch,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          'Hà Nội',
-                          style: TextStyle(
+                          salary,
+                          style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: AppColors.primaryColor2
@@ -110,18 +126,18 @@ class JobSubItem extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
 
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
                       decoration: BoxDecoration(
                         color: AppColors.bgSearch,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          '8-12 triệu',
-                          style: TextStyle(
+                          'Hạn nộp: $deadline_job',
+                          style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: AppColors.primaryColor2
@@ -135,7 +151,7 @@ class JobSubItem extends StatelessWidget {
               ],
             ),
           ),
-          Icon(Icons.bookmark_outline_rounded, color: AppColors.placeHolderColor,size: 30,),
+          const Icon(Icons.bookmark_outline_rounded, color: AppColors.placeHolderColor,size: 30,),
         ],
       ),
     );
