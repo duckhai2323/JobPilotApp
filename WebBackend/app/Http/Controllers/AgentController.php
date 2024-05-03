@@ -35,7 +35,7 @@ class AgentController extends Controller
         $user = Agent::where('agent_email', $email)
                       -> first();              
         if(Hash::check($password, $user->agent_password)) {
-            return response()->json(['message'=>'user found'],200);
+            return response()->json($user,200);
         } else {
             return response()->json(['message'=>'user not found'],404);
         }

@@ -16,10 +16,10 @@ class Candidate {
 
   factory Candidate.fromJson(dynamic json) {
     return Candidate(
-      json['candidate_email'] as String,
-      json['candidate_password'] as String,
-      json['candidate_name'] as String,
-      json['status'] as int,
+      json['candidate_name']??"",
+        json['candidate_email']??"",
+      json['candidate_password']??"",
+      json['status']??0,
       candidate_id: json['candidate_id'] as int,
       candidate_image: json['candidate_image'] as String
     );
