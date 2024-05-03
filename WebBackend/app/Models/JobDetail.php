@@ -22,6 +22,7 @@ class JobDetail extends Model
         'candidate_number',
         'experience_require',
         'work_form',
+        'deadline_job',
         'status',
     ];
 }

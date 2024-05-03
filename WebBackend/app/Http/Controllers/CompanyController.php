@@ -13,6 +13,16 @@ class CompanyController extends Controller
         return response()->json($companies,200); 
     }
 
+    public function getCompanyOfId (string $company_id) {
+        $company = Company::where('company_id', $company_id)
+                            -> first();
+        if($company){
+            return response()->json($company,200); 
+        } else {
+            return response()->json(['message'=>'company not found'],404);
+        }
+    }
+
     public function addNewCompanyApi (Request $request) 
     {
 
@@ -24,6 +34,7 @@ class CompanyController extends Controller
             'company_link' => 'required|url',
             'company_image' => 'required|url',
             'company_location' => 'required|string|max:255',
+            'company_organize' => 'required|string|max:255',
             'company_filed' => 'required|string|max:255',
             'status' => 'required|numeric|min:0|max:10',
         ]);
@@ -37,6 +48,7 @@ class CompanyController extends Controller
             'company_link' => $data['company_link'],
             'company_image' => $data['company_image'],
             'company_location' => $data['company_location'],
+            'company_organize' => $data['company_organize'],
             'company_filed' => $data['company_filed'],
             'status' => $data['status'],
         ]);
