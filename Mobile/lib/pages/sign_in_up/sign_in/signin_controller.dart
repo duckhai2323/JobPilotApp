@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:jobpilot_app/common/agent.dart';
+import 'package:jobpilot_app/common/candidate.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:http/http.dart' as http;
 import '../../../common/api/api_backend.dart';
@@ -36,9 +38,15 @@ class SignInController extends GetxController {
       http.Response response = await http.post(url,body: jsonEncode(body),headers: headers);
       await Future.delayed(const Duration(seconds: 2));
       if(response.statusCode == 200) {
-        print(jsonDecode(response.body)['message']??'SignIn Sucessfully');
+        //print(jsonDecode(response.body)['message']??'SignIn Sucessfully');
         Navigator.pop(context);
-        HandleHomePage();
+        if(value_.value == 1){
+          Candidate candidate = Candidate.fromJson(jsonDecode(response.body));
+          Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':candidate.candidate_id.toString(),'user_image':candidate.candidate_image.toString(),'user_name':candidate.candidate_name.toString(),'user_position':'candidate'});
+        } else if(value_.value == 2) {;
+          Agent agent = Agent.fromJson(jsonDecode(response.body));
+          Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':agent.agent_id.toString(),'user_image':agent.agent_image.toString(),'user_name':agent.agent_name.toString(), 'company_id':agent.company_id.toString(),'user_position':'agent'});
+        }
       } else if(response.statusCode == 404) {
         Navigator.pop(context);
       }
@@ -67,10 +75,6 @@ class SignInController extends GetxController {
         return alert;
       },
     );
-  }
-
-  void HandleHomePage() {
-    Get.toNamed(AppRoutes.APPLICATION);
   }
 
 }
