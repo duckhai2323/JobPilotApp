@@ -19,7 +19,7 @@ class CompanyController extends Controller
         $request->validate([
             'company_name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.Company::class,
-            'employee_scale' => 'required',
+            'employee_scale' => 'required|string',
             'company_intro' => 'required|string|max:500',
             'company_link' => 'required|url',
             'company_image' => 'required|url',
@@ -29,7 +29,7 @@ class CompanyController extends Controller
         ]);
 
         $data = $request->all();
-        $user = Company::create ([
+        $company = Company::create ([
             'company_name' => $data['company_name'],
             'email' => $data['email'],
             'employee_scale' => $data['employee_scale'],

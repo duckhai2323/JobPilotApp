@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Candidate extends Model
+class Agent extends Model
 {
     use HasFactory;
 
-
-    protected $table = 'candidates';
+     protected $table = 'agents';
 
      /**
      * The attributes that are mass assignable.
@@ -18,12 +17,14 @@ class Candidate extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'candidate_name',
-        'candidate_email',
-        'candidate_password',
-        'candidate_image',
+        'agent_name',
+        'agent_email',
+        'agent_password',
+        'agent_image',
+        'company_id',
         'status',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -31,7 +32,7 @@ class Candidate extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'candidate_password',
+        'agent_password',
     ];
 
     /**
@@ -42,7 +43,7 @@ class Candidate extends Model
     protected function casts(): array
     {
         return [
-            'candidate_password' => 'hashed',
+            'agent_password' => 'hashed',
         ];
     }
 }

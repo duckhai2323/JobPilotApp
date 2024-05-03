@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Candidate;
-use Faker\Factory;
 class CandidateController extends Controller
 {
     public function registerCandidateApi (Request $request) {
@@ -29,8 +28,8 @@ class CandidateController extends Controller
 
     public function signInCandidateApi (Request $request) {
         $data = $request->all();
-        $email = $data['candidate_email'];
-        $password = $data['candidate_password'];
+        $email = $data['email'];
+        $password = $data['password'];
         $user = Candidate::where('candidate_email', $email)
                       -> first();              
         if(Hash::check($password, $user->candidate_password)) {
