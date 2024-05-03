@@ -154,7 +154,7 @@ class HomePage extends GetView<HomeController> {
               ),
             )
           ),
-          SliverList(
+          Obx(() => SliverList(
             delegate: SliverChildBuilderDelegate(
                   (_, int index) {
                 return InkWell(onTap: () {controller.HandleJobdetails();},child: JobMainItem(
@@ -167,9 +167,9 @@ class HomePage extends GetView<HomeController> {
                   '300s',
                 ));
               },
-              childCount: 3,
+              childCount: controller.listJobs.length>3?3:controller.listJobs.length,
             ),
-          ),
+          ),),
 
           SliverToBoxAdapter(
               child: Container(
@@ -314,7 +314,7 @@ class HomePage extends GetView<HomeController> {
           )
         ),
 
-          SliverPadding(
+          Obx(() => SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             sliver: SliverGrid(
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -325,16 +325,16 @@ class HomePage extends GetView<HomeController> {
               ),
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                  return Obx(() => CompanyItem(
+                  return CompanyItem(
                     logo: controller.listCompanies[index].company_image,
                     name: controller.listCompanies[index].company_name,
                     description: controller.listCompanies[index].company_filed,
-                  ));
+                  );
                 },
-                childCount: 4,
+                childCount: controller.listCompanies.length>=4?4:controller.listCompanies.length,
               ),
             ),
-          ),
+          ),),
 
           SliverToBoxAdapter(
               child: Container(

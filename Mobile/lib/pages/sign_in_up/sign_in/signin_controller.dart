@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -15,23 +14,27 @@ class SignInController extends GetxController {
   var text1Controller = TextEditingController();
   var text2Controller = TextEditingController();
   var obscureText_ = true.obs;
+  var value_ = 0.obs;
+  void ActionRadio(int index) {
+    value_.value = index;
+  }
   void ClickVisible(){
     if(obscureText_.value) {obscureText_.value = false;}
     else {obscureText_.value = true;}
   }
   Future<void> signInCandidate(BuildContext context) async {
-    String candidate_email = text1Controller.text.toString();
-    String candidate_password = text2Controller.text.toString();
+    String email = text1Controller.text.toString();
+    String password = text2Controller.text.toString();
     try {
       var headers = {'Content-Type' : 'application/json'};
-      var url = Uri.parse(ApiEndPoints.baseUrl+ApiEndPoints.authAccount.SIGNIN_CANDIDATE);
+      var url = Uri.parse(ApiEndPoints.baseUrl+(value_.value == 1?ApiEndPoints.authAccount.SIGNIN_CANDIDATE:ApiEndPoints.authAccount.SIGNIN_AGENT));
       Map body = {
-        'candidate_email' : candidate_email,
-        'candidate_password' : candidate_password
+        'email' : email,
+        'password' : password
       };
       showLoaderDialog(context);
       http.Response response = await http.post(url,body: jsonEncode(body),headers: headers);
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       if(response.statusCode == 200) {
         print(jsonDecode(response.body)['message']??'SignIn Sucessfully');
         Navigator.pop(context);
