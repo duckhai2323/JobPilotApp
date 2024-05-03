@@ -8,7 +8,7 @@ import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/application/home/blog_item.dart';
 import 'package:jobpilot_app/pages/application/home/company_item.dart';
 import 'package:jobpilot_app/pages/application/home/home_controller.dart';
-import 'package:jobpilot_app/pages/application/home/jobmain_item.dart';
+import 'package:jobpilot_app/share/jobmain_item.dart';
 import 'package:jobpilot_app/pages/application/home/jobsub_item.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -157,7 +157,15 @@ class HomePage extends GetView<HomeController> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
                   (_, int index) {
-                return InkWell(onTap: () {controller.HandleJobdetails();},child: JobMainItem());
+                return InkWell(onTap: () {controller.HandleJobdetails();},child: JobMainItem(
+                  context,
+                  "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                  "Cty Phat Trien Phan Mem Sun Asterisk",
+                  'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                  'Ha Noi',
+                  '1 nam',
+                  '300s',
+                ));
               },
               childCount: 3,
             ),
@@ -275,12 +283,12 @@ class HomePage extends GetView<HomeController> {
 
           SliverToBoxAdapter(
               child: Container(
-                margin: EdgeInsets.only(left: 15,right:15,top: 5,bottom: 10),
+                margin: const EdgeInsets.only(left: 15,right:15,top: 5,bottom: 10),
                 child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text(
+                    const Text(
                       'Top Công ty hàng đầu',
                       style: TextStyle(
                         fontSize: 18,
@@ -292,7 +300,7 @@ class HomePage extends GetView<HomeController> {
                         onTap: (){
                           controller.HandleCompaniesPage();
                         },
-                      child: Text(
+                      child: const Text(
                       'Xem tất cả',
                       style: TextStyle(
                         fontSize: 16,
@@ -351,7 +359,7 @@ class HomePage extends GetView<HomeController> {
 
           SliverToBoxAdapter(
               child: Container(
-                margin: EdgeInsets.only(left: 15,right:15,top: 10,bottom: 10),
+                margin: const EdgeInsets.only(left: 15,right:15,top: 10,bottom: 10),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
@@ -379,7 +387,7 @@ class HomePage extends GetView<HomeController> {
           ),
 
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               height: 300,
               child: ListView.builder(
                 itemCount: 5,
@@ -392,7 +400,7 @@ class HomePage extends GetView<HomeController> {
             ),
           ),
 
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 50,
             ),
