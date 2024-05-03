@@ -28,6 +28,14 @@ class CompanyItem extends GetView<HomeController> {
         //   color: AppColors.primaryColor1, // Màu của viền
         //   width: 1, // Độ dày của viền
         // ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 0.2,
+              blurRadius: 1,
+              offset: Offset(0,1),
+            )
+          ]
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

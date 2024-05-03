@@ -9,7 +9,7 @@ import 'package:jobpilot_app/pages/application/home/blog_item.dart';
 import 'package:jobpilot_app/pages/application/home/company_item.dart';
 import 'package:jobpilot_app/pages/application/home/home_controller.dart';
 import 'package:jobpilot_app/share/jobmain_item.dart';
-import 'package:jobpilot_app/pages/application/home/jobsub_item.dart';
+import 'package:jobpilot_app/share/jobsub_item.dart';
 
 class HomePage extends GetView<HomeController> {
 

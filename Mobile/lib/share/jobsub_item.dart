@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:jobpilot_app/pages/application/home/home_controller.dart';
 
-import '../../../common/colors/colors.dart';
+import '../common/colors/colors.dart';
 
-class JobSubItem extends GetView<HomeController> {
+class JobSubItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +15,18 @@ class JobSubItem extends GetView<HomeController> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(
-          color: AppColors.primaryColor1, // Màu của viền
-          width: 1, // Độ dày của viền
-        ),
+        // border: Border.all(
+        //   color: AppColors.primaryColor1,
+        //   width: 1,
+        // ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 0.25,
+              blurRadius: 2,
+              offset: Offset(0,2),
+            )
+          ]
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
