@@ -7,7 +7,6 @@ import 'package:jobpilot_app/share/form_edit.dart';
 import 'package:jobpilot_app/share/form_large_edit.dart';
 
 class EditCompanyPage extends GetView<EditCompanyController> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,12 +49,17 @@ class EditCompanyPage extends GetView<EditCompanyController> {
               ),
             ),
 
-            const Text(
-              'Reset',
-              style: TextStyle(
-                fontSize: 18,
-                color:  AppColors.primaryColor1,
-                fontWeight: FontWeight.bold,
+            InkWell(
+              onTap: (){
+                controller.reset();
+              },
+              child: const Text(
+                'Reset',
+                style: TextStyle(
+                  fontSize: 18,
+                  color:  AppColors.primaryColor1,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],
@@ -77,7 +81,7 @@ class EditCompanyPage extends GetView<EditCompanyController> {
                   Icon(Icons.mode_edit_outlined,color: AppColors.primaryColor1,size: 25,),
                   SizedBox(width: 5,),
                   Text(
-                    'Vui long dien thong tin phu hop',
+                    'Vui lòng nhập thông tin hợp lệ',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -89,19 +93,21 @@ class EditCompanyPage extends GetView<EditCompanyController> {
               const SizedBox(height: 3,),
               const Divider(),
               const SizedBox(height: 5,),
-              FormEdit('Tên công ty', 'abc', Icon(Icons.business,size: 25,color: AppColors.primaryColor1,)),
+              FormEdit('Tên công ty', 'abc', Icon(Icons.business,size: 25,color: AppColors.primaryColor1,),controller.textController1),
               const SizedBox(height: 10,),
-              FormEdit('Website', 'abc', Icon(CupertinoIcons.globe,size: 25,color: AppColors.primaryColor1,)),
+              FormEdit('Website', 'abc', Icon(CupertinoIcons.globe,size: 25,color: AppColors.primaryColor1,),controller.textController2),
               const SizedBox(height: 10,),
-              FormEdit('Quy mô', 'abc', Icon(Icons.auto_awesome_outlined,size: 25,color: AppColors.primaryColor1,)),
+              FormEdit('Quy mô', 'abc', Icon(Icons.auto_awesome_outlined,size: 25,color: AppColors.primaryColor1,),controller.textController3),
               const SizedBox(height: 10,),
-              FormEdit('Địa chỉ', 'abc', Icon(Icons.location_on_outlined,size: 25,color: AppColors.primaryColor1,)),
+              FormEdit('Địa chỉ', 'abc', Icon(Icons.location_on_outlined,size: 25,color: AppColors.primaryColor1,),controller.textController4),
               const SizedBox(height: 10,),
-              FormEdit('Năm thành lập', 'abc', Icon(Icons.calendar_month_outlined,size: 25,color: AppColors.primaryColor1,)),
+              FormEdit('Email', 'abc', Icon(Icons.email_outlined,size: 25,color: AppColors.primaryColor1,),controller.textController5),
               const SizedBox(height: 10,),
-              FormEdit('Lĩnh vực phát triển', 'abc', Icon(Icons.auto_graph,size: 25,color: AppColors.primaryColor1,)),
+              FormEdit('Năm thành lập', 'abc', Icon(Icons.calendar_month_outlined,size: 25,color: AppColors.primaryColor1,),controller.textController6),
               const SizedBox(height: 10,),
-              FormLargeEdit('Giới thiệu công ty', 'abc'),
+              FormEdit('Lĩnh vực phát triển', 'abc', Icon(Icons.auto_graph,size: 25,color: AppColors.primaryColor1,),controller.textController7),
+              const SizedBox(height: 10,),
+              FormLargeEdit('Giới thiệu công ty', 'abc', controller.textController8),
               const SizedBox(height: 30,),
               Center(
                 child: Container(
@@ -112,13 +118,18 @@ class EditCompanyPage extends GetView<EditCompanyController> {
                     borderRadius: BorderRadius.circular(4),
                   ),
 
-                  child: const Center(
-                    child: Text(
-                      'Save',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color:  Colors.white,
-                        fontWeight: FontWeight.bold,
+                  child: InkWell(
+                    onTap: (){
+                      controller.updateCompany(context);
+                    },
+                    child: const Center(
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color:  Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

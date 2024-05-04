@@ -361,7 +361,7 @@ class HomePage extends GetView<HomeController> {
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                   return CompanyItem(
-                    logo: controller.listCompanies[index].company_image,
+                    logo: controller.listCompanies[index].company_image??"",
                     name: controller.listCompanies[index].company_name,
                     description: controller.listCompanies[index].company_filed,
                   );

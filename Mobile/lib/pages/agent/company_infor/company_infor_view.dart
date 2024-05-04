@@ -93,7 +93,7 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                     child: CircleAvatar(
                       radius: 46,
                       backgroundColor: Colors.white,
-                      backgroundImage: CachedNetworkImageProvider(controller.companies[0].company_image),
+                      backgroundImage: CachedNetworkImageProvider(controller.companies[0].company_image??""),
                     ),
                   ),
 
@@ -226,6 +226,48 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
                               controller.companies[0].company_location,
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const CircleAvatar(
+                        radius: 20,
+                        backgroundColor: AppColors.bgIcon,
+                        child: Icon(Icons.email_outlined,size: 23,color: AppColors.primaryColor1,),
+                      ),
+                      const SizedBox(width: 15,),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Email',
+                            style: TextStyle (
+                              fontSize: 12,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(height: 3,),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width-90,
+                            child: Text(
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
+                              controller.companies[0].email,
                               style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500

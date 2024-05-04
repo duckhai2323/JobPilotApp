@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../common/colors/colors.dart';
 
-Widget FormEdit (String title, String subTitle, Icon icon) {
+Widget FormEdit (String title, String subTitle, Icon icon, TextEditingController controller) {
   return Column(
     mainAxisSize: MainAxisSize.max,
     mainAxisAlignment: MainAxisAlignment.start,
@@ -20,7 +20,7 @@ Widget FormEdit (String title, String subTitle, Icon icon) {
       SizedBox(height: 5,),
 
       TextFormField(
-        autofocus: true,
+        controller: controller,
         obscureText: false,
         keyboardType: TextInputType.emailAddress,
         style: const TextStyle(
