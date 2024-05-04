@@ -9,4 +9,5 @@ class AppRoutes {
   static const CVMANAGE = '/cvmanage';
   static const COMPANIES = '/companies';
   static const JOBAPPLIED = '/jobapplied';
+  static const JOBSAVED = '/jobsaved';
 }

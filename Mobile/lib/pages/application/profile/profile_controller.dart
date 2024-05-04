@@ -5,4 +5,8 @@ class ProfileController extends GetxController {
   void HandleJobAppliedPage() {
     Get.toNamed(AppRoutes.JOBAPPLIED);
   }
+
+  void HandleJobSavedPage() {
+    Get.toNamed(AppRoutes.JOBSAVED);
+  }
 }

@@ -136,7 +136,8 @@ class InforCompany extends GetView<JobDetailsController> {
                   'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
                   'Ha Noi',
                   '1 nam',
-                  '300s',
+                  '300\u0024',
+                  false
                 ));
               },
             childCount: 3,

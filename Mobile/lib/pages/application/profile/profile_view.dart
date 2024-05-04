@@ -292,7 +292,13 @@ class ProfilePage extends GetView<ProfileController> {
                         controller.HandleJobAppliedPage();
                       }
                   ),
-                  ItemGrid(Icon(Icons.bookmarks_rounded,size: 30,color: AppColors.primaryColor1,),'Việc làm đã lưu', '13')
+                  InkWell(
+                      child: ItemGrid(Icon(Icons.bookmarks_rounded,size: 30,color: AppColors.primaryColor1,),'Việc làm đã lưu', '13'),
+                      onTap: () {
+                        controller.HandleJobSavedPage();
+                      }
+                  ),
+
                 ],
               ),
             ),
