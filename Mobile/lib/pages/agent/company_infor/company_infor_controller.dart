@@ -51,7 +51,7 @@ class CompanyInforController extends GetxController {
       print(e);
     }
   }
-
+  
   void HandleEditPage() {
     Get.toNamed(AppRoutes.EDIT_COMPANY_INFOR);
  }
