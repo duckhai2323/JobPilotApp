@@ -1,14 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:jobpilot_app/pages/jobapplied/jobapplied_controller.dart';
 
 import '../../../common/colors/colors.dart';
 
-class JobAppliedItem extends GetView<JobAppliedController> {
-
-  @override
-  Widget build(BuildContext context) {
+Widget JobAppliedItem(BuildContext context, logo, job, company, location, salary, time) {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(bottom: 10,left: 15,right: 15),
@@ -42,7 +37,7 @@ class JobAppliedItem extends GetView<JobAppliedController> {
                 ]
                 ),
                 child: Image.asset(
-                  'assets/images/sun.png',
+                  logo,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -51,13 +46,13 @@ class JobAppliedItem extends GetView<JobAppliedController> {
                 margin: EdgeInsets.only(left: 10),
                 width: MediaQuery.of(context).size.width - 175,
                 height: 70,
-                child: const Column(
+                child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                      Text(
-                       'Fresher Developer FrontEnd cbufabsf asfsyuf sfbusf sfbusf sfbsf sssfus',
+                       job,
                        maxLines: 2,
                        overflow: TextOverflow.ellipsis,
                        style: TextStyle(
@@ -69,7 +64,7 @@ class JobAppliedItem extends GetView<JobAppliedController> {
 
 
                      Text(
-                        'CÔNG TY CỔ PHẦN SUN ASTERISK',
+                        company,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -85,7 +80,7 @@ class JobAppliedItem extends GetView<JobAppliedController> {
             ],
           ),
           const SizedBox(height: 10),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +88,7 @@ class JobAppliedItem extends GetView<JobAppliedController> {
               Icon(Icons.location_on_outlined ,size: 15,color: AppColors.primaryColor1,),
               SizedBox(width: 10,),
               Text(
-                'Hà Nội, Cầu Giấy',
+                location,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -102,7 +97,7 @@ class JobAppliedItem extends GetView<JobAppliedController> {
             ],
           ),
           const SizedBox(height: 10),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +105,7 @@ class JobAppliedItem extends GetView<JobAppliedController> {
               Icon(Icons.currency_exchange_rounded ,size: 15,color: AppColors.primaryColor1,),
               SizedBox(width: 10,),
               Text(
-                'Trên 4 triệu',
+                salary,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -120,7 +115,7 @@ class JobAppliedItem extends GetView<JobAppliedController> {
               Icon(Icons.av_timer_rounded ,size: 15,color: AppColors.primaryColor1,),
               SizedBox(width: 10,),
               Text(
-                '19/07/2023',
+                time,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -186,4 +181,3 @@ class JobAppliedItem extends GetView<JobAppliedController> {
       )
     );
   }
-}

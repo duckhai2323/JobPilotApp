@@ -13,6 +13,8 @@ import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_binding.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_view.dart';
 import '../../pages/jobapplied/jobapplied_binding.dart';
 import '../../pages/jobapplied/jobapplied_view.dart';
+import '../../pages/jobsaved/jobsaved_binding.dart';
+import '../../pages/jobsaved/jobsaved_view.dart';
 import '../../pages/application/application_binding.dart';
 import '../../pages/application/application_view.dart';
 import '../../pages/application/cv_manage/cv_manage_binding.dart';
@@ -77,6 +79,12 @@ class AppPages {
       name: AppRoutes.JOBAPPLIED,
       page: ()=>JobAppliedPage(),
       binding: JobAppliedBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.JOBSAVED,
+      page: ()=>JobSavedPage(),
+      binding: JobSavedBinding(),
     ),
   ];
 }
