@@ -56,4 +56,21 @@ class CompanyController extends Controller
         return response()->json(['message' => 'User registered successfully'], 200);
     }
 
+    public function updateInforCompany ( Request $request,$company_id) {
+         $request->validate([
+            'company_name' => 'required|string|max:255',
+            'email' => 'required|string|lowercase|email|max:255',
+            'employee_scale' => 'required|string',
+            'company_intro' => 'required|string|max:500',
+            'company_link' => 'required|url',
+            'company_location' => 'required|string|max:255',
+            'company_organize' => 'required|string|max:255',
+            'company_filed' => 'required|string|max:255',
+        ]);
+        $data = $request->all();
+        $company = Company::where('company_id', $company_id)
+                          ->update($data);
+        return response()->json(['message' => 'Company update successfully'], 200);
+    }
+
 }
