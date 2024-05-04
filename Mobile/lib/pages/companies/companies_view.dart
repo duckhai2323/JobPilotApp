@@ -29,7 +29,7 @@ class CompaniesPage extends GetView<CompaniesController> {
           shrinkWrap: true,
           itemBuilder: (BuildContext context, index) {
             return CompanyCard(
-              logo: controller.listCompanies[index].company_image,
+              logo: controller.listCompanies[index].company_image??"",
               name: controller.listCompanies[index].company_name,
               description: controller.listCompanies[index].company_filed,
               scale: controller.listCompanies[index].employee_scale,

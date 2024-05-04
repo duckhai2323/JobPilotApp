@@ -25,7 +25,7 @@ class Company extends Model
         'company_link',
         'company_image',
         'company_location',
-         'company_organize',
+        'company_organize',
         'company_filed',
         'status',
     ];

@@ -11,6 +11,7 @@ Route::post('/candidate/signin',[CandidateController::class,'signInCandidateApi'
 Route::post('/company',[CompanyController::class,'addNewCompanyApi']);
 Route::get('/companies',[CompanyController::class,'getCompaniesApi']);
 Route::get('/company/{company_id}',[CompanyController::class,'getCompanyOfId']);
+Route::put('/company/{company_id}',[CompanyController::class,'updateInforCompany']);
 
 Route::post('/agent/register',[AgentController::class,'registerAgentApi']);
 Route::post('/agent/signin',[AgentController::class,'signInAgentApi']);
