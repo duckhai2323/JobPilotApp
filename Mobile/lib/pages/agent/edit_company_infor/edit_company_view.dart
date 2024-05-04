@@ -43,12 +43,12 @@ class EditCompanyPage extends GetView<EditCompanyController> {
             const Text(
               'Chỉnh sửa',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 color:  AppColors.primaryColor1,
                 fontWeight: FontWeight.bold,
               ),
             ),
-
+            
             InkWell(
               onTap: (){
                 controller.reset();
@@ -83,7 +83,7 @@ class EditCompanyPage extends GetView<EditCompanyController> {
                   Text(
                     'Vui lòng nhập thông tin hợp lệ',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: AppColors.primaryColor1
                     )

@@ -3,24 +3,23 @@ import 'package:flutter/material.dart';
 
 import '../common/colors/colors.dart';
 
-Widget FormEdit (String title, String subTitle, Icon icon, TextEditingController controller) {
+Widget FormAddJob (String title, String subTitle) {
   return Column(
     mainAxisSize: MainAxisSize.max,
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-       Text(
+      Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
       ),
 
-      SizedBox(height: 5,),
+      const SizedBox(height: 5,),
 
       TextFormField(
-        controller: controller,
         obscureText: false,
         keyboardType: TextInputType.emailAddress,
         style: const TextStyle(
@@ -29,12 +28,11 @@ Widget FormEdit (String title, String subTitle, Icon icon, TextEditingController
             color: AppColors.primaryColor2
         ),
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(vertical: 8),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           filled: true,
           fillColor: Colors.white,
           hintText: subTitle,
           hintStyle: const TextStyle(color: AppColors.placeHolderColor,fontSize: 16,fontFamily: "Roboto Regular", fontWeight: FontWeight.w500),
-          prefixIcon: icon,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
               borderSide: BorderSide(

@@ -11,13 +11,13 @@ Widget FormLargeEdit (String title, String subTitle, TextEditingController contr
     children: [
       Text(
         title,
-        style: TextStyle(
-          fontSize: 18,
+        style: const TextStyle(
+          fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
       ),
 
-      SizedBox(height: 5,),
+      const SizedBox(height: 5,),
 
       TextFormField(
         controller: controller,

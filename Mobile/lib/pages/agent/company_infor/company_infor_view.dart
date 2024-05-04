@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/agent/company_infor/company_infor_controller.dart';
+import 'package:jobpilot_app/pages/agent/company_infor/jobsub_item_agent.dart';
 import 'package:jobpilot_app/share/jobsub_item.dart';
+import 'package:jobpilot_app/pages/agent/jobfair/jobsub_item_agent.dart';
 
 import '../../../share/job_detail_content.dart';
 
@@ -433,7 +435,7 @@ class CompanyInforPage extends GetView<CompanyInforController> {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
-                return JobSubItem(
+                return JobSubItemInfor(
                   controller.jobs[index].company_image??"",
                   controller.jobs[index].company_name??"",
                   controller.jobs[index].job_title??"",

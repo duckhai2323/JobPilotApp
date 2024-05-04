@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:jobpilot_app/pages/agent/add_job/add_job_binding.dart';
+import 'package:jobpilot_app/pages/agent/add_job/add_job_view.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_binding.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
@@ -71,6 +73,12 @@ class AppPages {
       name: AppRoutes.EDIT_COMPANY_INFOR,
       page: ()=>EditCompanyPage(),
       binding: EditCompanyBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.ADD_JOB,
+      page: ()=>AddJobView(),
+      binding: AddJobBinding(),
     ),
   ];
 }
