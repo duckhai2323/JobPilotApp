@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:jobpilot_app/pages/application/application_controller.dart';
 import 'package:jobpilot_app/pages/application/profile/profile_controller.dart';
 
 import '../../../common/colors/colors.dart';
@@ -65,9 +66,9 @@ class ProfileInfor extends GetView<ProfileController> {
                               color: Colors.white, // Màu của viền
                               width: 3, // Độ dày của viền
                             ),
-                            image: const DecorationImage(
+                            image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage('https://yt3.googleusercontent.com/v-fHSvLthvdRlrtXeEbWc1JtuKPa7yUeG668kRdxbX6XAxcw_rlhf8wjRGxht_oepo49SkwnXA=s900-c-k-c0x00ffffff-no-rj'),
+                              image: NetworkImage(ApplicationController.user_image),
                             ),
                           ),
                         ),
@@ -94,24 +95,24 @@ class ProfileInfor extends GetView<ProfileController> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Khai Tran Duc',
-                      style: TextStyle(
+                    Text(
+                      ApplicationController.user_name,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ),
 
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         text: 'Mã ứng viên: ',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                           color: AppColors.placeHolderColor,
                           fontWeight: FontWeight.w500,
                         ),
                         children: <TextSpan>[
-                          TextSpan(text: '21020340', style: TextStyle(color: Colors.black,)),
+                          TextSpan(text: ApplicationController.user_id, style: TextStyle(color: Colors.black,)),
                         ],
                       ),
                     ),

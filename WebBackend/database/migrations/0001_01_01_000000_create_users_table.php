@@ -21,6 +21,16 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('candidates', function (Blueprint $table) {
+            $table->bigIncrements('candidate_id');
+            $table->string('candidate_name');
+            $table->string('candidate_email')->unique();
+            $table->string('candidate_password');
+            $table->string('candidate_image');
+            $table->integer('status')->unsigned()->default(1);
+            $table->timestamps();
+        });
+
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
@@ -45,5 +55,6 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('candidates');
     }
 };

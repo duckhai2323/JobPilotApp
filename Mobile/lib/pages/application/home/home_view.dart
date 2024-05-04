@@ -9,7 +9,7 @@ import 'package:jobpilot_app/pages/application/home/blog_item.dart';
 import 'package:jobpilot_app/pages/application/home/company_item.dart';
 import 'package:jobpilot_app/pages/application/home/home_controller.dart';
 import 'package:jobpilot_app/share/jobmain_item.dart';
-import 'package:jobpilot_app/pages/application/home/jobsub_item.dart';
+import 'package:jobpilot_app/share/jobsub_item.dart';
 
 class HomePage extends GetView<HomeController> {
 
@@ -154,23 +154,23 @@ class HomePage extends GetView<HomeController> {
               ),
             )
           ),
-          SliverList(
+          Obx(() => SliverList(
             delegate: SliverChildBuilderDelegate(
                   (_, int index) {
                 return InkWell(onTap: () {controller.HandleJobdetails();},child: JobMainItem(
                   context,
-                  "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                  "Cty Phat Trien Phan Mem Sun Asterisk",
-                  'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                  'Ha Noi',
-                  '1 nam',
-                  '300\u0024',
+                  controller.listJobs[index].company_image,
+                  controller.listJobs[index].company_name,
+                  controller.listJobs[index].job_title,
+                  controller.listJobs[index].job_location,
+                  controller.listJobs[index].experience_require,
+                  controller.listJobs[index].salary,
                   false
                 ));
               },
-              childCount: 3,
+              childCount: controller.listJobs.length>3?3:controller.listJobs.length,
             ),
-          ),
+          ),),
 
           SliverToBoxAdapter(
               child: Container(
@@ -222,7 +222,14 @@ class HomePage extends GetView<HomeController> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, index) {
-                          return JobSubItem();
+                          return JobSubItem(
+                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                            "Cty Phat Trien Phan Mem Sun Asterisk",
+                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                            'Ha Noi',
+                            '1 nam',
+                            '300s',
+                          );
                         },
                       ),
                       ListView.builder(
@@ -232,7 +239,14 @@ class HomePage extends GetView<HomeController> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, index) {
-                          return JobSubItem();
+                          return JobSubItem(
+                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                            "Cty Phat Trien Phan Mem Sun Asterisk",
+                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                            'Ha Noi',
+                            '1 nam',
+                            '300s',
+                          );
                         },
                       ),
                       ListView.builder(
@@ -242,7 +256,14 @@ class HomePage extends GetView<HomeController> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, index) {
-                          return JobSubItem();
+                          return JobSubItem(
+                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                            "Cty Phat Trien Phan Mem Sun Asterisk",
+                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                            'Ha Noi',
+                            '1 nam',
+                            '300s',
+                          );
                         },
                       ),
                       ListView.builder(
@@ -252,7 +273,14 @@ class HomePage extends GetView<HomeController> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, index) {
-                          return JobSubItem();
+                          return JobSubItem(
+                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                            "Cty Phat Trien Phan Mem Sun Asterisk",
+                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                            'Ha Noi',
+                            '1 nam',
+                            '300s',
+                          );
                         },
                       ),
                       ListView.builder(
@@ -262,7 +290,14 @@ class HomePage extends GetView<HomeController> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, index) {
-                          return JobSubItem();
+                          return JobSubItem(
+                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                            "Cty Phat Trien Phan Mem Sun Asterisk",
+                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                            'Ha Noi',
+                            '1 nam',
+                            '300s',
+                          );
                         },
                       )
                     ],
@@ -315,48 +350,27 @@ class HomePage extends GetView<HomeController> {
           )
         ),
 
-          SliverPadding(
+          Obx(() => SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: MediaQuery.of(context).size.width/2,
                 mainAxisSpacing: 15,
                 crossAxisSpacing: 15,
-                  childAspectRatio: 0.85,
-          ),
-          delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  if (index == 0) {
-                     return CompanyItem(
-                        logo: 'assets/images/logo_fpt.png',
-                        name: 'FPT Sofware',
-                        description: 'Tài chính',
-                      );
-                    } else if (index == 1) {
-                     return CompanyItem(
-                        logo: 'assets/images/ghtk.png',
-                        name: 'Giao Hàng Tiết Kiệm',
-                        description: 'Logistics - Vận tải',
-                     );
-                    } else if (index == 2) {
-                     return CompanyItem(
-                        logo: 'assets/images/sun.png',
-                        name: 'Sun Aterisk',
-                        description: 'Viễn thông',
-                     );
-                    } else if (index == 3) {
-                     return CompanyItem(
-                        logo: 'assets/images/viettel.png',
-                        name: 'Viettel',
-                        description: 'Viễn thông - Công nghệ',
-                     );
-                    }
-              return SizedBox(); // Trả về một widget rỗn
+                childAspectRatio: 0.85,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return CompanyItem(
+                    logo: controller.listCompanies[index].company_image??"",
+                    name: controller.listCompanies[index].company_name,
+                    description: controller.listCompanies[index].company_filed,
+                  );
                 },
-                childCount: 4,
-          ),
-        ),
-      ),
+                childCount: controller.listCompanies.length>=4?4:controller.listCompanies.length,
+              ),
+            ),
+          ),),
 
           SliverToBoxAdapter(
               child: Container(

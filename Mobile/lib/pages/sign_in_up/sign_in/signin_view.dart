@@ -13,7 +13,6 @@ class SignInPage extends GetView<SignInController> {
       body: SingleChildScrollView(
         child: SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
@@ -138,6 +137,60 @@ class SignInPage extends GetView<SignInController> {
                   ),
                 ),
 
+                Obx(() => Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.only(left: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Radio(
+                        value: 1,
+                        groupValue: controller.value_.value,
+                        onChanged: (value) {
+                          controller.ActionRadio(value!);
+                        },
+                      ),
+
+                      const Text(
+                        'Ứng viên ',
+                        style: TextStyle(
+                            color: AppColors.placeHolderColor,
+                            fontSize: 16,
+                            fontFamily: "Roboto Regular",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                ),),
+
+                Obx(() => Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.only(left: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Radio(
+                        value: 2,
+                        groupValue: controller.value_.value,
+                        onChanged: (value) {
+                          controller.ActionRadio(value!);
+                        },
+                      ),
+
+                      const Text(
+                        'Nhà tuyển dụng',
+                        style: TextStyle(
+                            color: AppColors.placeHolderColor,
+                            fontSize: 16,
+                            fontFamily: "Roboto Regular",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                ),),
+
                 InkWell(
                   onTap: (){
                   },
@@ -161,8 +214,7 @@ class SignInPage extends GetView<SignInController> {
                 ),
                 InkWell(
                   onTap: () {
-                    //controller.signInCandidate(context);
-                    controller.HandleHomePage();
+                    controller.signInCandidate(context);
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
@@ -283,6 +335,8 @@ class SignInPage extends GetView<SignInController> {
                       fontWeight: FontWeight.w500,
                       color: AppColors.primaryColor1),
                 ),
+
+                SizedBox(height: 50,),
               ],
             )),
       ),

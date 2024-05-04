@@ -10,9 +10,6 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-    protected $table = 'users';
-    protected $primaryKey = 'candidate_id';
-    protected $connection = 'jobpilot';
 
     /**
      * The attributes that are mass assignable.
@@ -20,10 +17,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'candidate_id',
-        'candidate_name',
-        'candidate_email',
-        'candidate_password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -32,7 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'candidate_password',
+        'password',
         'remember_token',
     ];
 
@@ -45,7 +41,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            //'candidate_password' => 'hashed',
+            'password' => 'hashed',
         ];
     }
 }
