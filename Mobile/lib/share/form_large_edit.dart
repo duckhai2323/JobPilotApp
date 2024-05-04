@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../common/colors/colors.dart';
 
-Widget FormLargeEdit (String title, String subTitle) {
+Widget FormLargeEdit (String title, String subTitle, TextEditingController controller) {
   return Column(
     mainAxisSize: MainAxisSize.max,
     mainAxisAlignment: MainAxisAlignment.start,
@@ -20,6 +20,7 @@ Widget FormLargeEdit (String title, String subTitle) {
       const SizedBox(height: 5,),
 
       TextFormField(
+        controller: controller,
         obscureText: false,
         keyboardType: TextInputType.emailAddress,
         maxLines: 5,

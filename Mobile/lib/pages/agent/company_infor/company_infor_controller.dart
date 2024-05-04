@@ -27,6 +27,7 @@ class CompanyInforController extends GetxController {
       await Future.delayed(const Duration(seconds: 1));
       if(response.statusCode == 200) {
         Company company = Company.fromJson(jsonDecode(response.body));
+        companies.clear();
         companies.add(company);
       } else if(response.statusCode == 404) {
         print('404 not found');
@@ -53,6 +54,7 @@ class CompanyInforController extends GetxController {
   }
   
   void HandleEditPage() {
+
     Get.toNamed(AppRoutes.EDIT_COMPANY_INFOR);
  }
 }
