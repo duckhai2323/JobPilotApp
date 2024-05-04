@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../common/colors/colors.dart';
 
-Widget FormAddJob (String title, String subTitle) {
+Widget FormAddJob (String title, String subTitle,TextEditingController controller) {
   return Column(
     mainAxisSize: MainAxisSize.max,
     mainAxisAlignment: MainAxisAlignment.start,
@@ -21,6 +21,7 @@ Widget FormAddJob (String title, String subTitle) {
 
       TextFormField(
         obscureText: false,
+        controller: controller,
         keyboardType: TextInputType.emailAddress,
         style: const TextStyle(
             fontWeight: FontWeight.w500,

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_controller.dart';
+import 'package:jobpilot_app/pages/agent/add_job/form_add_interview.dart';
 import 'package:jobpilot_app/share/form_add_job.dart';
 
 import '../../../common/colors/colors.dart';
@@ -89,25 +91,25 @@ class AddJobView extends GetView<AddJobController> {
               ),
 
               const SizedBox(height: 10,),
-              FormAddJob('Nội dung công việc', 'Lập trình viên Flutter'),
+              FormAddJob('Nội dung công việc', 'Lập trình viên Flutter',controller.textController1),
               const SizedBox(height: 10,),
-              FormAddJob('Mức lương', '20M'),
+              FormAddJob('Mức lương', '20M',controller.textController2),
               const SizedBox(height: 10,),
-              FormAddJob('Địa điểm', 'Hà Nội'),
+              FormAddJob('Địa điểm', 'Hà Nội',controller.textController3),
               const SizedBox(height: 10,),
-              FormAddJob('Kinh nghiệm', '2 năm'),
+              FormAddJob('Kinh nghiệm', '2 năm',controller.textController4),
               const SizedBox(height: 10,),
-              FormLargeEdit('Mô tả công việc', 'Sử dụng Frameword Flutter phát triển...'),
+              FormLargeEdit('Mô tả công việc', 'Sử dụng Frameword Flutter phát triển...',controller.textController5),
               const SizedBox(height: 10,),
-              FormLargeEdit('Yêu cầu ứng viên', 'Kỹ năng chuyên môn,...'),
+              FormLargeEdit('Yêu cầu ứng viên', 'Kỹ năng chuyên môn,...',controller.textController6),
               const SizedBox(height: 10,),
-              FormLargeEdit('Quyền lợi', 'Hỗ trợ bảo hiểm,...'),
+              FormLargeEdit('Quyền lợi', 'Hỗ trợ bảo hiểm,...',controller.textController7),
               const SizedBox(height: 10,),
-              FormAddJob('Hình thức làm việc', 'Offline'),
+              FormAddJob('Hình thức làm việc', 'Offline',controller.textController8),
               const SizedBox(height: 10,),
-              FormAddJob('Số người dự tuyển', '5'),
+              FormAddJob('Số người dự tuyển', '5',controller.textController9),
               const SizedBox(height: 10,),
-              FormAddJob('Hạn nộp', '20/5/2024'),
+              FormAddJob('Hạn nộp', '20/5/2024',controller.textController10),
 
               const SizedBox(height: 15,),
               const Text(
@@ -119,26 +121,80 @@ class AddJobView extends GetView<AddJobController> {
                 ),
               ),
 
-              const SizedBox(height: 10,),
-              FormAddJob('Noi dung', 'Phong van vong 1'),
+             Obx(() => ListView.builder(
+               itemCount: controller.listInterview.length,
+               physics: const NeverScrollableScrollPhysics(),
+               shrinkWrap: true,
+               itemBuilder: (BuildContext context, int index) {
+                 return  SizedBox(
+                   width: MediaQuery.of(context).size.width,
+                   child: Column(
+                     children: [
+                       const SizedBox(height: 20,),
+                       FormAddInterview(index,'Vòng ${index+1} - Hình thức kiểm tra', 'Phỏng vấn vòng ${index+1} (Test IQ)',controller.listInterview[index].textEditingController),
+                     ],
+                   ),
+                 );
+               },
+             ),),
 
-              const SizedBox(height: 10,),
-              FormAddJob('Chon ngay', 'Phong van vong 1'),
+              const SizedBox(height: 30,),
 
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: (){
+                      controller.addInterView();
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width*1/3,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor1,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Thêm',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color:  Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
 
-              TextField(
-                controller: controller.textController,
-              ),
+                  const SizedBox(width: 20,),
 
-              InkWell(
-                onTap: (){
-                  controller.showDialog(context);
-                },
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  color: Colors.red,
-                ),
+                  Container(
+                    width: MediaQuery.of(context).size.width*1/3,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor1,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+
+                    child: InkWell(
+                      onTap: (){
+
+                      },
+                      child: const Center(
+                        child: Text(
+                          'Lưu',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color:  Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
 
               const SizedBox(height: 50,),
