@@ -164,7 +164,8 @@ class HomePage extends GetView<HomeController> {
                   controller.listJobs[index].job_title,
                   controller.listJobs[index].job_location,
                   controller.listJobs[index].experience_require,
-                  controller.listJobs[index].salary
+                  controller.listJobs[index].salary,
+                  false
                 ));
               },
               childCount: controller.listJobs.length>3?3:controller.listJobs.length,

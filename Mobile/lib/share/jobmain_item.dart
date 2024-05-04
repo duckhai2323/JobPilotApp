@@ -12,7 +12,8 @@ Widget JobMainItem (
     jobTitle,
     jobLocation,
     experienceRequire,
-    salary
+    salary,
+    isSaved
     ) {
   return Container(
     width: MediaQuery.of(context).size.width,
@@ -174,7 +175,7 @@ Widget JobMainItem (
                 ],
               ),
             ),
-            const Icon(Icons.bookmark_outline_rounded, color: AppColors.placeHolderColor,size: 30,),
+            isSaved ? Icon(Icons.bookmark_outlined, color: AppColors.primaryColor1,size: 30,) : Icon(Icons.bookmark_outline_rounded, color: AppColors.placeHolderColor,size: 30,)
           ],
         ),
         const Divider(color: AppColors.bgTextFeild,),

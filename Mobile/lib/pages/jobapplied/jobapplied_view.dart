@@ -66,13 +66,29 @@ class JobAppliedPage extends GetView<JobAppliedController> {
                 padding: const EdgeInsets.only(top: 15),
                 child: ListView.builder(
                   itemCount: 10,
-                  prototypeItem: JobAppliedItem(),
+                  prototypeItem: JobAppliedItem(
+                      context,
+                      'assets/images/sun.png',
+                      'Fresher Developer FrontEnd cbufabsf asfsyuf sfbusf sfbusf sfbsf sssfus',
+                      'CÔNG TY CỔ PHẦN SUN ASTERISK',
+                      'Hà Nội, Cầu Giấy',
+                      'Trên 4 triệu',
+                      '19/07/2023'
+                  ),
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
                         controller.HandleJobDetailPage();
                       },
-                      child: JobAppliedItem()
+                      child: JobAppliedItem(
+                          context,
+                          'assets/images/sun.png',
+                          'Fresher Developer FrontEnd cbufabsf asfsyuf sfbusf sfbusf sfbsf sssfus',
+                          'CÔNG TY CỔ PHẦN SUN ASTERISK',
+                          'Hà Nội, Cầu Giấy',
+                          'Trên 4 triệu',
+                          '19/07/2023'
+                      )
                     );
                   },
                 ),
