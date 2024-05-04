@@ -1,6 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:jobpilot_app/pages/application/home/home_binding.dart';
-import 'package:jobpilot_app/pages/application/home/home_view.dart';
+import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_binding.dart';
+import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
@@ -15,14 +15,13 @@ import '../../pages/jobapplied/jobapplied_binding.dart';
 import '../../pages/jobapplied/jobapplied_view.dart';
 import '../../pages/application/application_binding.dart';
 import '../../pages/application/application_view.dart';
-import '../../pages/application/cv_manage/cv_manage_binding.dart';
-import '../../pages/application/cv_manage/cv_manage_view.dart';
 import '../../pages/sign_in_up/sign_in/signin_binding.dart';
 import '../../pages/sign_in_up/sign_in/signin_view.dart';
 import 'names.dart';
 
 class AppPages {
   static final List<GetPage> routes = [
+    //Candidate
     GetPage(
       name: AppRoutes.APPLICATION,
       page: ()=>ApplicationPage(),
@@ -37,11 +36,6 @@ class AppPages {
         name: AppRoutes.SIGNUP,
         page: () => SignUpPage(),
         binding:  SignUpBinding()
-    ),
-    GetPage(
-        name: AppRoutes.HOME,
-        page: () => HomePage(),
-        binding:  HomeBinding()
     ),
     GetPage(
       name: AppRoutes.NOTIFICATION,
@@ -62,12 +56,6 @@ class AppPages {
     ),
 
     GetPage(
-      name: AppRoutes.CVMANAGE,
-      page: ()=>CVManage(),
-      binding: CVManageBinding(),
-    ),
-
-    GetPage(
       name: AppRoutes.COMPANIES,
       page: ()=>CompaniesPage(),
       binding: CompaniesBinding(),
@@ -77,6 +65,12 @@ class AppPages {
       name: AppRoutes.JOBAPPLIED,
       page: ()=>JobAppliedPage(),
       binding: JobAppliedBinding(),
+    ),
+    //Agent
+    GetPage(
+      name: AppRoutes.EDIT_COMPANY_INFOR,
+      page: ()=>EditCompanyPage(),
+      binding: EditCompanyBinding(),
     ),
   ];
 }

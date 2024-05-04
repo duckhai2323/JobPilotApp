@@ -8,6 +8,7 @@ import '../../../common/api/api_backend.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../common/company.dart';
+import '../../../common/routes/names.dart';
 class CompanyInforController extends GetxController {
   List<Company> companies = <Company>[].obs ;
   List<ItemJobDetail> jobs = <ItemJobDetail>[].obs ;
@@ -50,5 +51,8 @@ class CompanyInforController extends GetxController {
       print(e);
     }
   }
-
+  
+  void HandleEditPage() {
+    Get.toNamed(AppRoutes.EDIT_COMPANY_INFOR);
+ }
 }

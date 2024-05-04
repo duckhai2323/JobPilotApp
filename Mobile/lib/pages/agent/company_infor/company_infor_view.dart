@@ -55,29 +55,34 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                   Positioned(
                     top: 35,
                     right: 20,
-                    child: Container(
-                      width: 70,
-                      height: 35,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(Icons.settings,size: 25,color: AppColors.primaryColor1,),
-                          SizedBox(width: 5,),
-                          Text(
-                            'Edit',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color:AppColors.primaryColor1,
+                    child: InkWell(
+                      onTap: (){
+                        controller.HandleEditPage();
+                      },
+                      child: Container(
+                        width: 70,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.settings,size: 25,color: AppColors.primaryColor1,),
+                            SizedBox(width: 5,),
+                            Text(
+                              'Edit',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color:AppColors.primaryColor1,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -283,7 +288,7 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                       const CircleAvatar(
                         radius: 20,
                         backgroundColor: AppColors.bgIcon,
-                        child: Icon(Icons.phone,size: 24,color: AppColors.primaryColor1,),
+                        child: Icon(Icons.auto_graph,size: 24,color: AppColors.primaryColor1,),
                       ),
                       const SizedBox(width: 15,),
                       Column(
