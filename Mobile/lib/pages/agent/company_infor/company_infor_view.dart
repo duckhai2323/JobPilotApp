@@ -14,7 +14,9 @@ class CompanyInforPage extends GetView<CompanyInforController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Obx(() => controller.companies.isEmpty
+        ? const Center(child: CircularProgressIndicator(),)
+        :Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
@@ -42,10 +44,10 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                       width: MediaQuery.of(context).size.width,
                       height: 120,
                       decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/company_infor_image.jpg'),
-                          fit: BoxFit.cover
-                        )
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/company_infor_image.jpg'),
+                              fit: BoxFit.cover
+                          )
                       ),
                     ),
                   ),
@@ -53,40 +55,45 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                   Positioned(
                     top: 35,
                     right: 20,
-                    child: Container(
-                      width: 70,
-                      height: 35,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(Icons.settings,size: 25,color: AppColors.primaryColor1,),
-                          SizedBox(width: 5,),
-                          Text(
-                            'Edit',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color:AppColors.primaryColor1,
+                    child: InkWell(
+                      onTap: (){
+                        controller.HandleEditPage();
+                      },
+                      child: Container(
+                        width: 70,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.settings,size: 25,color: AppColors.primaryColor1,),
+                            SizedBox(width: 5,),
+                            Text(
+                              'Edit',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color:AppColors.primaryColor1,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
 
-                  const Positioned(
+                  Positioned(
                     top: 80,
                     left: 20,
                     child: CircleAvatar(
                       radius: 46,
                       backgroundColor: Colors.white,
-                      backgroundImage: CachedNetworkImageProvider('https://sun-asterisk.vn/wp-content/uploads/2020/11/intro-business.png'),
+                      backgroundImage: CachedNetworkImageProvider(controller.companies[0].company_image),
                     ),
                   ),
 
@@ -96,23 +103,23 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width*2/3,
                       height: 60,
-                      child: const Column(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Cty Sun Asterisk VN - Sun* Awesome',
+                            controller.companies[0].company_name,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white
+                            style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white
                             ),
                           ),
 
-                          SizedBox(height: 5,),
+                          const SizedBox(height: 5,),
 
                           Row(
                             mainAxisSize: MainAxisSize.max,
@@ -123,17 +130,17 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(CupertinoIcons.globe,size: 20,color: Colors.white,),
-                                  SizedBox(width: 10,),
+                                  const Icon(CupertinoIcons.globe,size: 20,color: Colors.white,),
+                                  const SizedBox(width: 10,),
                                   SizedBox(
                                     width: 100,
                                     child: Text(
-                                      'http//:sun-asterisk.com',
+                                      controller.companies[0].company_link,
                                       overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500
                                       ),
                                     ),
                                   ),
@@ -144,14 +151,14 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(Icons.business,size: 20,color: Colors.white,),
-                                  SizedBox(width: 10,),
+                                  const Icon(Icons.business,size: 20,color: Colors.white,),
+                                  const SizedBox(width: 10,),
                                   SizedBox(
                                     width: 100,
                                     child: Text(
-                                      '200 nhan vien',
+                                      controller.companies[0].employee_scale,
                                       overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 14,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500
@@ -180,11 +187,11 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Thong tin cong ty',
+                    'Thông tin công ty',
                     style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold
                     ),
                   ),
 
@@ -215,11 +222,11 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                           const SizedBox(height: 3,),
                           SizedBox(
                             width: MediaQuery.of(context).size.width-90,
-                            child: const Text(
+                            child: Text(
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
-                              'Tòa Keangnam Mỹ Đình, Hà Nội',
-                              style: TextStyle(
+                              controller.companies[0].company_location,
+                              style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500
                               ),
@@ -248,7 +255,7 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Nam thanh lap',
+                            'Năm thành lập',
                             style: TextStyle (
                               fontSize: 12,
                               color: Colors.black,
@@ -257,11 +264,11 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                           const SizedBox(height: 3,),
                           SizedBox(
                             width: MediaQuery.of(context).size.width-90,
-                            child: const Text(
+                            child: Text(
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
-                              't9/2011',
-                              style: TextStyle(
+                              controller.companies[0].company_organize,
+                              style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500
                               ),
@@ -281,7 +288,7 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                       const CircleAvatar(
                         radius: 20,
                         backgroundColor: AppColors.bgIcon,
-                        child: Icon(Icons.phone,size: 24,color: AppColors.primaryColor1,),
+                        child: Icon(Icons.auto_graph,size: 24,color: AppColors.primaryColor1,),
                       ),
                       const SizedBox(width: 15,),
                       Column(
@@ -290,7 +297,7 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'So dien thoai',
+                            'Lĩnh vực phát triển',
                             style: TextStyle (
                               fontSize: 12,
                               color: Colors.black,
@@ -299,11 +306,11 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                           const SizedBox(height: 3,),
                           SizedBox(
                             width: MediaQuery.of(context).size.width-90,
-                            child: const Text(
+                            child: Text(
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
-                              '0987567567',
-                              style: TextStyle(
+                              controller.companies[0].company_filed,
+                              style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500
                               ),
@@ -332,7 +339,7 @@ class CompanyInforPage extends GetView<CompanyInforController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Nguoi theo doi',
+                            'Người theo dõi',
                             style: TextStyle (
                               fontSize: 12,
                               color: Colors.black,
@@ -363,13 +370,13 @@ class CompanyInforPage extends GetView<CompanyInforController> {
               padding: EdgeInsets.only(bottom: 15),
               width: MediaQuery.of(context).size.width,
               color: Colors.white,
-              child: JobDetailContent('Gioi thieu cong ty',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
+              child: JobDetailContent('Giới thiệu công ty', controller.companies[0].company_intro, context),
             ),
 
             const Padding(
               padding: EdgeInsets.only(left: 15,right: 15,top: 15),
               child: Text(
-                'Viec lam dang hien thi',
+                'Việc làm đang hiển thị',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
@@ -378,20 +385,27 @@ class CompanyInforPage extends GetView<CompanyInforController> {
               ),
             ),
 
-            ListView.builder(
+            Obx(() => ListView.builder(
               padding: const EdgeInsets.only(top: 15),
-              itemCount: 4,
+              itemCount: controller.jobs.length,
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
-                return JobSubItem();
+                return JobSubItem(
+                  controller.jobs[index].company_image??"",
+                  controller.jobs[index].company_name??"",
+                  controller.jobs[index].job_title??"",
+                  controller.jobs[index].job_location??"",
+                  controller.jobs[index].deadline_job??"",
+                  controller.jobs[index].salary??""
+                );
               },
-            ),
+            ),),
 
 
           ],
         ),
       ),
-    );
+    ));
   }
 }

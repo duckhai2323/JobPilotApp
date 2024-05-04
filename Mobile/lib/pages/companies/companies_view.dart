@@ -104,7 +104,7 @@ class CompaniesPage extends GetView<CompaniesController> {
                     ),
                   child: Text(
                     name,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 16,

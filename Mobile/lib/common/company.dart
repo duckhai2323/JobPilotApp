@@ -8,9 +8,10 @@ class Company {
   final String company_image;
   final String company_location;
   final String company_filed;
+  final String company_organize;
   final int status;
 
-  Company(this.company_name, this.email, this.employee_scale, this.company_intro,this.company_link, this.company_image, this.company_location, this.company_filed,this.status,{this.company_id});
+  Company(this.company_name, this.email, this.employee_scale, this.company_intro,this.company_link, this.company_image, this.company_location, this.company_filed,this.company_organize,this.status,{this.company_id});
 
   factory Company.fromJson(dynamic json) {
     return Company(
@@ -22,6 +23,7 @@ class Company {
         json['company_image'] as String,
         json['company_location'] as String,
         json['company_filed'] as String,
+        json['company_organize'] as String,
         json['status'] as int,
         company_id: json['company_id'] as int
     );
@@ -37,6 +39,7 @@ class Company {
       'company_image' : company_image,
       'company_location' : company_location,
       'company_filed' : company_filed,
+      'company_organize': company_organize,
       'status' : status,
     };
   }
