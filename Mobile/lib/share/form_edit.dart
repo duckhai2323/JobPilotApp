@@ -12,7 +12,7 @@ Widget FormEdit (String title, String subTitle, Icon icon) {
        Text(
         title,
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -20,7 +20,6 @@ Widget FormEdit (String title, String subTitle, Icon icon) {
       SizedBox(height: 5,),
 
       TextFormField(
-        autofocus: true,
         obscureText: false,
         keyboardType: TextInputType.emailAddress,
         style: const TextStyle(

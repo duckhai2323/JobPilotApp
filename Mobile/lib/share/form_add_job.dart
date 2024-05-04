@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../common/colors/colors.dart';
 
-Widget FormLargeEdit (String title, String subTitle) {
+Widget FormAddJob (String title, String subTitle) {
   return Column(
     mainAxisSize: MainAxisSize.max,
     mainAxisAlignment: MainAxisAlignment.start,
@@ -22,14 +22,13 @@ Widget FormLargeEdit (String title, String subTitle) {
       TextFormField(
         obscureText: false,
         keyboardType: TextInputType.emailAddress,
-        maxLines: 5,
         style: const TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 16,
             color: AppColors.primaryColor2
         ),
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           filled: true,
           fillColor: Colors.white,
           hintText: subTitle,

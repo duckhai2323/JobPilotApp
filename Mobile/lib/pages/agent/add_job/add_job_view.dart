@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:jobpilot_app/common/colors/colors.dart';
-import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_controller.dart';
-import 'package:jobpilot_app/share/form_edit.dart';
-import 'package:jobpilot_app/share/form_large_edit.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:jobpilot_app/pages/agent/add_job/add_job_controller.dart';
+import 'package:jobpilot_app/share/form_add_job.dart';
 
-class EditCompanyPage extends GetView<EditCompanyController> {
+import '../../../common/colors/colors.dart';
+import '../../../share/form_large_edit.dart';
+
+class AddJobView extends GetView<AddJobController> {
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class EditCompanyPage extends GetView<EditCompanyController> {
               ],
             ),
             const Text(
-              'Chỉnh sửa',
+              'Thêm Việc Làm',
               style: TextStyle(
                 fontSize: 18,
                 color:  AppColors.primaryColor1,
@@ -68,63 +69,79 @@ class EditCompanyPage extends GetView<EditCompanyController> {
         color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
-            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
+            mainAxisSize: MainAxisSize.min,
+            children: [
               const Row(
                 children: [
                   Icon(Icons.mode_edit_outlined,color: AppColors.primaryColor1,size: 25,),
                   SizedBox(width: 5,),
                   Text(
-                    'Vui long dien thong tin phu hop',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primaryColor1
-                    )
+                      'Vui lòng điền thông tin thích hợp',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryColor1
+                      )
                   ),
                 ],
               ),
-              const SizedBox(height: 3,),
-              const Divider(),
-              const SizedBox(height: 5,),
-              FormEdit('Tên công ty', 'abc', const Icon(Icons.business,size: 25,color: AppColors.primaryColor1,)),
-              const SizedBox(height: 10,),
-              FormEdit('Website', 'abc', const Icon(CupertinoIcons.globe,size: 25,color: AppColors.primaryColor1,)),
-              const SizedBox(height: 10,),
-              FormEdit('Quy mô', 'abc', const Icon(Icons.auto_awesome_outlined,size: 25,color: AppColors.primaryColor1,)),
-              const SizedBox(height: 10,),
-              FormEdit('Địa chỉ', 'abc', const Icon(Icons.location_on_outlined,size: 25,color: AppColors.primaryColor1,)),
-              const SizedBox(height: 10,),
-              FormEdit('Năm thành lập', 'abc', const Icon(Icons.calendar_month_outlined,size: 25,color: AppColors.primaryColor1,)),
-              const SizedBox(height: 10,),
-              FormEdit('Lĩnh vực phát triển', 'abc', const Icon(Icons.auto_graph,size: 25,color: AppColors.primaryColor1,)),
-              const SizedBox(height: 10,),
-              FormLargeEdit('Giới thiệu công ty', 'abc'),
-              const SizedBox(height: 30,),
-              Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width*1/3,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor1,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
 
-                  child: const Center(
-                    child: Text(
-                      'Save',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color:  Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+              const SizedBox(height: 10,),
+              FormAddJob('Nội dung công việc', 'Lập trình viên Flutter'),
+              const SizedBox(height: 10,),
+              FormAddJob('Mức lương', '20M'),
+              const SizedBox(height: 10,),
+              FormAddJob('Địa điểm', 'Hà Nội'),
+              const SizedBox(height: 10,),
+              FormAddJob('Kinh nghiệm', '2 năm'),
+              const SizedBox(height: 10,),
+              FormLargeEdit('Mô tả công việc', 'Sử dụng Frameword Flutter phát triển...'),
+              const SizedBox(height: 10,),
+              FormLargeEdit('Yêu cầu ứng viên', 'Kỹ năng chuyên môn,...'),
+              const SizedBox(height: 10,),
+              FormLargeEdit('Quyền lợi', 'Hỗ trợ bảo hiểm,...'),
+              const SizedBox(height: 10,),
+              FormAddJob('Hình thức làm việc', 'Offline'),
+              const SizedBox(height: 10,),
+              FormAddJob('Số người dự tuyển', '5'),
+              const SizedBox(height: 10,),
+              FormAddJob('Hạn nộp', '20/5/2024'),
+
+              const SizedBox(height: 15,),
+              const Text(
+                'Thời gian phỏng vấn - Test',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primaryColor1
                 ),
               ),
-              const SizedBox(height: 30,),
+
+              const SizedBox(height: 10,),
+              FormAddJob('Noi dung', 'Phong van vong 1'),
+
+              const SizedBox(height: 10,),
+              FormAddJob('Chon ngay', 'Phong van vong 1'),
+
+
+              TextField(
+                controller: controller.textController,
+              ),
+
+              InkWell(
+                onTap: (){
+                  controller.showDialog(context);
+                },
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  color: Colors.red,
+                ),
+              ),
+
+              const SizedBox(height: 50,),
             ],
           ),
         ),
