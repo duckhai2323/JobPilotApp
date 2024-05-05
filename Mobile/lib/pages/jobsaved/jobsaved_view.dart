@@ -14,13 +14,14 @@ class JobSavedPage extends GetView<JobSavedController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: const Icon(Icons.arrow_back_sharp),
+        leading: const Icon(Icons.arrow_back_sharp,color: AppColors.primaryColor1,),
         centerTitle: true,
         title: const Text(
           'Việc làm đã lưu',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
+            color: AppColors.primaryColor1
           ),
         ),
         actions: [
@@ -145,11 +146,11 @@ class JobSavedPage extends GetView<JobSavedController> {
                   );
                 }
               ),
-              icon: Icon(Icons.bookmark_remove_outlined)
+              icon: Icon(Icons.bookmark_remove_outlined,color: AppColors.primaryColor1,)
           ),
         ],
       ),
-      backgroundColor: AppColors.bgTextFeild,
+      backgroundColor: AppColors.backgroundColor,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(

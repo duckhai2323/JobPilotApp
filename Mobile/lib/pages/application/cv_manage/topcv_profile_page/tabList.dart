@@ -10,16 +10,16 @@ class TabList extends GetView<TopCVProfileController> {
     return SingleChildScrollView(
       child: DefaultTabController(
         length: 6,
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height -
               kToolbarHeight -
               kBottomNavigationBarHeight,
-          child: Column(
+          child: const Column(
             children: [
               TabBar(
                   tabAlignment: TabAlignment.start,
                   isScrollable: true,
-                  indicator: const BoxDecoration(
+                  indicator: BoxDecoration(
                       border: Border(
                           bottom: BorderSide(
                               width: 2.0, color: AppColors.primaryColor1))),
@@ -27,13 +27,13 @@ class TabList extends GetView<TopCVProfileController> {
                   labelColor: AppColors.primaryColor1,
                   dividerColor: AppColors.bgTextFeild,
                   unselectedLabelColor: AppColors.placeHolderColor,
-                  labelStyle: const TextStyle(
+                  labelStyle: TextStyle(
                       fontSize: 16, fontWeight: FontWeight.w600),
                   tabs: [
                     Tab(
                       child: SizedBox(
                         
-                        child: const Center(
+                        child: Center(
                             child: Text(
                           "Giới thiệu",
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -43,7 +43,7 @@ class TabList extends GetView<TopCVProfileController> {
                     Tab(
                       child: SizedBox(
                         
-                        child: const Center(
+                        child: Center(
                             child: Text(
                           "Kinh nghiệm",
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -53,7 +53,7 @@ class TabList extends GetView<TopCVProfileController> {
                     Tab(
                       child: SizedBox(
                         
-                        child: const Center(
+                        child: Center(
                             child: Text(
                           "Học vấn",
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -63,7 +63,7 @@ class TabList extends GetView<TopCVProfileController> {
                     Tab(
                       child: SizedBox(
                         
-                        child: const Center(
+                        child: Center(
                             child: Text(
                           "Kỹ năng & chứng chỉ",
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -73,7 +73,7 @@ class TabList extends GetView<TopCVProfileController> {
                     Tab(
                       child: SizedBox(
                         
-                        child: const Center(
+                        child: Center(
                             child: Text(
                           "Thông tin cá nhân",
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -83,7 +83,7 @@ class TabList extends GetView<TopCVProfileController> {
                     Tab(
                       child: SizedBox(
                         
-                        child: const Center(
+                        child: Center(
                             child: Text(
                           "Khác",
                           style: TextStyle(fontWeight: FontWeight.w600),
@@ -94,7 +94,6 @@ class TabList extends GetView<TopCVProfileController> {
               Expanded(
                 child: TabBarView(
                   children: [
-                    
                   ],
                 ),
               )
