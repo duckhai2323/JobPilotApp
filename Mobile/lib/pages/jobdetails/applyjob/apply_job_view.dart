@@ -133,7 +133,7 @@ class ApplyJobPage extends GetView<ApplyJobController> {
                         maxLines: 10, // Số dòng tối đa cần hiển thị
                         overflow: TextOverflow.ellipsis,
                         text: TextSpan(
-                          text: "JobPilot khuyên tất cả các bạn hãy luôn cẩn trọng trong quá trình tìm việc và chủ động nghiên cứu về thông tin công ty, vị trí việc làm trước khi ứng tuyển. Ứng viên cần có trách nghiệm với hành vi ứng tuyển của mình. Nếu bạn gặp phải tin tuyển dụng hoặc nhận được liên lạc đáng ngờ của nhà tuyển dụng, hãy báo cáo ngay cho JobPilot qua email hỗ trợ",
+                          text: "JobPilot khuyên tất cả các bạn hãy luôn cẩn trọng trong quá trình tìm việc và chủ động nghiên cứu về thông tin công ty, vị trí việc làm trước khi ứng tuyển. Ứng viên cần có trách nghiệm với hành vi ứng tuyển của mình. Nếu bạn gặp phải tin tuyển dụng hoặc nhận được liên lạc đáng ngờ của nhà tuyển dụng, hãy báo cáo ngay cho JobPilot qua email hỗ trợ ",
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.black,
@@ -142,11 +142,11 @@ class ApplyJobPage extends GetView<ApplyJobController> {
                           ),
                           children: [
                             TextSpan(
-                              text: ' hotro@jobpilot.com ',
+                              text: 'hotro@jobpilot.com',
                               style: TextStyle(color: AppColors.primaryColor1,decoration: TextDecoration.underline,),
                             ),
                             TextSpan(
-                              text: 'để được hỗ trợ kịp thời',
+                              text: ' để được hỗ trợ kịp thời',
                               style: TextStyle(color: Colors.black),
                             ),
                           ],
