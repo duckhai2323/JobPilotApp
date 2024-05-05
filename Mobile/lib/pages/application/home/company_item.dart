@@ -28,6 +28,14 @@ class CompanyItem extends GetView<HomeController> {
         //   color: AppColors.primaryColor1, // Màu của viền
         //   width: 1, // Độ dày của viền
         // ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 0.2,
+              blurRadius: 1,
+              offset: Offset(0,1),
+            )
+          ]
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -50,17 +58,14 @@ class CompanyItem extends GetView<HomeController> {
                   )
                 ]
             ),
-            child: Image.asset(
-              logo,
-              fit: BoxFit.cover,
-            ),
+            child: Image.network(logo),
           ),
 
           Text(
             name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 color: AppColors.primaryColor2
@@ -72,7 +77,7 @@ class CompanyItem extends GetView<HomeController> {
             description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: AppColors.placeHolderColor

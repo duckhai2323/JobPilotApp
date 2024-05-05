@@ -42,7 +42,7 @@ class MessagePage extends GetView<MessageController> {
             const Text(
               'Message',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 color:  AppColors.primaryColor1,
                 fontWeight: FontWeight.bold,
               ),

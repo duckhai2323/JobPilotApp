@@ -1,26 +1,48 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobpilot_app/pages/application/home/home_controller.dart';
+import 'package:jobpilot_app/pages/agent/jobfair/jobfair_controller.dart';
 
 import '../../../common/colors/colors.dart';
 
-class JobSubItem extends GetView<HomeController> {
+class JobSubItem1 extends GetView<JobFairControlelr> {
+  final String companyImage;
+  final String companyName;
+  final String jobTitle;
+  final String jobLocation;
+  final String deadline_job;
+  final String salary;
 
+  JobSubItem1(
+      this.companyImage,
+      this.companyName,
+      this.jobTitle,
+      this.jobLocation,
+      this.deadline_job,
+      this.salary
+      );
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 140,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(bottom: 10,left: 15,right: 15),
-      padding: EdgeInsets.only(bottom: 10,top: 15,left: 15,right: 15),
+      padding: EdgeInsets.only(bottom: 15,top: 15,left: 15,right: 15),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(6),
-        border: Border.all(
-          color: AppColors.primaryColor1, // Màu của viền
-          width: 1, // Độ dày của viền
-        ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6),
+          // border: Border.all(
+          //   color: AppColors.primaryColor1,
+          //   width: 1,
+          // ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 0.25,
+              blurRadius: 2,
+              offset: Offset(0,2),
+            )
+          ]
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,11 +62,11 @@ class JobSubItem extends GetView<HomeController> {
                     blurRadius: 2,
                     offset: Offset(0,2),
                   )
-                ]
-            ),
-            child: Image.asset(
-              'assets/images/sun.png',
-              fit: BoxFit.cover,
+                ],
+                image: DecorationImage(
+                  image: NetworkImage(companyImage),
+                  fit: BoxFit.cover,
+                )
             ),
           ),
 
@@ -56,11 +78,11 @@ class JobSubItem extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Fresher Developer FrontEnd',
-                  maxLines: 2,
+                Text(
+                  jobTitle,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: AppColors.primaryColor2
@@ -69,33 +91,35 @@ class JobSubItem extends GetView<HomeController> {
 
                 //SizedBox(height: 5,),
 
-                const Text(
-                  'CÔNG TY CỔ PHẦN SUN ASTERISK',
-                  maxLines: 2,
+                Text(
+                  companyName,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: AppColors.primaryColor2
                   ),
                 ),
 
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    const SizedBox(width: 10,),
+
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
                       decoration: BoxDecoration(
                         color: AppColors.bgSearch,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          'Hà Nội',
-                          style: TextStyle(
+                          salary,
+                          style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: AppColors.primaryColor2
@@ -104,18 +128,18 @@ class JobSubItem extends GetView<HomeController> {
                       ),
                     ),
 
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
 
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 4,horizontal: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
                       decoration: BoxDecoration(
                         color: AppColors.bgSearch,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          '8-12 triệu',
-                          style: TextStyle(
+                          'Hạn nộp: $deadline_job',
+                          style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: AppColors.primaryColor2
@@ -129,7 +153,18 @@ class JobSubItem extends GetView<HomeController> {
               ],
             ),
           ),
-          Icon(Icons.bookmark_outline_rounded, color: AppColors.placeHolderColor,size: 30,),
+          Container(
+              height: 140,
+              padding: EdgeInsets.only(left: 5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.mode_edit_outlined,size: 25,color: AppColors.primaryColor1,),
+                  SizedBox(height: 10,),
+                  Icon(Icons.delete_outline, color: Colors.red,size: 25,),
+                ],
+              ))
         ],
       ),
     );

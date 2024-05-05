@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('job_details', function (Blueprint $table) {
             $table->bigIncrements('job_id');
             $table->bigInteger('company_id')->unsigned();
             $table->foreign('company_id')->references('company_id')->on('companies');

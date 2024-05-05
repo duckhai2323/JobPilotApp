@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
 import '../common/colors/colors.dart';
 
 Widget JobMainItem (
     BuildContext context,
-    company_image,
-    company_name,
-    job_title,
-    job_location,
-    experience_require,
+    companyImage,
+    companyName,
+    jobTitle,
+    jobLocation,
+    experienceRequire,
     salary,
     isSaved
     ) {
@@ -49,7 +51,7 @@ Widget JobMainItem (
                     )
                   ],
                 image: DecorationImage(
-                  image: NetworkImage(company_image),
+                  image: NetworkImage(companyImage),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -64,7 +66,7 @@ Widget JobMainItem (
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    job_title,
+                    jobTitle,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -77,7 +79,7 @@ Widget JobMainItem (
                   //SizedBox(height: 5,),
 
                   Text(
-                    company_name,
+                    companyName,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -93,19 +95,26 @@ Widget JobMainItem (
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                        decoration: BoxDecoration(
-                          color: AppColors.bgSearch,
-                          borderRadius: BorderRadius.circular(4),
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          minWidth: 90,
+                          maxWidth: 100
                         ),
-                        child: Center(
-                          child: Text(
-                            job_location,
-                            style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.primaryColor2
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgSearch,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Center(
+                            child: Text(
+                              jobLocation,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.primaryColor2
+                              ),
                             ),
                           ),
                         ),
@@ -113,19 +122,26 @@ Widget JobMainItem (
 
                       const SizedBox(width: 10,),
 
-                      Container(
-                        padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                        decoration: BoxDecoration(
-                          color: AppColors.bgSearch,
-                          borderRadius: BorderRadius.circular(4),
+                      ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: 90,
+                          maxWidth: 120
                         ),
-                        child: Center(
-                          child: Text(
-                            experience_require,
-                            style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.primaryColor2
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgSearch,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Center(
+                            child: Text(
+                              experienceRequire,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.primaryColor2
+                              ),
                             ),
                           ),
                         ),
