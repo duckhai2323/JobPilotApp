@@ -1,6 +1,12 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:jobpilot_app/pages/application/home/home_binding.dart';
-import 'package:jobpilot_app/pages/application/home/home_view.dart';
+import 'package:jobpilot_app/pages/agent/add_job/add_job_binding.dart';
+import 'package:jobpilot_app/pages/agent/add_job/add_job_view.dart';
+import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_binding.dart';
+import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_view.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_binding.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_view.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_binding.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
@@ -19,14 +25,13 @@ import '../../pages/jobsaved/jobsaved_binding.dart';
 import '../../pages/jobsaved/jobsaved_view.dart';
 import '../../pages/application/application_binding.dart';
 import '../../pages/application/application_view.dart';
-import '../../pages/application/cv_manage/cv_manage_binding.dart';
-import '../../pages/application/cv_manage/cv_manage_view.dart';
 import '../../pages/sign_in_up/sign_in/signin_binding.dart';
 import '../../pages/sign_in_up/sign_in/signin_view.dart';
 import 'names.dart';
 
 class AppPages {
   static final List<GetPage> routes = [
+    //Candidate
     GetPage(
       name: AppRoutes.APPLICATION,
       page: ()=>ApplicationPage(),
@@ -41,11 +46,6 @@ class AppPages {
         name: AppRoutes.SIGNUP,
         page: () => SignUpPage(),
         binding:  SignUpBinding()
-    ),
-    GetPage(
-        name: AppRoutes.HOME,
-        page: () => HomePage(),
-        binding:  HomeBinding()
     ),
     GetPage(
       name: AppRoutes.NOTIFICATION,
@@ -66,12 +66,6 @@ class AppPages {
     ),
 
     GetPage(
-      name: AppRoutes.CVMANAGE,
-      page: ()=>CVManage(),
-      binding: CVManageBinding(),
-    ),
-
-    GetPage(
       name: AppRoutes.COMPANIES,
       page: ()=>CompaniesPage(),
       binding: CompaniesBinding(),
@@ -89,10 +83,35 @@ class AppPages {
       binding: JobAppliedBinding(),
     ),
 
+
     GetPage(
       name: AppRoutes.JOBSAVED,
       page: ()=>JobSavedPage(),
       binding: JobSavedBinding(),
     ),
+    //Agent
+    GetPage(
+      name: AppRoutes.EDIT_COMPANY_INFOR,
+      page: ()=>EditCompanyPage(),
+      binding: EditCompanyBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.ADD_JOB,
+      page: ()=>AddJobView(),
+      binding: AddJobBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.CVMANAGE, 
+      page: ()=>CVManage(),
+      binding: CVManageBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.CVPROFILE,
+      page: ()=>TopCVProfilePage(),
+      binding: TopCVProfileBindings()      
+    )
   ];
 }

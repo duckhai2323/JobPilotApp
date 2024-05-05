@@ -6,23 +6,25 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../common/colors/colors.dart';
 
 class ApplicationController extends GetxController{
-  static late String id;
-  static late String image;
-  static late String username;
+  static late String user_id;
+  static late String user_image;
+  static late String user_name;
+  static late String company_id;
   final position = ''.obs;
   ApplicationController();
   final state = 0.obs;
   late final PageController pageController;
   late final List<BottomNavigationBarItem> bottomTab;
-  late final List<BottomNavigationBarItem> bottomTabAdmin;
+  late final List<BottomNavigationBarItem> bottomTabAgent;
 
   @override
   void onInit() {
     super.onInit();
-    id = Get.parameters['id']??"";
-    image = Get.parameters['image']??"";
-    username = Get.parameters['username']??"";
-    position.value = Get.parameters['position']??"";
+    user_id = Get.parameters['user_id']??"";
+    user_image = Get.parameters['user_image']??"";
+    user_name = Get.parameters['user_name']??"";
+    company_id = Get.parameters['company_id']??"";
+    position.value = Get.parameters['user_position']??"";
     bottomTab = <BottomNavigationBarItem> [
       const BottomNavigationBarItem(
         icon: Icon(
@@ -89,13 +91,13 @@ class ApplicationController extends GetxController{
         backgroundColor: Colors.transparent,
       ),
 
-      const BottomNavigationBarItem(
+      BottomNavigationBarItem(
         icon: CircleAvatar(
           backgroundColor: Colors.grey,
           radius: 16,
           child: CircleAvatar(
             radius: 14,
-            backgroundImage: NetworkImage('https://yt3.googleusercontent.com/v-fHSvLthvdRlrtXeEbWc1JtuKPa7yUeG668kRdxbX6XAxcw_rlhf8wjRGxht_oepo49SkwnXA=s900-c-k-c0x00ffffff-no-rj'),
+            backgroundImage: NetworkImage(user_image),
           ),
         ),
 
@@ -104,7 +106,7 @@ class ApplicationController extends GetxController{
           radius: 16,
           child: CircleAvatar(
             radius: 14,
-            backgroundImage: NetworkImage('https://yt3.googleusercontent.com/v-fHSvLthvdRlrtXeEbWc1JtuKPa7yUeG668kRdxbX6XAxcw_rlhf8wjRGxht_oepo49SkwnXA=s900-c-k-c0x00ffffff-no-rj'),
+            backgroundImage: NetworkImage(user_image),
           ),
         ),
         label: 'Tài khoản',
@@ -112,7 +114,7 @@ class ApplicationController extends GetxController{
       ),
     ];
 
-    bottomTabAdmin = <BottomNavigationBarItem> [
+    bottomTabAgent = <BottomNavigationBarItem> [
       const BottomNavigationBarItem(
         icon: Icon(
           CupertinoIcons.home,
@@ -131,17 +133,33 @@ class ApplicationController extends GetxController{
 
       const BottomNavigationBarItem(
         icon: Icon(
-          CupertinoIcons.heart,
+          Icons.business_outlined,
           color: Colors.grey,
           size: 25,
         ),
 
         activeIcon: Icon(
-          CupertinoIcons.heart_solid,
+          Icons.business,
           color: AppColors.primaryColor1,
           size: 25,
         ),
-        label: 'Favorite',
+        label: 'Company',
+        backgroundColor: Colors.transparent,
+      ),
+
+      const BottomNavigationBarItem(
+        icon: Icon(
+          Icons.question_answer_outlined,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          Icons.question_answer_outlined,
+          color: AppColors.primaryColor1,
+          size: 25,
+        ),
+        label: 'JobFair',
         backgroundColor: Colors.transparent,
       ),
 
@@ -159,22 +177,6 @@ class ApplicationController extends GetxController{
         ),
 
         label: 'Chat',
-        backgroundColor: Colors.transparent,
-      ),
-
-      const BottomNavigationBarItem(
-        icon: Icon(
-          Icons.phone_in_talk_outlined,
-          color: Colors.grey,
-          size: 25,
-        ),
-
-        activeIcon: Icon(
-          Icons.phone_in_talk,
-          color: AppColors.primaryColor1,
-          size: 25,
-        ),
-        label: 'Hotline',
         backgroundColor: Colors.transparent,
       ),
 

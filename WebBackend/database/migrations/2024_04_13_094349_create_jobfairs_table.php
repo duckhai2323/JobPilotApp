@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('jobfairs', function (Blueprint $table) {
             $table->bigIncrements('job_fair_id');
-            $table->mediumInteger('candidate_id');
-            $table->foreign('candidate_id')->references('candidate_id')->on('users');
+            $table->bigInteger('candidate_id')->unsigned();
+            $table->foreign('candidate_id')->references('candidate_id')->on('candidates');
             $table->bigInteger('job_id')->unsigned();
-            $table->foreign('job_id')->references('job_id')->on('jobs');
+            $table->foreign('job_id')->references('job_id')->on('job_details');
             $table->bigInteger('company_id')->unsigned();
             $table->foreign('company_id')->references('company_id')->on('companies');
             $table->integer('status')->unsigned()->default(0);

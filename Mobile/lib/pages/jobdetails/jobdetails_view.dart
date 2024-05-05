@@ -417,6 +417,7 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                       fontSize: 14,
                       fontWeight: FontWeight.w600
                     ),
+                    indicatorColor: AppColors.primaryColor1,
                     tabs: [
                       Tab(child: Text('Thông tin'),),
                       Tab(child: Text('Việc làm liên quan'),),

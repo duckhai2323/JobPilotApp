@@ -40,7 +40,7 @@ class SignUpController extends GetxController{
       var headers = {'Content-Type' : 'application/json'};
       var url = Uri.parse(ApiEndPoints.baseUrl+ApiEndPoints.authAccount.REGISTER_CANDIDATE);
       int status = 1;
-      Candidate candidate = Candidate(candidate_name, candidate_email, candidate_password, status);
+      Candidate candidate = Candidate(candidate_name, candidate_email, candidate_password, status, password_confirmation: candidate_password_confirm);
       showLoaderDialog(context);
       http.Response response = await http.post(url,body: jsonEncode(candidate.toJson()),headers: headers);
       await Future.delayed(const Duration(seconds: 2));

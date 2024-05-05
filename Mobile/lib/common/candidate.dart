@@ -3,7 +3,7 @@ class Candidate {
   final String candidate_name;
   final String candidate_email;
   final String candidate_password;
-  final String? remember_token;
+  final String? password_confirmation;
   final String? candidate_image;
   final int status;
 
@@ -12,16 +12,15 @@ class Candidate {
       this.candidate_email,
       this.candidate_password,
       this.status,
-      {this.candidate_id,this.remember_token,this.candidate_image});
+      {this.candidate_id,this.password_confirmation,this.candidate_image});
 
   factory Candidate.fromJson(dynamic json) {
     return Candidate(
-      json['candidate_email'] as String,
-      json['candidate_password'] as String,
-      json['candidate_name'] as String,
-      json['status'] as int,
+      json['candidate_name']??"",
+        json['candidate_email']??"",
+      json['candidate_password']??"",
+      json['status']??0,
       candidate_id: json['candidate_id'] as int,
-      remember_token: json['remember_token'] as String,
       candidate_image: json['candidate_image'] as String
     );
   }
@@ -31,6 +30,7 @@ class Candidate {
       'candidate_name' : candidate_name,
       'candidate_email' : candidate_email,
       'candidate_password' : candidate_password,
+      'password_confirmation': password_confirmation,
       'status' : status,
     };
   }
