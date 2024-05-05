@@ -29,7 +29,7 @@ class ApplicationPage extends GetView<ApplicationController>{
           controller.handPageChanged(index);
         },
         children: [
-          controller.position.value == 'candidate'?HomePage():AgentHomePage(),
+          controller.position.value == 'candidate'? HomePage():AgentHomePage(),
           controller.position.value == 'candidate'? CVManage():CompanyInforPage(),
           controller.position.value == 'candidate'? MessagePage():JobFairPage(),
           controller.position.value == 'candidate'? Center(child: Text('INTERVIEW'),):MessagePage(),
