@@ -10,4 +10,5 @@ class AppRoutes {
   static const COMPANIES = '/companies';
   static const JOBAPPLIED = '/jobapplied';
   static const JOBSAVED = '/jobsaved';
+  static const SUITABLE_JOB = '/suitablejob';
 }
