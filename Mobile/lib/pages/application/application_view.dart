@@ -15,6 +15,7 @@ import 'package:jobpilot_app/pages/chat/chat_view.dart';
 
 import '../../common/colors/colors.dart';
 import 'application_controller.dart';
+import 'cv_manage/topcv_profile_page/topcv_profile_view.dart';
 import 'home/home_view.dart';
 
 class ApplicationPage extends GetView<ApplicationController>{
@@ -30,7 +31,7 @@ class ApplicationPage extends GetView<ApplicationController>{
         },
         children: [
           controller.position.value == 'candidate'? HomePage():AgentHomePage(),
-          controller.position.value == 'candidate'? CVManage():CompanyInforPage(),
+          controller.position.value == 'candidate'? TopCVProfilePage():CompanyInforPage(),
           controller.position.value == 'candidate'? MessagePage():JobFairPage(),
           controller.position.value == 'candidate'? Center(child: Text('INTERVIEW'),):MessagePage(),
           controller.position.value == 'candidate'? ProfilePage():AgentProfilePage(),

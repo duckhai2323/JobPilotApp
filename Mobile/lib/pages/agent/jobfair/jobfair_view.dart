@@ -65,12 +65,12 @@ class JobFairPage extends GetView<JobFairControlelr>{
       ),
 
       body:  DefaultTabController(
-        length: 6,
+        length: 4,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: [
-            TabBar(
+            const TabBar(
               isScrollable: true,
               labelColor: AppColors.primaryColor1,
               dividerColor: AppColors.bgTextFeild,

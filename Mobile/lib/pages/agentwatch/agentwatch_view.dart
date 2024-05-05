@@ -15,62 +15,32 @@ class AgentWatchPage extends GetView<AgentWatchController> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          leading: const Icon(Icons.arrow_back_sharp),
+          leading: const Icon(Icons.arrow_back_sharp,size: 25,color: AppColors.primaryColor1,),
           centerTitle: true,
           title: const Text(
             'Nhà tuyển dụng đã xem hồ sơ',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
+              color: AppColors.primaryColor1
             ),
           ),
         ),
-        backgroundColor: AppColors.bgTextFeild,
-        body: CustomScrollView(
-            slivers: <Widget>[
-              SliverToBoxAdapter(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        RichText(
-                          text: const TextSpan(
-                            text: '10 ',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: AppColors.primaryColor1,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(text: 'nhà tuyển dụng', style: TextStyle(color: AppColors.placeHolderColor,)),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-              ),
-              SliverList(
-                  delegate: SliverChildBuilderDelegate((_, int index) {
-                    return InkWell(
-                        onTap: () {},
-                        child: AgentWatchItem(
-                            context,
-                            'assets/images/sun.png',
-                            "Nguyễn Văn B",
-                            "Công ty Sun Asterisk",
-                            '10 tháng trước',
-                        )
-                    );
-                  },
-                  childCount: 10,
-                  )
-              )
-            ]
-        )
-
+        backgroundColor: Colors.white,
+        body: ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          itemCount: 5,
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, int index) {
+            return AgentWatchItem(
+              context,
+              'https://assets-global.website-files.com/5fb85f26f126ce08d792d2d9/65fddafcf36551945213fe85_After_kime.jpg',
+              "Nguyễn Văn B",
+              "Công ty Sun Asterisk",
+              '10 tháng trước',
+            );
+          },
+        ),
     );
   }
 }

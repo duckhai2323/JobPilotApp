@@ -18,38 +18,44 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 200,
+              height: 190,
               child: Stack(
                 children: [
                   Container(
-                    padding: EdgeInsets.fromLTRB(12, 40, 12, 40),
+                    padding: const EdgeInsets.symmetric(vertical: 30),
                     width: MediaQuery.of(context).size.width,
-                    color: AppColors.primaryColor1,
-                    height: 150,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/company_infor_image.jpg'),
+                            fit: BoxFit.cover
+                        )
+                    ),
+                    height: 140,
                     child: Stack(
                       children: [
                         Positioned(
                           top: 0,
-                          left: 0,
+                          left: 15,
                           child: InkWell(
                             onTap: () {
                               Get.back();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.arrow_back,
                               color: Colors.white,
-                              size: 24,
+                              size: 25,
                             ),
                           ),
                         ),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               "Hồ sơ của tôi",
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w500),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
                             )
                           ],
                         )
@@ -58,22 +64,22 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
                   ),
                   Positioned(
                     top: 80,
-                    left: 10,
+                    left: 15,
                     child: Stack(
                       children: [
                         CircleAvatar(
-                          radius: 60,
+                          radius: 55,
                           backgroundColor: Colors.grey,
                           child: Padding(
                             padding: const EdgeInsets.all(2),
                             child: Container(
-                              width: 120,
-                              height: 120,
+                              width: 110,
+                              height: 110,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(60),
+                                borderRadius: BorderRadius.circular(55),
                                 border: Border.all(
-                                  color: Colors.white, // Màu của viền
-                                  width: 3, // Độ dày của viền
+                                  color: Colors.white,
+                                  width: 3,
                                 ),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
@@ -99,7 +105,7 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
+              padding: EdgeInsets.fromLTRB(15,5,15,0),
               width: MediaQuery.of(context).size.width,
               height: 95,
               // color: Colors.red,
@@ -108,9 +114,9 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
                 children: [
                   Text(
                     ApplicationController.user_name,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -121,11 +127,11 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
                         child: Container(
                           width: MediaQuery.of(context).size.width - 90,
                           height: 40,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5)),
                             color: Color.fromARGB(66, 215, 213, 213),
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
@@ -138,7 +144,7 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
                               Text(
                                 "Cập nhật thông tin cơ bản",
                                 style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w900),
+                                    fontSize: 14, fontWeight: FontWeight.bold),
                               )
                             ],
                           ),
@@ -149,11 +155,12 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
                         child: Container(
                           width: 40,
                           height: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5)),
-                            color: Color.fromARGB(66, 215, 213, 213),
+                          decoration:BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(5)),
+                            color: const Color.fromARGB(66, 215, 213, 213),
+                            border: Border.all(width: 1,color: AppColors.placeHolderColor),
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.remove_red_eye,
                             size: 18,
                           ),
