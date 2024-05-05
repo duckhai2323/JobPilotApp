@@ -4,8 +4,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
-import 'package:jobpilot_app/common/routes/names.dart';
-import 'package:jobpilot_app/pages/application/home/home_view.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_in/signin_controller.dart';
 
 class SignInPage extends GetView<SignInController> {
@@ -214,8 +212,8 @@ class SignInPage extends GetView<SignInController> {
                 ),
                 InkWell(
                   onTap: () {
-                    // controller.signInCandidate(context);
-                    Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':'1','user_image':'','user_name':'Vu Hung','user_position':'candidate'});
+                    controller.signInCandidate(context);
+                    //Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':'1','user_image':'','user_name':'Vu Hung','user_position':'candidate'});
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,

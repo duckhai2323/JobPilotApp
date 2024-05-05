@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobpilot_app/pages/agent/company_infor/company_infor_controller.dart';
 
 import '../../../common/api/api_backend.dart';
 import '../../../common/colors/colors.dart';
 import '../../../common/company.dart';
 import 'package:http/http.dart' as http;
 
+import '../../application/agent/company_infor/company_infor_controller.dart';
 import '../../application/application_controller.dart';
 
 class EditCompanyController extends GetxController {

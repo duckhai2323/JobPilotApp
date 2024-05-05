@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:jobpilot_app/pages/agent/company_infor/company_infor_view.dart';
-import 'package:jobpilot_app/pages/agent/home/home_view.dart';
-import 'package:jobpilot_app/pages/agent/jobfair/jobfair_view.dart';
-import 'package:jobpilot_app/pages/agent/profile/profile_view.dart';
-import 'package:jobpilot_app/pages/application/message/message_view.dart';
-import 'package:jobpilot_app/pages/application/profile/profile_view.dart';
-import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 
 
 import '../../common/colors/colors.dart';
+import 'agent/company_infor/company_infor_view.dart';
+import 'agent/home/home_view.dart';
+import 'agent/jobfair/jobfair_view.dart';
+import 'agent/profile/profile_view.dart';
 import 'application_controller.dart';
-import 'home/home_view.dart';
+import 'candidate/cv_manage/cv_manage_view.dart';
+import 'candidate/home/home_view.dart';
+import 'candidate/profile/profile_view.dart';
+import 'message/message_view.dart';
 
 class ApplicationPage extends GetView<ApplicationController>{
 
