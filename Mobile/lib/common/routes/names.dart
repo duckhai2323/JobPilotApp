@@ -4,6 +4,7 @@ class AppRoutes {
   static const SIGNUP = '/signup';
   static const CHAT = '/chat';
   
+  static const SUITABLE_JOB = '/candidate/suitablejob';
   static const CVMANAGE = '/candidate/cvmanage';
   static const CVPROFILE = '/candidate/cvprofile';
   static const NOTIFICATION = '/candidate/notification';
