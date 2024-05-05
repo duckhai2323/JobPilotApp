@@ -15,6 +15,8 @@ import '../../pages/jobapplied/jobapplied_binding.dart';
 import '../../pages/jobapplied/jobapplied_view.dart';
 import '../../pages/jobsaved/jobsaved_binding.dart';
 import '../../pages/jobsaved/jobsaved_view.dart';
+import '../../pages/agentwatch/agentwatch_binding.dart';
+import '../../pages/agentwatch/agentwatch_view.dart';
 import '../../pages/application/application_binding.dart';
 import '../../pages/application/application_view.dart';
 import '../../pages/application/cv_manage/cv_manage_binding.dart';
@@ -86,5 +88,11 @@ class AppPages {
       page: ()=>JobSavedPage(),
       binding: JobSavedBinding(),
     ),
+
+    GetPage(
+      name: AppRoutes.AGENTWATCH,
+      page: ()=>AgentWatchPage(),
+      binding: AgentWatchBinding(),
+    )
   ];
 }
