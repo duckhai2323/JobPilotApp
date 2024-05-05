@@ -49,21 +49,26 @@ class JobDetailsPage extends GetView<JobDetailsController> {
               child: Icon(Icons.bookmark_border,size: 30,color: AppColors.primaryColor1,),
             ),
             SizedBox(width: 10,),
-            Container(
-              height: 40,
-              //margin: EdgeInsets.only(left: 70),
-              width: MediaQuery.of(context).size.width-85,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: AppColors.primaryColor1,
-              ),
-              child: Center(
-                child: Text(
-                  'Ứng tuyển ngay',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white
+            InkWell(
+              onTap: (){
+                controller.HandleApplyJobPage();
+              },
+              child: Container(
+                height: 40,
+                //margin: EdgeInsets.only(left: 70),
+                width: MediaQuery.of(context).size.width-85,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColors.primaryColor1,
+                ),
+                child: Center(
+                  child: Text(
+                    'Ứng tuyển ngay',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white
+                    ),
                   ),
                 ),
               ),
