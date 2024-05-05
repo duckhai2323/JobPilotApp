@@ -12,7 +12,7 @@ class CompaniesPage extends GetView<CompaniesController> {
   Widget build(BuildContext context) {
      return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Top Công ty hàng đầu',
             style: TextStyle(
             fontSize: 16,
@@ -23,18 +23,19 @@ class CompaniesPage extends GetView<CompaniesController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: 5,
+        child: Obx(()=>ListView.builder(
+          itemCount: controller.listCompanies.length,
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (BuildContext context, index) {
-            return   CompanyCard(
-              logo: 'assets/images/logo_fpt.png',
-              name: 'FPT Sofware adfhs sfhf siufhshf sfuhsifh sfhs fhsfusf ishfis sf ushfi ',
-              description: 'Tài chính',
+            return CompanyCard(
+              logo: controller.listCompanies[index].company_image??"",
+              name: controller.listCompanies[index].company_name,
+              description: controller.listCompanies[index].company_filed,
+              scale: controller.listCompanies[index].employee_scale,
             );
           },
-        ),
+        ),),
       ),
     );
   }
@@ -46,12 +47,14 @@ class CompaniesPage extends GetView<CompaniesController> {
   final String logo;
   final String name;
   final String description;
+  final String scale;
 
   const CompanyCard({
     Key? key,
     required this.logo,
     required this.name,
     required this.description,
+    required this.scale,
   }) : super(key: key);
    @override
   Widget build(BuildContext context) {
@@ -86,10 +89,7 @@ class CompaniesPage extends GetView<CompaniesController> {
                     )
                   ]
               ),
-              child: Image.asset(
-                'assets/images/sun.png',
-                fit: BoxFit.cover,
-              ),
+              child: Image.network(logo)
             ),
             const SizedBox(width: 20),
             // Texts
@@ -104,7 +104,7 @@ class CompaniesPage extends GetView<CompaniesController> {
                     ),
                   child: Text(
                     name,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 16,
@@ -123,6 +123,12 @@ class CompaniesPage extends GetView<CompaniesController> {
                     style: const TextStyle(fontSize: 14,color: AppColors.placeHolderColor),
                    ),
                  ),
+
+                  SizedBox(height: 3,),
+                  Text(
+                    scale,
+                    style: const TextStyle(fontSize: 14,color: AppColors.placeHolderColor),
+                  ),
                 ],
               ),
             ),

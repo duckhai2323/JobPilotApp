@@ -39,4 +39,8 @@ class JobDetailsController extends GetxController{
     Get.toNamed(AppRoutes.JOBDETAILS);
   }
 
+  void HandleApplyJobPage () {
+    Get.toNamed(AppRoutes.APPLYJOB);
+  }
+
 }
