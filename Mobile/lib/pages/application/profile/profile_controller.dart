@@ -9,4 +9,8 @@ class ProfileController extends GetxController {
   void HandleJobSavedPage() {
     Get.toNamed(AppRoutes.JOBSAVED);
   }
+
+  void HandleAgentWatchPage() {
+    Get.toNamed(AppRoutes.AGENTWATCH);
+  }
 }

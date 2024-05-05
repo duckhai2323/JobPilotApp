@@ -329,7 +329,12 @@ class ProfilePage extends GetView<ProfileController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ItemGrid(Icon(Icons.visibility,size: 30,color: AppColors.primaryColor1,),'NTD đã xem hồ sơ', '10'),
+                  InkWell(
+                    child: ItemGrid(Icon(Icons.visibility,size: 30,color: AppColors.primaryColor1,),'NTD đã xem hồ sơ', '10'),
+                    onTap: () {
+                      controller.HandleAgentWatchPage();
+                    },
+                  ),
                   ItemGrid(Icon(Icons.settings,size: 30,color: AppColors.primaryColor1,),'Cài đặt gợi ý việc làm', '10'),
                 ],
               ),
