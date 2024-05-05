@@ -12,6 +12,7 @@ class AppRoutes {
   static const COMPANIES = '/candidate/companies';
   static const JOBAPPLIED = '/candidate/jobapplied';
   static const JOBSAVED = '/candidate/jobsaved';
+  static const APPLYJOB = '/jobdetails/applyjob';
 
   static const EDIT_COMPANY_INFOR = '/agent/editcompany';
   static const ADD_JOB = '/agent/addjob';

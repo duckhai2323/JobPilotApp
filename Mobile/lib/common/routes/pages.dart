@@ -11,6 +11,8 @@ import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
 import 'package:jobpilot_app/pages/companies/companies_view.dart';
+import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job.binding.dart';
+import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job_view.dart';
 import 'package:jobpilot_app/pages/suitablejob/suitablejob_binding.dart';
 import 'package:jobpilot_app/pages/suitablejob/suitablejob_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_binding.dart';
@@ -89,6 +91,12 @@ class AppPages {
       page: ()=>JobSavedPage(),
       binding: JobSavedBinding(),
     ),
+    GetPage(
+      name: AppRoutes.APPLYJOB,
+      page: ()=>ApplyJobPage(),
+      binding: ApplyJobBinding(),
+    ),
+    
     //Agent
     GetPage(
       name: AppRoutes.EDIT_COMPANY_INFOR,
