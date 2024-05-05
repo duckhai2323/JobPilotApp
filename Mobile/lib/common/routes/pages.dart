@@ -3,6 +3,10 @@ import 'package:jobpilot_app/pages/agent/add_job/add_job_binding.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_view.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_binding.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_view.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_binding.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_view.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_binding.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
@@ -76,7 +80,7 @@ class AppPages {
       name: AppRoutes.JOBSAVED,
       page: ()=>JobSavedPage(),
       binding: JobSavedBinding(),
-
+    ),
     //Agent
     GetPage(
       name: AppRoutes.EDIT_COMPANY_INFOR,
@@ -89,5 +93,17 @@ class AppPages {
       page: ()=>AddJobView(),
       binding: AddJobBinding(),
     ),
+
+    GetPage(
+      name: AppRoutes.CVMANAGE, 
+      page: ()=>CVManage(),
+      binding: CVManageBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.CVPROFILE,
+      page: ()=>TopCVProfilePage(),
+      binding: TopCVProfileBindings()      
+    )
   ];
 }
