@@ -1,24 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jobpilot_app/common/item_object/item_job_detail.dart';
 
 import '../common/colors/colors.dart';
 
 class JobSubItem0 extends StatelessWidget {
-  final String companyImage;
-  final String companyName;
-  final String jobTitle;
-  final String jobLocation;
-  final String deadline_job;
-  final String salary;
+  final ItemJobDetail itemJobDetail;
+  JobSubItem0(this.itemJobDetail);
 
-  JobSubItem0(
-      this.companyImage,
-      this.companyName,
-      this.jobTitle,
-      this.jobLocation,
-      this.deadline_job,
-      this.salary
-      );
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,7 +51,7 @@ class JobSubItem0 extends StatelessWidget {
                   )
                 ],
                 image: DecorationImage(
-                  image: NetworkImage(companyImage),
+                  image: NetworkImage(itemJobDetail.company_image??""),
                   fit: BoxFit.cover,
                 )
             ),
@@ -77,7 +66,7 @@ class JobSubItem0 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  jobTitle,
+                  itemJobDetail.job_title??"",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -90,7 +79,7 @@ class JobSubItem0 extends StatelessWidget {
                 //SizedBox(height: 5,),
 
                 Text(
-                  companyName,
+                  itemJobDetail.company_name??"",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -116,7 +105,7 @@ class JobSubItem0 extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          salary,
+                          itemJobDetail.salary??"",
                           style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -136,7 +125,7 @@ class JobSubItem0 extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Hạn nộp: $deadline_job',
+                          '${itemJobDetail.experience_require}'??"",
                           style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,

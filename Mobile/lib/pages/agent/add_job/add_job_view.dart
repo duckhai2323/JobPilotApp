@@ -91,13 +91,13 @@ class AddJobView extends GetView<AddJobController> {
               ),
 
               const SizedBox(height: 10,),
-              FormAddJob('Nội dung công việc', 'Lập trình viên Flutter',controller.textController1),
+              FormAddJob('Nội dung công việc', 'Lập trình viên Flutter',controller.textController1,false),
               const SizedBox(height: 10,),
-              FormAddJob('Mức lương', '20M',controller.textController2),
+              FormAddJob('Mức lương', '20M',controller.textController2,false),
               const SizedBox(height: 10,),
-              FormAddJob('Địa điểm', 'Hà Nội',controller.textController3),
+              FormAddJob('Địa điểm', 'Hà Nội',controller.textController3,false),
               const SizedBox(height: 10,),
-              FormAddJob('Kinh nghiệm', '2 năm',controller.textController4),
+              FormAddJob('Kinh nghiệm', '2 năm',controller.textController4,false),
               const SizedBox(height: 10,),
               FormLargeEdit('Mô tả công việc', 'Sử dụng Frameword Flutter phát triển...',controller.textController5),
               const SizedBox(height: 10,),
@@ -105,11 +105,11 @@ class AddJobView extends GetView<AddJobController> {
               const SizedBox(height: 10,),
               FormLargeEdit('Quyền lợi', 'Hỗ trợ bảo hiểm,...',controller.textController7),
               const SizedBox(height: 10,),
-              FormAddJob('Hình thức làm việc', 'Offline',controller.textController8),
+              FormAddJob('Hình thức làm việc', 'Offline',controller.textController8,false),
               const SizedBox(height: 10,),
-              FormAddJob('Số người dự tuyển', '5',controller.textController9),
+              FormAddJob('Số người dự tuyển', '5',controller.textController9,false),
               const SizedBox(height: 10,),
-              FormAddJob('Hạn nộp', '20/5/2024',controller.textController10),
+              InkWell(onTap: (){controller.showDialogTime(context, 0);},child: FormAddJob('Hạn nộp', '20/5/2024',controller.textController10,true)),
 
               const SizedBox(height: 15,),
               const Text(
@@ -170,18 +170,18 @@ class AddJobView extends GetView<AddJobController> {
 
                   const SizedBox(width: 20,),
 
-                  Container(
-                    width: MediaQuery.of(context).size.width*1/3,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor1,
-                      borderRadius: BorderRadius.circular(4),
-                    ),
+                  InkWell(
+                    onTap: (){
+                      controller.addJobDetail(context);
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width*1/3,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor1,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
 
-                    child: InkWell(
-                      onTap: (){
-
-                      },
                       child: const Center(
                         child: Text(
                           'Lưu',

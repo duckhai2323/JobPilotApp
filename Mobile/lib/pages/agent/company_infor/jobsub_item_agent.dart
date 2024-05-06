@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:jobpilot_app/pages/agent/company_infor/company_infor_controller.dart';
 
@@ -130,19 +131,24 @@ class JobSubItemInfor extends GetView<CompanyInforController> {
 
                     const SizedBox(width: 10,),
 
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                      decoration: BoxDecoration(
-                        color: AppColors.bgSearch,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Hạn nộp: $deadline_job',
-                          style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.primaryColor2
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 130),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
+                        decoration: BoxDecoration(
+                          color: AppColors.bgSearch,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Hạn: $deadline_job',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.primaryColor2
+                            ),
                           ),
                         ),
                       ),

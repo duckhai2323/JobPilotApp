@@ -4,30 +4,19 @@ import 'package:get/get.dart';
 import 'package:jobpilot_app/pages/agent/jobfair/jobfair_controller.dart';
 
 import '../../../common/colors/colors.dart';
+import '../../../common/item_object/item_job_detail.dart';
 
 class JobSubItem1 extends GetView<JobFairControlelr> {
-  final String companyImage;
-  final String companyName;
-  final String jobTitle;
-  final String jobLocation;
-  final String deadline_job;
-  final String salary;
+  final ItemJobDetail itemJobDetail;
 
-  JobSubItem1(
-      this.companyImage,
-      this.companyName,
-      this.jobTitle,
-      this.jobLocation,
-      this.deadline_job,
-      this.salary
-      );
+  JobSubItem1(this.itemJobDetail);
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 140,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(bottom: 10,left: 15,right: 15),
-      padding: EdgeInsets.only(bottom: 15,top: 15,left: 15,right: 15),
+      padding: EdgeInsets.only(bottom: 13,top: 13,left: 15),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(6),
@@ -45,7 +34,7 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
           ]
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -64,22 +53,24 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
                   )
                 ],
                 image: DecorationImage(
-                  image: NetworkImage(companyImage),
+                  image: NetworkImage(itemJobDetail.company_image??""),
                   fit: BoxFit.cover,
                 )
             ),
           ),
 
+          SizedBox(width: 15,),
+
           Container(
             margin: EdgeInsets.only(left: 10),
-            width: MediaQuery.of(context).size.width - 175,
+            width: MediaQuery.of(context).size.width - 155,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  jobTitle,
+                  itemJobDetail.job_title??"",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -89,10 +80,10 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
                   ),
                 ),
 
-                //SizedBox(height: 5,),
+                //const SizedBox(height: 5,),
 
                 Text(
-                  companyName,
+                  itemJobDetail.company_name??"",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -102,69 +93,83 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
                   ),
                 ),
 
-                const SizedBox(height: 5,),
+                //const SizedBox(height: 5,),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(width: 10,),
-
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                      decoration: BoxDecoration(
-                        color: AppColors.bgSearch,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Center(
-                        child: Text(
-                          salary,
-                          style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.primaryColor2
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(width: 10,),
-
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                      decoration: BoxDecoration(
-                        color: AppColors.bgSearch,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Hạn nộp: $deadline_job',
-                          style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.primaryColor2
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                Text(
+                  'Hạn nộp: ${itemJobDetail.deadline_job}',
+                  style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.placeHolderColor
+                  ),
                 ),
 
+                SizedBox(height: 5,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: (MediaQuery.of(context).size.width-200)/2,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor1,
+                        borderRadius: BorderRadius.circular(4)
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(Icons.edit,size: 20,color: Colors.white,),
+                          SizedBox(width: 5,),
+                          Text(
+                            'Chỉnh sửa',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: (MediaQuery.of(context).size.width-200)/2,
+                      height: 34,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade400,
+                          borderRadius: BorderRadius.circular(4)
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(Icons.block,size: 20,color: Colors.white,),
+                          SizedBox(width: 5,),
+                          Text(
+                            'Đóng đơn',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    
+                    InkWell(onTap: (){
+                      controller.deleteJobs(itemJobDetail.job_id??0);
+                    }, child: Icon(Icons.delete,size: 25, color: Colors.red,))
+                  ],
+                ),
               ],
             ),
           ),
-          Container(
-              height: 140,
-              padding: EdgeInsets.only(left: 5),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Icons.mode_edit_outlined,size: 25,color: AppColors.primaryColor1,),
-                  SizedBox(height: 10,),
-                  Icon(Icons.delete_outline, color: Colors.red,size: 25,),
-                ],
-              ))
         ],
       ),
     );
