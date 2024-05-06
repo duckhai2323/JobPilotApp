@@ -5,6 +5,7 @@ class AppRoutes {
   static const CHAT = '/chat';
   
   static const SUITABLE_JOB = '/candidate/suitablejob';
+  static const ATTRACTIVE_JOB = '/candidate/attractivejob';
   static const CVMANAGE = '/candidate/cvmanage';
   static const CVPROFILE = '/candidate/cvprofile';
   static const NOTIFICATION = '/candidate/notification';
@@ -13,7 +14,7 @@ class AppRoutes {
   static const JOBAPPLIED = '/candidate/jobapplied';
   static const JOBSAVED = '/candidate/jobsaved';
   static const APPLYJOB = '/jobdetails/applyjob';
-  static const AGENTWATCH = 'candidate/agentwatch';
+  static const AGENTWATCH = '/candidate/agentwatch';
 
   static const EDIT_COMPANY_INFOR = '/agent/editcompany';
   static const ADD_JOB = '/agent/addjob';

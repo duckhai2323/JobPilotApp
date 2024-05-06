@@ -179,7 +179,7 @@ class HomePage extends GetView<HomeController> {
           SliverToBoxAdapter(
               child: Container(
                 margin: EdgeInsets.only(left: 15,right:15,top: 15),
-                child: const Row(
+                child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -191,14 +191,18 @@ class HomePage extends GetView<HomeController> {
                         color: AppColors.primaryColor2,
                       ),
                     ),
-
-                    Text(
+                    InkWell(
+                        onTap: (){
+                          controller.HandleAttractiveJobPage();
+                        },
+                  child: const Text(
                       'Xem tất cả',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         color: AppColors.primaryColor1,
                       ),
+                    ),
                     ),
                   ],
                 ),
