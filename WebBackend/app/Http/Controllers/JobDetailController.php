@@ -45,7 +45,7 @@ class JobDetailController extends Controller
                     ->where('job_details.status',1)
                     ->orderBy('job_details.updated_at', 'desc')
                     ->join('companies', 'job_details.company_id','=', 'companies.company_id')
-                    ->select('companies.company_image','companies.company_name','job_details.job_id','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job','job_details.status','job_details.candidate_number')
+                    ->select('companies.company_image','companies.company_name','companies.company_id','job_details.job_id','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job','job_details.status','job_details.candidate_number')
                     ->get();
 
         return response() -> json($jobs,200);
@@ -56,7 +56,7 @@ class JobDetailController extends Controller
                     ->join('companies', 'job_details.company_id','=', 'companies.company_id')
                     ->where('job_details.company_id',$company_id)
                     ->orderBy('job_details.updated_at', 'desc')
-                    ->select('companies.company_image','companies.company_name','job_details.job_id','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job','job_details.status','job_details.candidate_number')
+                    ->select('companies.company_image','companies.company_name','companies.company_id','job_details.job_id','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job','job_details.status','job_details.candidate_number')
                     ->get();
 
         return response() -> json($jobs,200);
@@ -67,5 +67,16 @@ class JobDetailController extends Controller
                       ->where('job_details.job_id','=',$job_id)
                       ->delete();
         return response()->json(['message'=>'delete succsess'],200);
+    }
+
+    public function getJobDetail(string $job_id) {
+        $job_detail = DB::table('job_details')
+                    ->where('job_details.job_id',$job_id)
+                    ->first();
+        if($job_detail) {
+            return response()->json($job_detail,200);
+        } else {
+            return response()->json(['message' =>'job_detail not found'],404);
+        }
     }
 }
