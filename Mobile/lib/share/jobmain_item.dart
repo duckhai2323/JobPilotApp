@@ -21,7 +21,7 @@ Widget JobMainItem (
     padding: const EdgeInsets.only(bottom: 10,top: 15,left: 15,right: 15),
     decoration: BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(6),
+      borderRadius: BorderRadius.circular(8),
       border: Border.all(
         color: AppColors.primaryColor1,
         width: 1,
