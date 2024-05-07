@@ -13,6 +13,7 @@ class CompaniesPage extends GetView<CompaniesController> {
   Widget build(BuildContext context) {
      return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: const Text(
           'Top Công ty hàng đầu',
             style: TextStyle(
@@ -23,7 +24,7 @@ class CompaniesPage extends GetView<CompaniesController> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left: 15,right: 15,top: 10),
         child: Obx(()=>ListView.builder(
           itemCount: controller.listCompanies.length,
           scrollDirection: Axis.vertical,

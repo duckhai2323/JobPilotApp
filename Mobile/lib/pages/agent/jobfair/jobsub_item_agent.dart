@@ -19,7 +19,7 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
       padding: EdgeInsets.only(bottom: 13,top: 13,left: 15),
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(8),
           // border: Border.all(
           //   color: AppColors.primaryColor1,
           //   width: 1,
