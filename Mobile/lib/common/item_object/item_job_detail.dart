@@ -2,6 +2,7 @@ class ItemJobDetail {
   final String? company_name;
   final String? company_image;
   final int? job_id;
+  final int? company_id;
   final String? job_title;
   final String? job_location;
   final String? experience_require;
@@ -14,6 +15,7 @@ class ItemJobDetail {
       this.company_name,
       this.company_image,
       this.job_id,
+      this.company_id,
       this.job_title,
       this.job_location,
       this.experience_require,
@@ -28,6 +30,7 @@ class ItemJobDetail {
         json['company_name'] as String,
         json['company_image'] as String,
         json['job_id'] as int,
+        json['company_id'] as int,
         json['job_title'] as String,
         json['job_location'] as String,
         json['experience_require'] as String,

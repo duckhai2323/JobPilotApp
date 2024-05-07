@@ -62,8 +62,8 @@ class HomeController extends GetxController {
     Get.toNamed(AppRoutes.NOTIFICATION);
   }
 
-  void HandleJobdetails () {
-    Get.toNamed(AppRoutes.JOBDETAILS);
+  void HandleJobdetails (int job_id,int company_id) {
+    Get.toNamed(AppRoutes.JOBDETAILS,parameters: {'job_id':job_id.toString(),'company_id':company_id.toString()});
   }
 
   void HandleCompaniesPage () {

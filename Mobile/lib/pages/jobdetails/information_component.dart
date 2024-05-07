@@ -4,6 +4,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
@@ -19,7 +21,7 @@ class InforComponent extends GetView<JobDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
+        child: Obx(()=> controller.jobDetails.isNotEmpty?Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 15,),
@@ -28,25 +30,24 @@ class InforComponent extends GetView<JobDetailsController> {
               child: Text(
                 "Thông tin chung",
                 style: TextStyle(
-                fontFamily: "Roboto",
-                fontSize: 16,
-                fontWeight: FontWeight.w600
+                    fontFamily: "Roboto",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600
                 ),
               ),
             ),
             const SizedBox(height: 5,),
-            IconJobDetails(const Icon(Icons.hourglass_bottom,size: 25,color: AppColors.primaryColor1,), 'Kinh nghiệm', '1 năm'),
-            IconJobDetails(const Icon(Icons.calendar_month,size: 25,color: AppColors.primaryColor1,), 'Hình thức', 'Toàn thời gian'),
-            IconJobDetails(const Icon(Icons.group,size: 25,color: AppColors.primaryColor1,), 'Số lượng tuyển', '5 người'),
+            Obx(()=> IconJobDetails(const Icon(Icons.hourglass_bottom,size: 25,color: AppColors.primaryColor1,), 'Kinh nghiệm', controller.jobDetails[0].experience_require)),
+            Obx(()=>IconJobDetails(const Icon(Icons.calendar_month,size: 25,color: AppColors.primaryColor1,), 'Hình thức', controller.jobDetails[0].work_form)),
+            Obx(()=> IconJobDetails(const Icon(Icons.group,size: 25,color: AppColors.primaryColor1,), 'Số lượng tuyển', controller.jobDetails[0].candidate_number.toString()+' người')),
             IconJobDetails(const Icon(Icons.person,size: 25,color: AppColors.primaryColor1,), 'Giới tính', 'Không yêu cầu'),
             IconJobDetails(const Icon(Icons.auto_graph,size: 25,color: AppColors.primaryColor1,),  'Cấp bậc', 'Nhân viên'),
-            IconJobDetails(const Icon(Icons.av_timer,size: 25,color: AppColors.primaryColor1,),  'Hạn nộp hồ sơ','30/2/2024'),
-              const SizedBox(height: 5,),
-              JobDetailContent('MÔ tả công việc',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
-              JobDetailContent('Yêu cầu ứng viên',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
-              JobDetailContent('Quyền lợi',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
-              JobDetailContent('Địa điểm làm việc',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
-              JobDetailContent('Kỹ năng cần có',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
+            Obx(()=> IconJobDetails(const Icon(Icons.av_timer,size: 25,color: AppColors.primaryColor1,),  'Hạn nộp hồ sơ',controller.jobDetails[0].deadline_job)),
+            const SizedBox(height: 5,),
+            Obx(()=> JobDetailContent('Mô tả công việc',  controller.jobDetails[0].job_details, context)),
+            Obx(()=>JobDetailContent('Yêu cầu ứng viên', controller.jobDetails[0].job_require, context)),
+            JobDetailContent('Quyền lợi',  controller.jobDetails[0].job_benefit, context),
+            JobDetailContent('Địa điểm làm việc',  controller.jobDetails[0].job_location, context),
             const Padding(
               padding: EdgeInsets.only(left: 15,top:20),
               child: Text(
@@ -65,11 +66,11 @@ class InforComponent extends GetView<JobDetailsController> {
               height: 860,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1,
-                  color: Colors.grey.shade300,
-                ),
-                borderRadius: BorderRadius.circular(10)
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.grey.shade300,
+                  ),
+                  borderRadius: BorderRadius.circular(10)
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -81,9 +82,9 @@ class InforComponent extends GetView<JobDetailsController> {
                     child: Text(
                       'Dưới đây là những dấu hiệu của các tổ chức, cá nhân tuyển dụng không minh bạch:',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400
                       ),
                     ),
                   ),
@@ -316,18 +317,18 @@ class InforComponent extends GetView<JobDetailsController> {
                       Text(
                         'Email: ',
                         style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15,
-                          color: AppColors.placeHolderColor
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15,
+                            color: AppColors.placeHolderColor
                         ),
                       ),
                       SizedBox(width: 5,),
                       Text(
                         'hotro@jobpilot.com',
                         style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.primaryColor1
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.primaryColor1
                         ),
                       ),
                     ],
@@ -364,8 +365,8 @@ class InforComponent extends GetView<JobDetailsController> {
                     width: MediaQuery.of(context).size.width-60,
                     height: 50,
                     decoration: BoxDecoration(
-                      color: AppColors.bgTextFeild,
-                      borderRadius: BorderRadius.circular(10)
+                        color: AppColors.bgTextFeild,
+                        borderRadius: BorderRadius.circular(10)
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -375,8 +376,8 @@ class InforComponent extends GetView<JobDetailsController> {
                         Text(
                           'Báo cáo tin tuyển dụng',
                           style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500
                           ),
                         ),
                       ],
@@ -389,7 +390,7 @@ class InforComponent extends GetView<JobDetailsController> {
             const SizedBox(height: 100,),
 
           ],
-        ),
+        ):Container()),
       ),
     );
   }

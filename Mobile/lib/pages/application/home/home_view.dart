@@ -128,12 +128,12 @@ class HomePage extends GetView<HomeController> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+              margin: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
               child:  Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(
+                  const Text(
                     'Gợi ý việc làm phù hợp',
                     style: TextStyle(
                       fontSize: 18,
@@ -161,7 +161,7 @@ class HomePage extends GetView<HomeController> {
           Obx(() => SliverList(
             delegate: SliverChildBuilderDelegate(
                   (_, int index) {
-                return InkWell(onTap: () {controller.HandleJobdetails();},child: JobMainItem(
+                return InkWell(onTap: () {controller.HandleJobdetails(controller.listJobs[index].job_id??0,controller.listJobs[index].company_id??0);},child: JobMainItem(
                   context,
                   controller.listJobs[index].company_image,
                   controller.listJobs[index].company_name,
@@ -178,12 +178,12 @@ class HomePage extends GetView<HomeController> {
 
           SliverToBoxAdapter(
               child: Container(
-                margin: EdgeInsets.only(left: 15,right:15,top: 15),
+                margin: const EdgeInsets.only(left: 15,right:15,top: 15),
                 child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text(
+                    const Text(
                       'Việc làm hấp dẫn',
                       style: TextStyle(
                         fontSize: 18,

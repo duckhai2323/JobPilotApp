@@ -102,17 +102,17 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                      Container(
                        width: screenWidth - 130,
                        margin: const EdgeInsets.only(left: 10),
-                       child: const Text(
-                         'Nhân viên Nghiên Cứu và phát triển Conng nghệ nhiều đãi ngộ, hsdfhdf sfshfs sdfhsfjs',
+                       child: Obx(()=> Text(
+                         controller.jobDetails.isNotEmpty?controller.jobDetails[0].job_title:'',
                          maxLines: 2,
                          overflow: TextOverflow.ellipsis,
-                         style: TextStyle(
+                         style: const TextStyle(
                              fontFamily: 'Roboto',
                              fontSize: 16,
                              fontWeight: FontWeight.w500,
                              color: AppColors.primaryColor2
                          ),
-                       ),
+                       ),),
                      ),
                      const Padding(
                        padding: EdgeInsets.only(left: 15),
@@ -178,20 +178,20 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                                 )
                               ]
                           ),
-                          child: Column(
+                          child: Obx(()=>Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const SizedBox(height:65),
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
-                                  'Fresher Developer FrontEnd tại Toà Keangnam Mỹ Đình, Hà Nội',
+                                 controller.jobDetails.isNotEmpty?controller.jobDetails[0].job_title:'',
                                   maxLines: 2,
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontFamily: 'Roboto',
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
@@ -200,14 +200,14 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                                 ),
                               ),
                               const SizedBox(height: 5),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
-                                  'CÔNG TY CỔ PHẦN SUN ASTERISK',
+                                 controller.companies.isNotEmpty?controller.companies[0].company_name:'',
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontFamily: 'Roboto',
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
@@ -251,13 +251,13 @@ class JobDetailsPage extends GetView<JobDetailsController> {
 
                                           ),
                                           height: 90,
-                                          child: const Column(
+                                          child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              SizedBox(height: 5),
-                                              Icon(Icons.monetization_on, size: 40, color: AppColors.primaryColor1,),
-                                              SizedBox(height: 5),
-                                              Text(
+                                              const SizedBox(height: 5),
+                                              const Icon(Icons.monetization_on, size: 40, color: AppColors.primaryColor1,),
+                                              const SizedBox(height: 5),
+                                              const Text(
                                                 "Mức Lương",
                                                 style: TextStyle(
                                                   fontSize: 12,
@@ -265,18 +265,18 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
-                                              Text(
-                                                '20-25 triệu',
+                                              Obx(() => Text(
+                                                controller.jobDetails.isNotEmpty?controller.jobDetails[0].salary:'',
                                                 maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.center,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontFamily: 'Roboto',
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w400,
                                                     color: AppColors.primaryColor1
                                                 ),
-                                              ),
+                                              ),),
                                             ],
                                           )
                                       ),
@@ -298,13 +298,13 @@ class JobDetailsPage extends GetView<JobDetailsController> {
 
                                           ),
                                           height: 90,
-                                          child: const Column(
+                                          child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              SizedBox(height: 5),
-                                              Icon(Icons.location_on, size: 40, color: AppColors.primaryColor1,),
-                                              SizedBox(height: 5),
-                                              Text(
+                                              const SizedBox(height: 5),
+                                              const Icon(Icons.location_on, size: 40, color: AppColors.primaryColor1,),
+                                              const SizedBox(height: 5),
+                                              const Text(
                                                 "Địa điểm",
                                                 style: TextStyle(
                                                   fontSize: 12,
@@ -312,18 +312,18 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
-                                              Text(
-                                                'Cầu giấy, Hà Nội',
+                                          Obx(() => Text(
+                                            controller.jobDetails.isNotEmpty?controller.jobDetails[0].job_location:'',
                                                 maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.center,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontFamily: 'Roboto',
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w400,
                                                     color: AppColors.primaryColor1
                                                 ),
-                                              ),
+                                              ),)
                                             ],
                                           )
                                       ),
@@ -345,13 +345,13 @@ class JobDetailsPage extends GetView<JobDetailsController> {
 
                                           ),
                                           height: 90,
-                                          child: const Column(
+                                          child:Column(
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              SizedBox(height: 5),
-                                              Icon(Icons.star, size: 40, color: AppColors.primaryColor1,),
-                                              SizedBox(height: 5),
-                                              Text(
+                                              const SizedBox(height: 5),
+                                              const Icon(Icons.star, size: 40, color: AppColors.primaryColor1,),
+                                              const SizedBox(height: 5),
+                                              const Text(
                                                 "Kinh nghiệm",
                                                 style: TextStyle(
                                                   fontSize: 12,
@@ -359,18 +359,18 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
-                                              Text(
-                                                'Cần 10 năm kinh nghiệm',
+                                          Obx(() => Text(
+                                                controller.jobDetails.isNotEmpty?controller.jobDetails[0].experience_require:'',
                                                 maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.center,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontFamily: 'Roboto',
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w400,
                                                     color: AppColors.primaryColor1
                                                 ),
-                                              ),
+                                              ),),
                                             ],
                                           )
                                       ),
@@ -379,32 +379,34 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                                 ),
                               )
                             ],
-                          ),
+                          ),),
                         ),
                       ),
                       Positioned(
                         top: 50,
                         left: mediaQueryData.size.width/2 - 40,
-                        child: Container(
+                        child: Obx(()=> Container(
                           width: 90,
                           height: 90,
                           decoration: BoxDecoration(
-                              color:Colors.white,
-                              borderRadius: BorderRadius.circular(8),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 0.25,
-                                  blurRadius: 2,
-                                  offset: const Offset(0,2),
-                                )
-                              ]
+                            color:Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 0.25,
+                                blurRadius: 2,
+                                offset: const Offset(0,2),
+                              )
+                            ],
+                            image: DecorationImage(
+                              image: controller.companies.isNotEmpty
+                                  ? NetworkImage(controller.companies[0].company_image ?? 'assets/images/sun.png') as ImageProvider<Object>
+                                  : AssetImage('assets/images/sun.png') as ImageProvider<Object>,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          child: Image.asset(
-                            'assets/images/sun.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                        ),),
                       ),
                     ],
                   ),
@@ -412,18 +414,19 @@ class JobDetailsPage extends GetView<JobDetailsController> {
               ),
               SliverPersistentHeader(
                 delegate: MySliverPersistentHeaderDelegate (
-                  const TabBar(
+                  TabBar(
+                    controller: controller.tabController,
                     isScrollable: true,
                     labelColor: AppColors.primaryColor1,
                     dividerColor: AppColors.bgTextFeild,
                     unselectedLabelColor: AppColors.placeHolderColor,
                     tabAlignment: TabAlignment.start,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600
                     ),
                     indicatorColor: AppColors.primaryColor1,
-                    tabs: [
+                    tabs: const [
                       Tab(child: Text('Thông tin'),),
                       Tab(child: Text('Việc làm liên quan'),),
                       Tab(child: Text('Công ty'),),
@@ -436,6 +439,7 @@ class JobDetailsPage extends GetView<JobDetailsController> {
             ];
           },
           body: TabBarView(
+            controller: controller.tabController,
             children: [
               InforComponent(),
               RelatedJobs(),

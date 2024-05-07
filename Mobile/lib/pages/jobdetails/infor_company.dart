@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/share/jobmain_item.dart';
@@ -17,15 +18,15 @@ class InforCompany extends GetView<JobDetailsController> {
       body: CustomScrollView(
         slivers: <Widget> [
           SliverToBoxAdapter(
-            child: Column(
+            child: Obx(()=>Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 15,),
-                const Padding(
-                  padding: EdgeInsets.only(left: 15),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
                   child: Text(
-                    "Công ty cổ phần Sun Asterisk",
-                    style: TextStyle(
+                    controller.companies.isNotEmpty?controller.companies[0].company_name:"",
+                    style: const TextStyle(
                         fontFamily: "Roboto",
                         fontSize: 16,
                         fontWeight: FontWeight.w600
@@ -33,35 +34,35 @@ class InforCompany extends GetView<JobDetailsController> {
                   ),
                 ),
                 const SizedBox(height: 5,),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 20,
                         backgroundColor: AppColors.bgIcon,
                         child: Icon(Icons.location_city,size: 25,color: AppColors.primaryColor1,),
                       ),
-                      SizedBox(width: 15,),
+                      const SizedBox(width: 15,),
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Địa chỉ công ty',
                             style: TextStyle (
                               fontSize: 12,
                               color: Colors.black,
                             ),
                           ),
-                          SizedBox(height: 3,),
+                          const SizedBox(height: 3,),
                           Text(
-                              'Tòa Keangnam Mỹ Đình, Hà Nội',
-                            style: TextStyle(
+                           controller.companies.isNotEmpty?controller.companies[0].company_location:'',
+                            style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500
                             ),
@@ -71,38 +72,38 @@ class InforCompany extends GetView<JobDetailsController> {
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 20,
                         backgroundColor: AppColors.bgIcon,
                         child: Icon(Icons.stars,size: 25,color: AppColors.primaryColor1,),
                       ),
-                      SizedBox(width: 15,),
+                      const SizedBox(width: 15,),
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Website công ty',
                             style: TextStyle (
                               fontSize: 12,
                               color: Colors.black,
                             ),
                           ),
-                          SizedBox(height: 3,),
+                          const SizedBox(height: 3,),
                           Text(
-                            'https://sun-asterisk.vn/',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.primaryColor1,
+                            controller.companies.isNotEmpty?controller.companies[0].company_link:'',
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.primaryColor1,
                             ),
                           ),
                         ],
@@ -110,8 +111,8 @@ class InforCompany extends GetView<JobDetailsController> {
                     ],
                   ),
                 ),
-                SizedBox(height: 5,),
-                JobDetailContent('Giới thiệu công ty',  'Tốt nghiệp đại học trở lên Thành thạo các kỹ năng mềm cơ bản: thuyết trình, giao tiếp, làm việc nhóm...Có khả năng thúc đẩy tư duy tích cực, sử dụng trò chơi và tạo cảm hứng trong giảng dạy.Sử dụng thành thạo các công cụ thiết kế bài giảng và hỗ trợ giảng dạy.Trung thực, nhiệt huyết và có tinh thần cầu thị', context),
+                const SizedBox(height: 5,),
+                JobDetailContent('Giới thiệu công ty',   controller.companies.isNotEmpty?controller.companies[0].company_intro:'', context),
                 const Padding(
                   padding: EdgeInsets.only(left: 15,top: 15,bottom: 15),
                   child: Text(
@@ -124,26 +125,26 @@ class InforCompany extends GetView<JobDetailsController> {
                   ),
                 ),
               ],
-            ),
+            ),),
           ),
-          SliverList(
+          Obx(() => SliverList(
             delegate: SliverChildBuilderDelegate(
-              (_, int index) {
-                return InkWell(onTap: () {controller.HandleJobdetails();},child: JobMainItem(
-                  context,
-                  "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                  "Cty Phat Trien Phan Mem Sun Asterisk",
-                  'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                  'Ha Noi',
-                  '1 nam',
-                  '300\u0024',
-                  false
+                  (_, int index) {
+                return InkWell(onTap: () {controller.HandleJobdetails(controller.jobs[index].job_id??0, controller.jobs[index].company_id??0);},child: JobMainItem(
+                    context,
+                    controller.jobs[index].company_image,
+                    controller.jobs[index].company_name,
+                    controller.jobs[index].job_title,
+                    controller.jobs[index].job_location,
+                    controller.jobs[index].experience_require,
+                    controller.jobs[index].salary,
+                    false
                 ));
               },
-            childCount: 3,
+              childCount: controller.jobs.length,
             ),
-          ),
-          SliverToBoxAdapter(
+          ),),
+          const SliverToBoxAdapter(
             child: SizedBox(height: 100,),
           ),
         ],
