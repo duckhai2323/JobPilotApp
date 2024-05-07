@@ -19,3 +19,4 @@ Route::post('/agent/signin',[AgentController::class,'signInAgentApi']);
 Route::post('/job_detail/create',[JobDetailController::class, 'addJobDetail']);
 Route::get('/jobs',[JobDetailController::class,'getListJobs']);
 Route::get('/jobs/{company_id}',[JobDetailController::class,'getListJobsOfCompany']);
+Route::delete('/job_detail/{job_id}',[JobDetailController::class,'deleteJobDetail']);
