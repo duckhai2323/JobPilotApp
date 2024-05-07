@@ -1,26 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobpilot_app/common/item_object/item_job_detail.dart';
 import 'package:jobpilot_app/pages/agent/jobfair/jobfair_controller.dart';
 
 import '../../../common/colors/colors.dart';
 
 class JobSubItemSuccess extends GetView<JobFairControlelr> {
-  final String companyImage;
-  final String companyName;
-  final String jobTitle;
-  final String jobLocation;
-  final String deadline_job;
-  final String salary;
-
-  JobSubItemSuccess(
-      this.companyImage,
-      this.companyName,
-      this.jobTitle,
-      this.jobLocation,
-      this.deadline_job,
-      this.salary
-      );
+  final ItemJobDetail itemJobDetail;
+  JobSubItemSuccess(this.itemJobDetail);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,7 +52,7 @@ class JobSubItemSuccess extends GetView<JobFairControlelr> {
                   )
                 ],
                 image: DecorationImage(
-                  image: NetworkImage(companyImage),
+                  image: NetworkImage(itemJobDetail.company_image??""),
                   fit: BoxFit.cover,
                 )
             ),
@@ -79,7 +67,7 @@ class JobSubItemSuccess extends GetView<JobFairControlelr> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  jobTitle,
+                  itemJobDetail.job_title??"",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -92,7 +80,7 @@ class JobSubItemSuccess extends GetView<JobFairControlelr> {
                 //SizedBox(height: 5,),
 
                 Text(
-                  companyName,
+                  itemJobDetail.company_name??"",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -116,10 +104,10 @@ class JobSubItemSuccess extends GetView<JobFairControlelr> {
                         color: AppColors.bgSearch,
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
-                          salary,
-                          style: const TextStyle(
+                          'Đã hoàn thành',
+                          style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: AppColors.primaryColor2
@@ -138,7 +126,7 @@ class JobSubItemSuccess extends GetView<JobFairControlelr> {
                       ),
                       child: Center(
                         child: Text(
-                          'Hạn nộp: $deadline_job',
+                          'Tuyển: ${itemJobDetail.candidate_number} NV',
                           style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -153,12 +141,17 @@ class JobSubItemSuccess extends GetView<JobFairControlelr> {
               ],
             ),
           ),
-          Container(
-              height: 140,
-              padding: const EdgeInsets.only(left: 5),
-              child: const Center(
-                child: Icon(Icons.delete_outline, color: Colors.red,size: 25,),
-              )
+          InkWell(
+            onTap: (){
+              controller.deleteJobs(itemJobDetail.job_id??0);
+            },
+            child: Container(
+                height: 140,
+                padding: const EdgeInsets.only(left: 5),
+                child: const Center(
+                  child: Icon(Icons.delete, color: Colors.red,size: 25,),
+                )
+            ),
           )
         ],
       ),

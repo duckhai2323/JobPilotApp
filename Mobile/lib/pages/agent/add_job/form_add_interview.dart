@@ -5,12 +5,6 @@ import 'package:get/get.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_controller.dart';
 
 import '../../../common/colors/colors.dart';
-
-// import '../../../common/colors/colors.dart';
-// Widget FormAddInterview (String title, String subTitle,TextEditingController controller) {
-//
-// }
-
 class FormAddInterview extends GetView<AddJobController> {
   final int index;
   final String title;
@@ -101,7 +95,7 @@ class FormAddInterview extends GetView<AddJobController> {
 
         InkWell(
           onTap: (){
-            controller.showDialog(context,index);
+            controller.showDialogTime(context,index);
           },
           child: Obx(()=>Container(
             margin: const EdgeInsets.only(top: 10),

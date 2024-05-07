@@ -16,12 +16,12 @@ class ApplicationBindings extends Bindings {
 
   @override
   void dependencies() {
-    Get.lazyPut(() => ApplicationController());
+    Get.put(ApplicationController());
     Get.lazyPut(() => HomeController());
     Get.lazyPut(() => MessageController());
     Get.lazyPut(() => ProfileController());
     
-    Get.lazyPut(() => CompanyInforController());
+    Get.put(CompanyInforController());
     Get.lazyPut(() => AgentHomeController());
     Get.lazyPut(() => AgentProfileController());
     Get.lazyPut(() => JobFairControlelr());

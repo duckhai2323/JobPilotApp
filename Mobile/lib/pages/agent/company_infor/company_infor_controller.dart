@@ -44,7 +44,14 @@ class CompanyInforController extends GetxController {
       final response = await http.get(url,headers: headers);
       await Future.delayed(const Duration(seconds: 1));
       if(response.statusCode == 200) {
-        jobs.addAll((jsonDecode(response.body) as List).map((e) => ItemJobDetail.fromJson(e)).toList());
+        var data = jsonDecode(response.body) as List;
+        jobs.clear();
+        data.forEach((e) {
+          var status = e['status'].toString();
+          if(status == '1') {
+            jobs.add(ItemJobDetail.fromJson(e));
+          }
+        });
       } else if(response.statusCode == 404) {
         print('404 not found');
       }

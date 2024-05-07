@@ -65,7 +65,7 @@ class JobFairPage extends GetView<JobFairControlelr>{
       ),
 
       body:  DefaultTabController(
-        length: 4,
+        length: 3,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
@@ -75,7 +75,7 @@ class JobFairPage extends GetView<JobFairControlelr>{
               labelColor: AppColors.primaryColor1,
               dividerColor: AppColors.bgTextFeild,
               unselectedLabelColor: AppColors.placeHolderColor,
-              tabAlignment: TabAlignment.start,
+              tabAlignment: TabAlignment.center,
               indicatorColor: AppColors.primaryColor1,
               labelStyle: TextStyle(
                   fontSize: 15,
@@ -84,7 +84,6 @@ class JobFairPage extends GetView<JobFairControlelr>{
               tabs: [
                 Tab(child: Text('Đang hiển thị'),),
                 Tab(child: Text('Đang phỏng vấn'),),
-                Tab(child: Text('Chờ xác nhận'),),
                 Tab(child: Text('Đã kết thúc'),),
               ],
             ),
@@ -93,79 +92,39 @@ class JobFairPage extends GetView<JobFairControlelr>{
                 children: [
                   Container(
                     color: AppColors.backgroundColor,
-                    child: ListView.builder(
+                    child:Obx(()=>  ListView.builder(
                       padding: const EdgeInsets.only(top: 15),
-                      itemCount: 5,
-                     // physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        return JobSubItem1(
-                          "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                          "Cty Phat Trien Phan Mem Sun Asterisk",
-                          'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                          'Ha Noi',
-                          '1 nam',
-                          '300s',
-                        );
-                      },
-                    ),
-                  ),
-                  Container(
-                    color: AppColors.backgroundColor,
-                    child: ListView.builder(
-                      padding: const EdgeInsets.only(top: 15),
-                      itemCount: 5,
+                      itemCount: controller.job1s.length,
                       // physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        return JobSubItem0(
-                          "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                          "Cty Phat Trien Phan Mem Sun Asterisk",
-                          'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                          'Ha Noi',
-                          '1 nam',
-                          '300s',
-                        );
+                        return JobSubItem1(controller.job1s[index]);
                       },
-                    ),
+                    ),),
                   ),
                   Container(
                     color: AppColors.backgroundColor,
-                    child: ListView.builder(
+                    child: Obx(()=>ListView.builder(
                       padding: const EdgeInsets.only(top: 15),
-                      itemCount: 5,
+                      itemCount: controller.job2s.length,
                       // physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        return JobSubItem1(
-                          "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                          "Cty Phat Trien Phan Mem Sun Asterisk",
-                          'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                          'Ha Noi',
-                          '1 nam',
-                          '300s',
-                        );
+                        return JobSubItem0(controller.job2s[index]);
                       },
-                    ),
+                    ),),
                   ),
                   Container(
                     color: AppColors.backgroundColor,
-                    child: ListView.builder(
+                    child: Obx(()=>ListView.builder(
                       padding: const EdgeInsets.only(top: 15),
-                      itemCount: 5,
+                      itemCount: controller.job3s.length,
                       // physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        return JobSubItemSuccess(
-                          "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                          "Cty Phat Trien Phan Mem Sun Asterisk",
-                          'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                          'Ha Noi',
-                          '1 nam',
-                          '300s',
-                        );
+                        return JobSubItemSuccess(controller.job3s[index]);
                       },
-                    ),
+                    ),),
                   ),
                 ],
               ),
