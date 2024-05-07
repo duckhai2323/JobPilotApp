@@ -42,8 +42,10 @@ class JobDetailController extends Controller
 
     public function getListJobs () {
         $jobs = DB::table('job_details')
+                    ->where('job_details.status',1)
+                    ->orderBy('job_details.updated_at', 'desc')
                     ->join('companies', 'job_details.company_id','=', 'companies.company_id')
-                    ->select('companies.company_image','companies.company_name','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job')
+                    ->select('companies.company_image','companies.company_name','job_details.job_id','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job','job_details.status','job_details.candidate_number')
                     ->get();
 
         return response() -> json($jobs,200);
@@ -53,9 +55,17 @@ class JobDetailController extends Controller
         $jobs = DB::table('job_details')
                     ->join('companies', 'job_details.company_id','=', 'companies.company_id')
                     ->where('job_details.company_id',$company_id)
-                    ->select('companies.company_image','companies.company_name','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job')
+                    ->orderBy('job_details.updated_at', 'desc')
+                    ->select('companies.company_image','companies.company_name','job_details.job_id','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job','job_details.status','job_details.candidate_number')
                     ->get();
 
         return response() -> json($jobs,200);
+    }
+
+    public function deleteJobDetail(string $job_id) {
+        $delete = DB::table('job_details')
+                      ->where('job_details.job_id','=',$job_id)
+                      ->delete();
+        return response()->json(['message'=>'delete succsess'],200);
     }
 }
