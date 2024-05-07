@@ -15,7 +15,7 @@ class RelatedJobs extends GetView<JobDetailsController> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (_, int index) {
-                return InkWell(onTap: () {controller.HandleJobdetails();},child: JobMainItem(
+                return InkWell(onTap: () {},child: JobMainItem(
                   context,
                   "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
                   "Cty Phat Trien Phan Mem Sun Asterisk",

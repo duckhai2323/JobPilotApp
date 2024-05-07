@@ -90,7 +90,7 @@ class AttractiveJobPage extends GetView<AttractiveJobController> {
         ),
         flexibleSpace:  Container(
           margin: const EdgeInsets.only(top: 135),
-          padding: const EdgeInsets.only(left: 80,right: 15),
+          padding: const EdgeInsets.only(left: 90,right: 15),
           height: 35,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -99,7 +99,7 @@ class AttractiveJobPage extends GetView<AttractiveJobController> {
             //physics: NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context,int index) {
               return Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: EdgeInsets.only(right: 10),
                 padding: EdgeInsets.only(left: 15,top: 5,bottom: 5,right: 13),
                 height: 35,
                 decoration: BoxDecoration(
@@ -146,21 +146,24 @@ class AttractiveJobPage extends GetView<AttractiveJobController> {
           ),
         ),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        itemCount: 5,
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, index) {
-          return JobSubItem(
-            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-            "Cty Phat Trien Phan Mem Sun Asterisk",
-            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-            'Ha Noi',
-            '1 nam',
-            '300s',
-          );
-        },
+      body: SingleChildScrollView(
+        child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          itemCount: 5,
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, index) {
+            return JobSubItem(
+              "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+              "Cty Phat Trien Phan Mem Sun Asterisk",
+              'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+              'Ha Noi',
+              '1 nam',
+              '300s',
+            );
+          },
+        ),
       ),
     );
   }
