@@ -73,5 +73,7 @@ class HomeController extends GetxController {
   void HandleSuitableJobPage () {
     Get.toNamed(AppRoutes.SUITABLE_JOB);
   }
-
+  void HandleAttractiveJobPage () {
+    Get.toNamed(AppRoutes.ATTRACTIVE_JOB);
+  }
 }

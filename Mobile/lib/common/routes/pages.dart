@@ -7,6 +7,8 @@ import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_binding.dart'
 import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_view.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_binding.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_view.dart';
+import 'package:jobpilot_app/pages/attractivejob/attractivejob_binding.dart';
+import 'package:jobpilot_app/pages/attractivejob/attractivejob_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
@@ -79,6 +81,12 @@ class AppPages {
       name: AppRoutes.SUITABLE_JOB,
       page: ()=>SuitablePage(),
       binding: SuitableBinding(),
+    ),
+
+     GetPage(
+      name: AppRoutes.ATTRACTIVE_JOB,
+      page: ()=>AttractiveJobPage(),
+      binding: AttractiveJobBinding(),
     ),
 
     GetPage(
