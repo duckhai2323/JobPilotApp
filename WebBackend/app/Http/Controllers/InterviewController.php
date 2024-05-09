@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Interview;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InterviewController extends Controller
 {
@@ -26,5 +27,14 @@ class InterviewController extends Controller
         ]);
 
         return response()->json(['message' => 'Interview created successfully'], 200);
+    }
+
+    public function getInterviews (string $job_id) {
+        $interviews = DB::table('interviews')
+                     ->where('interviews.job_id',$job_id)
+                     ->orderBy('interviews.index', 'asc')
+                     ->get();
+        
+        return response()->json($interviews,200);
     }
 }

@@ -24,3 +24,4 @@ Route::delete('/job_detail/{job_id}',[JobDetailController::class,'deleteJobDetai
 Route::get('/job_detail/{job_id}',[JobDetailController::class, 'getJobDetail']);
 
 Route::post('/interview/create',[InterviewController::class,'addInterview']);
+Route::get('/interviews/{job_id}',[InterviewController::class,'getInterviews']);
