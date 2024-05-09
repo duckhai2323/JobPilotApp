@@ -109,34 +109,34 @@ class AddJobView extends GetView<AddJobController> {
               const SizedBox(height: 10,),
               FormAddJob('Số người dự tuyển', '5',controller.textController9,false),
               const SizedBox(height: 10,),
-              InkWell(onTap: (){controller.showDialogTime(context, 0);},child: FormAddJob('Hạn nộp', '20/5/2024',controller.textController10,true)),
+              InkWell(onTap: (){controller.showDialogTime(context, 0,'deadline');},child: FormAddJob('Hạn nộp', '20/5/2024',controller.textController10,true)),
 
               const SizedBox(height: 15,),
               const Text(
                 'Thời gian phỏng vấn - Test',
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.primaryColor1
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primaryColor1
                 ),
               ),
 
-             Obx(() => ListView.builder(
-               itemCount: controller.listInterview.length,
-               physics: const NeverScrollableScrollPhysics(),
-               shrinkWrap: true,
-               itemBuilder: (BuildContext context, int index) {
-                 return  SizedBox(
-                   width: MediaQuery.of(context).size.width,
-                   child: Column(
-                     children: [
-                       const SizedBox(height: 20,),
-                       FormAddInterview(index,'Vòng ${index+1} - Hình thức kiểm tra', 'Phỏng vấn vòng ${index+1} (Test IQ)',controller.listInterview[index].textEditingController),
-                     ],
-                   ),
-                 );
-               },
-             ),),
+              Obx(() => ListView.builder(
+                itemCount: controller.listInterview.length,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) {
+                  return  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 20,),
+                        FormAddInterview(index,'Vòng ${index+1} - Hình thức kiểm tra', 'Phỏng vấn vòng ${index+1} (Test IQ)',controller.listInterview[index].textEditingController),
+                      ],
+                    ),
+                  );
+                },
+              ),),
 
               const SizedBox(height: 30,),
 

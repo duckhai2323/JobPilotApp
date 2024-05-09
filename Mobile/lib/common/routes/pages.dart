@@ -3,6 +3,8 @@ import 'package:jobpilot_app/pages/agent/add_job/add_job_binding.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_view.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_binding.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_view.dart';
+import 'package:jobpilot_app/pages/agent/job_detail/job_detail_binding.dart';
+import 'package:jobpilot_app/pages/agent/job_detail/job_detail_view.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_binding.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_view.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_binding.dart';
@@ -137,6 +139,12 @@ class AppPages {
       name: AppRoutes.CVPROFILE,
       page: ()=>TopCVProfilePage(),
       binding: TopCVProfileBindings()      
+    ),
+
+    GetPage(
+        name: AppRoutes.JOB_DETAIL,
+        binding: JobDetailAgentBinding(),
+        page: ()=>JobDetailAgentPage()
     )
   ];
 }

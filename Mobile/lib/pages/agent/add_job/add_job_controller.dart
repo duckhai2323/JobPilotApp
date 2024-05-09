@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:jobpilot_app/common/interview.dart';
 import 'package:jobpilot_app/common/item_add_edit/item_add_interview.dart';
 import 'package:jobpilot_app/common/job_detail.dart';
 import 'package:jobpilot_app/pages/agent/company_infor/company_infor_controller.dart';
@@ -35,23 +36,23 @@ class AddJobController extends GetxController {
 
   List<ItemAddInterview> listInterview = <ItemAddInterview>[ItemAddInterview(TextEditingController(), 'Chọn ngày/tháng/năm')].obs;
 
-  void showDialogTime (BuildContext context, int index) {
+  void showDialogTime (BuildContext context, int index,String type) {
     return _showDialog(
-      CupertinoDatePicker(
-        initialDateTime: date,
-        mode: CupertinoDatePickerMode.date,
-        use24hFormat: true,
-        onDateTimeChanged: (DateTime newDate) {
-          date = newDate;
-         if(index == 0) {
-           textController10.text = '${date.day}/${date.month}/${date.year}';
-         } else {
-           ItemAddInterview temp = listInterview[index];
-           listInterview.removeAt(index);
-           listInterview.insert(index, ItemAddInterview(temp.textEditingController,'${date.day}/${date.month}/${date.year}'));
-         }
-        },
-      ),context
+        CupertinoDatePicker(
+          initialDateTime: date,
+          mode: CupertinoDatePickerMode.date,
+          use24hFormat: true,
+          onDateTimeChanged: (DateTime newDate) {
+            date = newDate;
+            if(type == "deadline") {
+              textController10.text = '${date.day}/${date.month}/${date.year}';
+            } else {
+              ItemAddInterview temp = listInterview[index];
+              listInterview.removeAt(index);
+              listInterview.insert(index, ItemAddInterview(temp.textEditingController,'${date.day}/${date.month}/${date.year}'));
+            }
+          },
+        ),context
     );
   }
 
@@ -79,28 +80,42 @@ class AddJobController extends GetxController {
       var headers = {'Content-Type' : 'application/json'};
       var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.jobApi.ADD_JOB_DETAIL);
       JobDetail jobDetail = JobDetail(
-          int.parse(ApplicationController.company_id),
-          textController1.text.toString(),
-          textController5.text.toString(),
-          textController6.text.toString(),
-          textController7.text.toString(),
-          textController2.text.toString(),
-          textController3.text.toString(),
-          int.parse(textController9.text.toString()),
-          textController5.text.toString(),
-          textController8.text.toString(),
-          1,
-          textController10.text.toString(),
+        int.parse(ApplicationController.company_id),
+        textController1.text.toString(),
+        textController5.text.toString(),
+        textController6.text.toString(),
+        textController7.text.toString(),
+        textController2.text.toString(),
+        textController3.text.toString(),
+        int.parse(textController9.text.toString()),
+        textController5.text.toString(),
+        textController8.text.toString(),
+        1,
+        textController10.text.toString(),
       );
 
       final response = await http.post(url,body:jsonEncode(jobDetail.toJson()),headers: headers);
       if(response.statusCode == 200) {
+        var url_interview = Uri.parse(ApiEndPoints.baseUrl+ApiEndPoints.interviewApi.INTERVIEW_CREATE);
+        var job_id = jsonDecode(response.body)['job_id'];
+        for(var element in listInterview) {
+          Interview interview = Interview(
+              job_id,
+              element.textEditingController.text.toString(),
+              listInterview.indexOf(element) + 3,
+              element.testDate,
+              1
+          );
+
+          final response = await http.post(
+              url_interview, body: jsonEncode(interview.toJson()),
+              headers: headers);
+        }
         companyController.getJobs();
         jobfairController.getJobs();
-        await Future.delayed(const Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 3));
         Navigator.pop(context);
         Get.back();
-        return;
       } else {
         print('404 not found');
       }

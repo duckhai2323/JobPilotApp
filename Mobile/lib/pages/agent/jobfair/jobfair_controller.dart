@@ -73,4 +73,8 @@ class JobFairControlelr extends GetxController {
   void HandleAddJobPage () {
     Get.toNamed(AppRoutes.ADD_JOB);
   }
+
+  void HandleJobDetailPage(int job_id) {
+    Get.toNamed(AppRoutes.JOB_DETAIL,parameters: {'job_id':job_id.toString()});
+  }
 }

@@ -18,4 +18,5 @@ class AppRoutes {
 
   static const EDIT_COMPANY_INFOR = '/agent/editcompany';
   static const ADD_JOB = '/agent/addjob';
+  static const JOB_DETAIL = '/agent/jobdetail';
 }
