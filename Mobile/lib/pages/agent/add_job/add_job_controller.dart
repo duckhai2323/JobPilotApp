@@ -82,7 +82,7 @@ class AddJobController extends GetxController {
       JobDetail jobDetail = JobDetail(
         int.parse(ApplicationController.company_id),
         textController1.text.toString(),
-        textController5.text.toString(),
+        textController4.text.toString(),
         textController6.text.toString(),
         textController7.text.toString(),
         textController2.text.toString(),
@@ -104,7 +104,7 @@ class AddJobController extends GetxController {
               element.textEditingController.text.toString(),
               listInterview.indexOf(element) + 3,
               element.testDate,
-              1
+              0
           );
 
           final response = await http.post(
@@ -113,7 +113,7 @@ class AddJobController extends GetxController {
         }
         companyController.getJobs();
         jobfairController.getJobs();
-        await Future.delayed(const Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 2));
         Navigator.pop(context);
         Get.back();
       } else {

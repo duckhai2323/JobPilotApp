@@ -16,6 +16,9 @@ class JobDetailInfor extends GetView<JobDetailAgentController> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Obx(
             ()=>Padding(
