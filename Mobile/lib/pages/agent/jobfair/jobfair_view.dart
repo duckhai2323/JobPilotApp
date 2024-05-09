@@ -98,7 +98,7 @@ class JobFairPage extends GetView<JobFairControlelr>{
                       // physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        return JobSubItem1(controller.job1s[index]);
+                        return InkWell(onTap: (){controller.HandleJobDetailPage(controller.job1s[index].job_id??0);},child: JobSubItem1(controller.job1s[index]));
                       },
                     ),),
                   ),
@@ -110,7 +110,7 @@ class JobFairPage extends GetView<JobFairControlelr>{
                       // physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        return JobSubItem0(controller.job2s[index]);
+                        return InkWell(onTap: (){controller.HandleJobDetailPage(controller.job2s[index].job_id??0);},child: JobSubItem0(controller.job2s[index]));
                       },
                     ),),
                   ),
@@ -122,7 +122,7 @@ class JobFairPage extends GetView<JobFairControlelr>{
                       // physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        return JobSubItemSuccess(controller.job3s[index]);
+                        return InkWell(onTap:(){controller.HandleJobDetailPage(controller.job3s[index].job_id??0);},child: JobSubItemSuccess(controller.job3s[index]));
                       },
                     ),),
                   ),

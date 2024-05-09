@@ -37,7 +37,7 @@ class JobDetailController extends Controller
             'deadline_job' => $data['deadline_job'],
         ]);
 
-        return response()->json(['message' => 'JobDetail registered successfully'], 200);
+        return response()->json(['job_id' => $jobdetail->id], 200);
     }
 
     public function getListJobs () {
@@ -63,7 +63,12 @@ class JobDetailController extends Controller
     }
 
     public function deleteJobDetail(string $job_id) {
-        $delete = DB::table('job_details')
+
+        $delete_interview = DB::table('interviews')
+                           ->where('interviews.job_id',$job_id)
+                           ->delete();
+
+        $delete_job = DB::table('job_details')
                       ->where('job_details.job_id','=',$job_id)
                       ->delete();
         return response()->json(['message'=>'delete succsess'],200);

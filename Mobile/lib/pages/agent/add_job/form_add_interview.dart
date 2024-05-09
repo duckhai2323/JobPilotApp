@@ -95,7 +95,7 @@ class FormAddInterview extends GetView<AddJobController> {
 
         InkWell(
           onTap: (){
-            controller.showDialogTime(context,index);
+            controller.showDialogTime(context,index,'interview');
           },
           child: Obx(()=>Container(
             margin: const EdgeInsets.only(top: 10),
@@ -113,7 +113,7 @@ class FormAddInterview extends GetView<AddJobController> {
             child: Text(
               controller.listInterview[index].testDate,
               style: TextStyle(
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w400,
                   fontSize: 16,
                   color: controller.listInterview[index].testDate == 'Chọn ngày/tháng/năm'?AppColors.placeHolderColor:Colors.black
               ),

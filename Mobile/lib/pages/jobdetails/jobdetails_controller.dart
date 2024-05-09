@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 import '../../common/api/api_backend.dart';
 import '../../common/company.dart';
 import '../../common/item_object/item_job_detail.dart';
-import '../application/application_controller.dart';
 
 class JobDetailsController extends GetxController with GetSingleTickerProviderStateMixin{
   late ScrollController scrollController;

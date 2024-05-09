@@ -29,19 +29,19 @@ class JobDetail {
 
   factory JobDetail.fromJson(dynamic json) {
     return JobDetail(
-        json['company_id'] as int,
-        json['job_title'] as String,
-        json['job_details'] as String,
-        json['job_require'] as String,
-        json['job_benefit'] as String,
-        json['salary'] as String,
-        json['job_location'] as String,
-        json['candidate_number'] as int,
-        json['experience_require'] as String,
-        json['work_form'] as String,
-        json['status'] as int,
-        json['deadline_job'] as String,
-        job_id: json['job_id'] as int
+        json['company_id']??0,
+        json['job_title'] ??"",
+        json['job_details'] ??"",
+        json['job_require'] ??"",
+        json['job_benefit'] ??"",
+        json['salary'] ??"",
+        json['job_location'] ??"",
+        json['candidate_number'] ??0,
+        json['experience_require'] ??"",
+        json['work_form']??"",
+        json['status'] ??0,
+        json['deadline_job'] ??"",
+        job_id: json['job_id'] ??0
     );
   }
 
