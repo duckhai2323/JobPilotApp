@@ -131,24 +131,22 @@ class JobSubItemInfor extends GetView<CompanyInforController> {
 
                     const SizedBox(width: 10,),
 
-                    ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: 130),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
-                        decoration: BoxDecoration(
-                          color: AppColors.bgSearch,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Hạn: $deadline_job',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.primaryColor2
-                            ),
+                    Container(
+                      width: 100,
+                      padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 5),
+                      decoration: BoxDecoration(
+                        color: AppColors.bgSearch,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Hạn: $deadline_job',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.primaryColor2
                           ),
                         ),
                       ),
