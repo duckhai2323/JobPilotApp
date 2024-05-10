@@ -40,7 +40,7 @@ class TimeLineInterview extends GetView<JobDetailAgentController> {
           children: [
             Container(
               height: 35,
-              margin: const EdgeInsets.only(right: 75,top: 30,left: 25),
+              margin: const EdgeInsets.only(right: 50,top: 30,left: 25),
               decoration: BoxDecoration(
                   color: isPast ? AppColors.primaryColor1:AppColors.placeHolderColor,
                   borderRadius: const BorderRadius.only(
@@ -62,7 +62,7 @@ class TimeLineInterview extends GetView<JobDetailAgentController> {
 
             Container(
               height: 50,
-              margin: const EdgeInsets.only(right: 75,left: 25),
+              margin: const EdgeInsets.only(right: 50,left: 25),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: const BorderRadius.only(
