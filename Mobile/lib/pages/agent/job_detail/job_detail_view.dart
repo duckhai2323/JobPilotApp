@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobpilot_app/pages/agent/job_detail/candidate_infor.dart';
 import 'package:jobpilot_app/pages/agent/job_detail/interview_infor.dart';
 import 'package:jobpilot_app/pages/agent/job_detail/job_detail_controller.dart';
 import 'package:jobpilot_app/pages/agent/job_detail/job_detail_information.dart';
@@ -82,10 +83,10 @@ class JobDetailAgentPage extends GetView<JobDetailAgentController> {
                   fontWeight: FontWeight.w600
               ),
               dividerHeight: 2,
-              tabs: const [
-                Tab(child: Text('Thông tin chung'),),
-                Tab(child: Text('Thông tin phỏng vấn'),),
-                Tab(child: Text('Phỏng vấn vòng 1'),),
+              tabs: [
+                const Tab(child: Text('Thông tin chung'),),
+                const Tab(child: Text('Thông tin phỏng vấn'),),
+                Tab(child: Obx(()=> Text(controller.tabTitle.value)),),
               ],
             ),
             Expanded(
@@ -94,7 +95,7 @@ class JobDetailAgentPage extends GetView<JobDetailAgentController> {
                 children: [
                   JobDetailInfor(),
                   InterviewInfor(),
-                  Center(child: Text('ancjbjhcwe'),),
+                  CandidateList(),
                 ],
               ),
             )

@@ -16,6 +16,7 @@ class JobDetailAgentController extends GetxController with GetSingleTickerProvid
   late TabController tabController;
   final stateTab = 0.obs;
   final job_id = ''.obs;
+  final tabTitle = ''.obs;
 
   @override
   onInit(){
@@ -49,6 +50,29 @@ class JobDetailAgentController extends GetxController with GetSingleTickerProvid
       if(response.statusCode ==  200) {
         interviews.add(Interview(int.parse(job_id.value), 'Hạn nộp hồ sơ', 2, jobDetails[0].deadline_job, jobDetails[0].status >= 2?1:0));
         interviews.addAll((jsonDecode(response.body) as List).map((e) => Interview.fromJson(e)).toList());
+        switch(jobDetails[0].status) {
+          case 0: {
+            tabTitle.value = 'Kết quả';
+          }
+          break;
+          case 1: {
+            tabTitle.value = 'Vòng ứng tuyển';
+          }
+          break;
+          case 2: {
+            tabTitle.value = 'Vòng loại hồ sơ';
+          }
+          break;
+          default: {
+            interviews.forEach((element) {
+              if(element.index == jobDetails[0].status) {
+                tabTitle.value = element.interview_type;
+                return;
+              }
+            });
+            break;
+          }
+        }
       }
     } catch (e) {
       print(e);
