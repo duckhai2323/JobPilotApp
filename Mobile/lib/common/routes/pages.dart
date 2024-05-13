@@ -17,6 +17,8 @@ import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
 import 'package:jobpilot_app/pages/companies/companies_view.dart';
+import 'package:jobpilot_app/pages/info/info_binding.dart';
+import 'package:jobpilot_app/pages/info/info_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job.binding.dart';
 import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job_view.dart';
 import 'package:jobpilot_app/pages/skill/skill_binding.dart';
@@ -105,6 +107,12 @@ class AppPages {
       name: AppRoutes.CERTIFICATE,
       page: ()=>CertificatePage(),
       binding: CertificateBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.INFO,
+      page: ()=>InfoPage(),
+      binding: InfoBinding(),
     ),
 
     GetPage(

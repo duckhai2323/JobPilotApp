@@ -9,4 +9,8 @@ class TopCVProfileController extends GetxController {
    void HandleCertificatePage () {
     Get.toNamed(AppRoutes.CERTIFICATE);
   }
+
+  void HandleInfoPage () {
+    Get.toNamed(AppRoutes.INFO);
+  }
 }
