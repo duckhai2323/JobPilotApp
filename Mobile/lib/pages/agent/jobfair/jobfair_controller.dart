@@ -38,7 +38,7 @@ class JobFairControlelr extends GetxController {
             case '2':
               job2s.add(ItemJobDetail.fromJson(e));
               break;
-            case '3':
+            case '0':
               job3s.add(ItemJobDetail.fromJson(e));
               break;
             default:
@@ -62,6 +62,22 @@ class JobFairControlelr extends GetxController {
         getJobs();
         companyController.getJobs();
       } else if(response.statusCode == 404) {
+        print('404 not found');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> updateStatusJob(int job_id) async {
+    try {
+      var headers = {'Content-Type' : 'application/json'};
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.jobApi.UPDATE_STATUS_JOB+job_id.toString());
+      final response = await http.put(url,headers: headers);
+      if(response.statusCode == 200) {
+        getJobs();
+        companyController.getJobs();
+      } else {
         print('404 not found');
       }
     } catch (e) {
