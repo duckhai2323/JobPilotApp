@@ -25,5 +25,5 @@ class AppRoutes {
   static const ADD_JOB = '/agent/addjob';
   static const JOB_DETAIL = '/agent/jobdetail';
   static const ADDEXPERIENCE = '/pages/add_experience';
-  static const ADDACADEMICLEVER = '/pages/add_academic_lever';
+  static const EDIT_JOB = '/agent/editjob';
 }

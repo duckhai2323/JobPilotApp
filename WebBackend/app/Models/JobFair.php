@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Interview extends Model
+class JobFair extends Model
 {
     use HasFactory;
 
-     protected $table = 'interviews';
-     protected $primaryKey = 'interview_id';
+     protected $table = 'jobfairs';
+
+      protected $primaryKey = 'job_fair_id';
 
      /**
      * The attributes that are mass assignable.
@@ -18,10 +19,10 @@ class Interview extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'candidate_id',
         'job_id',
-        'interview_type',
-        'index',
-        'interview_date',
+        'company_id',
         'status',
+        'offer'
     ];
 }

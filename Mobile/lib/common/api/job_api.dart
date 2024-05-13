@@ -3,4 +3,6 @@ class JobApi {
   final String ADD_JOB_DETAIL = 'job_detail/create';
   final String DELETE_JOB = 'job_detail/';
   final String JOB_DETAIL = 'job_detail/';
+  final String UPDATE_JOB = 'job_detail/';
+  final String UPDATE_STATUS_JOB = 'job_detail/';
 }
