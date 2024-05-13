@@ -15,12 +15,18 @@ import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topc
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_view.dart';
 import 'package:jobpilot_app/pages/attractivejob/attractivejob_binding.dart';
 import 'package:jobpilot_app/pages/attractivejob/attractivejob_view.dart';
+import 'package:jobpilot_app/pages/certificate/certificate_binding.dart';
+import 'package:jobpilot_app/pages/certificate/certificate_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
 import 'package:jobpilot_app/pages/companies/companies_view.dart';
+import 'package:jobpilot_app/pages/info/info_binding.dart';
+import 'package:jobpilot_app/pages/info/info_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job.binding.dart';
 import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job_view.dart';
+import 'package:jobpilot_app/pages/skill/skill_binding.dart';
+import 'package:jobpilot_app/pages/skill/skill_view.dart';
 import 'package:jobpilot_app/pages/suitablejob/suitablejob_binding.dart';
 import 'package:jobpilot_app/pages/suitablejob/suitablejob_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_binding.dart';
@@ -93,6 +99,24 @@ class AppPages {
       name: AppRoutes.ATTRACTIVE_JOB,
       page: ()=>AttractiveJobPage(),
       binding: AttractiveJobBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.SKILL,
+      page: ()=>SkillPage(),
+      binding: SkillBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.CERTIFICATE,
+      page: ()=>CertificatePage(),
+      binding: CertificateBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.INFO,
+      page: ()=>InfoPage(),
+      binding: InfoBinding(),
     ),
 
     GetPage(
