@@ -84,4 +84,24 @@ class JobDetailController extends Controller
             return response()->json(['message' =>'job_detail not found'],404);
         }
     }
+
+    public function updateJobDetail(Request $request, $job_id) {
+        $request->validate([
+            'job_title' => 'required|string|max:255',
+            'job_details' => 'required|string|max:500',
+            'job_require' => 'required|string|max:500',
+            'job_benefit' => 'required|string|max:500',
+            'salary' => 'required|string|max:255',
+            'job_location' => 'required|string|max:255',
+            'candidate_number' => 'required|numeric',
+            'experience_require' => 'required|string|max:255',
+            'work_form' => 'required|string|max:255',
+            'deadline_job' => 'required|string|max:255',
+        ]);
+        
+        $data = $request->all();
+        $job = DB::table('job_details')->where('job_details.job_id', $job_id)
+                        ->update($data);
+        return response()->json(['message' => 'job_detail update successfully'], 200);
+    }
 }

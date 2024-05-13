@@ -1,6 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_binding.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_view.dart';
+import 'package:jobpilot_app/pages/agent/edit_job/edit_job_binding.dart';
+import 'package:jobpilot_app/pages/agent/edit_job/edit_job_view.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_binding.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_view.dart';
 import 'package:jobpilot_app/pages/agent/job_detail/job_detail_binding.dart';
@@ -145,6 +147,12 @@ class AppPages {
         name: AppRoutes.JOB_DETAIL,
         binding: JobDetailAgentBinding(),
         page: ()=>JobDetailAgentPage()
+    ),
+
+    GetPage(
+      name: AppRoutes.EDIT_JOB,
+      page: ()=>EditJobPage(),
+      binding: EditJobBinding()
     )
   ];
 }

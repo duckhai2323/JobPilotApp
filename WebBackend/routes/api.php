@@ -22,6 +22,9 @@ Route::get('/jobs',[JobDetailController::class,'getListJobs']);
 Route::get('/jobs/{company_id}',[JobDetailController::class,'getListJobsOfCompany']);
 Route::delete('/job_detail/{job_id}',[JobDetailController::class,'deleteJobDetail']);
 Route::get('/job_detail/{job_id}',[JobDetailController::class, 'getJobDetail']);
+Route::put('/job_detail/{job_id}',[JobDetailController::class, 'updateJobDetail']);
 
 Route::post('/interview/create',[InterviewController::class,'addInterview']);
 Route::get('/interviews/{job_id}',[InterviewController::class,'getInterviews']);
+Route::put('/interviews/update/{interview_id}',[InterviewController::class,'updateInterview']);
+Route::delete('/interviews/delete/{interview_id}',[InterviewController::class,'deleteInterview']);
