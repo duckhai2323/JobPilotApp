@@ -16,10 +16,14 @@ class BlogItem extends GetView<HomeController> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        // border: Border.all(
-        //   color: AppColors.primaryColor1, // Màu của viền
-        //   width: 1, // Độ dày của viền
-        // ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 0.2,
+              blurRadius: 1,
+              offset: Offset(0,1),
+            )
+          ]
       ),
       child: Column(
         mainAxisSize: MainAxisSize.max,

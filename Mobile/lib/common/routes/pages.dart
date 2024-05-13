@@ -115,6 +115,18 @@ class AppPages {
       page: ()=>ApplyJobPage(),
       binding: ApplyJobBinding(),
     ),
+
+    GetPage(
+      name: AppRoutes.CVMANAGE,
+      page: ()=>CVManage(),
+      binding: CVManageBinding(),
+    ),
+
+    GetPage(
+        name: AppRoutes.CVPROFILE,
+        page: ()=>TopCVProfilePage(),
+        binding: TopCVProfileBindings()
+    ),
     
     //Agent
     GetPage(
@@ -127,18 +139,6 @@ class AppPages {
       name: AppRoutes.ADD_JOB,
       page: ()=>AddJobView(),
       binding: AddJobBinding(),
-    ),
-
-    GetPage(
-      name: AppRoutes.CVMANAGE, 
-      page: ()=>CVManage(),
-      binding: CVManageBinding(),
-    ),
-
-    GetPage(
-      name: AppRoutes.CVPROFILE,
-      page: ()=>TopCVProfilePage(),
-      binding: TopCVProfileBindings()      
     ),
 
     GetPage(

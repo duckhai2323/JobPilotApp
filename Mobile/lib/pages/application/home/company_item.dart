@@ -24,10 +24,6 @@ class CompanyItem extends GetView<HomeController> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(9),
-        // border: Border.all(
-        //   color: AppColors.primaryColor1, // Màu của viền
-        //   width: 1, // Độ dày của viền
-        // ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.3),
@@ -75,7 +71,7 @@ class CompanyItem extends GetView<HomeController> {
 
           Text(
             description,
-            maxLines: 2,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
                 fontSize: 14,
