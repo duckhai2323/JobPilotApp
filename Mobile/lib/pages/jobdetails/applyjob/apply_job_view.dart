@@ -135,7 +135,7 @@ class ApplyJobPage extends GetView<ApplyJobController> {
                         text: TextSpan(
                           text: "JobPilot khuyên tất cả các bạn hãy luôn cẩn trọng trong quá trình tìm việc và chủ động nghiên cứu về thông tin công ty, vị trí việc làm trước khi ứng tuyển. Ứng viên cần có trách nghiệm với hành vi ứng tuyển của mình. Nếu bạn gặp phải tin tuyển dụng hoặc nhận được liên lạc đáng ngờ của nhà tuyển dụng, hãy báo cáo ngay cho JobPilot qua email hỗ trợ ",
                           style: TextStyle(
-                            fontSize: 16.0,
+                            fontSize: 16.0, 
                             color: Colors.black,
                             fontFamily: "Roboto",
                             

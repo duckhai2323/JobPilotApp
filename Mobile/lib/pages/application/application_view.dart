@@ -7,6 +7,7 @@ import 'package:jobpilot_app/pages/agent/company_infor/company_infor_view.dart';
 import 'package:jobpilot_app/pages/agent/home/home_view.dart';
 import 'package:jobpilot_app/pages/agent/jobfair/jobfair_view.dart';
 import 'package:jobpilot_app/pages/agent/profile/profile_view.dart';
+import 'package:jobpilot_app/pages/application/interview/interview_view.dart';
 import 'package:jobpilot_app/pages/application/message/message_view.dart';
 import 'package:jobpilot_app/pages/application/profile/profile_view.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_view.dart';
@@ -33,7 +34,7 @@ class ApplicationPage extends GetView<ApplicationController>{
           controller.position.value == 'candidate'? HomePage():AgentHomePage(),
           controller.position.value == 'candidate'? TopCVProfilePage():CompanyInforPage(),
           controller.position.value == 'candidate'? MessagePage():JobFairPage(),
-          controller.position.value == 'candidate'? Center(child: Text('INTERVIEW'),):MessagePage(),
+          controller.position.value == 'candidate'? InterviewPage():MessagePage(),
           controller.position.value == 'candidate'? ProfilePage():AgentProfilePage(),
         ],
       ),
