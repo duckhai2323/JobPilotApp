@@ -111,7 +111,11 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    InkWell(
+                      onTap: () {
+                        controller.HandleEditJobPage(itemJobDetail.job_id??0);
+                      },
+                      child: Container(
                       width: (MediaQuery.of(context).size.width-200)/2,
                       height: 34,
                       decoration: BoxDecoration(
@@ -135,6 +139,7 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
                           ),
                         ],
                       ),
+                    ),
                     ),
                     Container(
                       width: (MediaQuery.of(context).size.width-200)/2,
