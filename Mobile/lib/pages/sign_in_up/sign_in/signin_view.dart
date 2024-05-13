@@ -214,8 +214,8 @@ class SignInPage extends GetView<SignInController> {
                 ),
                 InkWell(
                   onTap: () {
-                    controller.signInCandidate(context);
-                    //Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':'1','user_image':'','user_name':'Vu Hung','user_position':'candidate'});
+                    //controller.signInCandidate(context);
+                    Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':'1','user_image':'','user_name':'Vu Hung','user_position':'candidate'});
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
