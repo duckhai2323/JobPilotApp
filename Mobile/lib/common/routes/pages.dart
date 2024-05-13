@@ -1,4 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:jobpilot_app/pages/add_academic_lever/add_academic_binding.dart';
+import 'package:jobpilot_app/pages/add_academic_lever/add_academic_view.dart';
+import 'package:jobpilot_app/pages/add_experience/add_experience_binding.dart';
+import 'package:jobpilot_app/pages/add_experience/add_experience_view.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_binding.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_view.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_binding.dart';
@@ -169,6 +173,17 @@ class AppPages {
         name: AppRoutes.JOB_DETAIL,
         binding: JobDetailAgentBinding(),
         page: ()=>JobDetailAgentPage()
+    ),
+
+    GetPage(
+        name: AppRoutes.ADDEXPERIENCE,
+        binding: AddExperienceBinding(),
+        page: ()=>AddExperiencePage()
+    ),
+    GetPage(
+        name: AppRoutes.ADDACADEMICLEVER,
+        binding: AddAcademicBinding(),
+        page: ()=>AddAcademicPage()
     )
   ];
 }

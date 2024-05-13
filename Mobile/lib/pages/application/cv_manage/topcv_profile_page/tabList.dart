@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/academic_lever_component.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/experience_component.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/info.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/skill&certificate.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_controller.dart';
@@ -99,11 +101,10 @@ class TabList extends GetView<TopCVProfileController> {
                 child: TabBarView(
                   children: [
                     Text("Giới thiệu"),
-                    Text("Kinh Nghiệm"),
-                    Text("Học vấn"),
+                    Experience(),
+                    AcademicLever(),
                     SkillCertificate(),
                     Info(),
-                    Text("Khác")
                   ],
                 ),
               )

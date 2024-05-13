@@ -14,7 +14,6 @@ import 'application_controller.dart';
 import 'home/home_controller.dart';
 
 class ApplicationBindings extends Bindings {
-
   @override
   void dependencies() {
     Get.put(ApplicationController());
@@ -22,7 +21,7 @@ class ApplicationBindings extends Bindings {
     Get.lazyPut(() => MessageController());
     Get.lazyPut(() => ProfileController());
     Get.lazyPut(() => TopCVProfileController());
-    
+
     Get.put(CompanyInforController());
     Get.lazyPut(() => AgentHomeController());
     Get.lazyPut(() => AgentProfileController());
