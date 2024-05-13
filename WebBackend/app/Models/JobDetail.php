@@ -11,6 +11,9 @@ class JobDetail extends Model
 
     protected $table = 'job_details';
 
+    protected $primaryKey = 'job_id';
+
+
     protected $fillable = [
         'company_id',
         'job_title',
@@ -24,6 +27,10 @@ class JobDetail extends Model
         'work_form',
         'deadline_job',
         'status',
+    ];
+
+    protected $casts = [
+    'status' => 'integer'  
     ];
 }
 

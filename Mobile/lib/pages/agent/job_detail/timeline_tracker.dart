@@ -11,12 +11,13 @@ class TimeLineInterview extends GetView<JobDetailAgentController> {
   final bool isPast;
   final String title;
   final String date;
-  TimeLineInterview(this.isFirst,this.isLast,this.isPast,this.title,this.date);
+  final int index;
+  TimeLineInterview(this.isFirst,this.isLast,this.isPast,this.title,this.date,this.index);
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 30),
-      height: 115,
+      height: 135,
       child: TimelineTile(
         isFirst: isFirst,
         isLast: isLast,
@@ -61,7 +62,7 @@ class TimeLineInterview extends GetView<JobDetailAgentController> {
             ),
 
             Container(
-              height: 50,
+              height: 70,
               margin: const EdgeInsets.only(right: 50,left: 25),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -85,19 +86,42 @@ class TimeLineInterview extends GetView<JobDetailAgentController> {
                 ),
               ),
               child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(width: 10,),
-                    Icon(Icons.calendar_month_rounded,size: 28,color: isPast ? AppColors.primaryColor1:AppColors.placeHolderColor,),
-                    const SizedBox(width: 10,),
-                    Text(
-                      date,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                        color:isPast ? AppColors.primaryColor1:AppColors.placeHolderColor,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const SizedBox(width: 10,),
+                        Icon(Icons.calendar_month_rounded,size: 28,color: isPast ? AppColors.primaryColor1:AppColors.placeHolderColor,),
+                        const SizedBox(width: 10,),
+                        Text(
+                          date,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color:isPast ? AppColors.primaryColor1:AppColors.placeHolderColor,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const SizedBox(width: 10,),
+                        Icon(Icons.auto_graph,size: 28,color: isPast ? AppColors.primaryColor1:AppColors.placeHolderColor,),
+                        const SizedBox(width: 10,),
+                        Text(
+                          index == controller.jobDetails[0].status?'Đang diễn ra':(isPast?'Đã kết thúc':'Chưa diễn ra'),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color:isPast ? AppColors.primaryColor1:AppColors.placeHolderColor,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

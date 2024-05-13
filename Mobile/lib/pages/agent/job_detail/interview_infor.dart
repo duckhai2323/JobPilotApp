@@ -22,7 +22,8 @@ class InterviewInfor extends GetView<JobDetailAgentController> {
                 index == controller.interviews.length-1?true:false,
                 controller.interviews[index].status==1?true:false,
                 controller.interviews[index].interview_type,
-                controller.interviews[index].interview_date
+                controller.interviews[index].interview_date,
+                controller.interviews[index].index
             );
           },
         ),
