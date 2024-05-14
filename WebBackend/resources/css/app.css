@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .green-linear {
+        background-image: linear-gradient(to right, #34bd62 0%, #29c0a4 100%);
+    }
+
+    .dark-green-linear {
+        background-image: linear-gradient(to right, #0ba360 0%, #2e8f70 100%);
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-green-200;
+        border-radius: 50px;
+    }
+}
