@@ -183,7 +183,7 @@ class AppPages {
         page: ()=>AddExperiencePage()
     ),
     GetPage(
-        name: AppRoutes.ADDACADEMICLEVER,
+        name: AppRoutes.ADDEXPERIENCE,
         binding: AddAcademicBinding(),
         page: ()=>AddAcademicPage()
      ),
