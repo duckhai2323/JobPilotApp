@@ -125,7 +125,7 @@ class JobDetailsController extends GetxController with GetSingleTickerProviderSt
   }
 
   void HandleApplyJobPage () {
-    Get.toNamed(AppRoutes.APPLYJOB);
+    Get.toNamed(AppRoutes.APPLYJOB,parameters: {'job_id':job_id.value,'company_id':company_id.value});
   }
 
   @override

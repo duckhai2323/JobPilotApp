@@ -6,7 +6,7 @@ class TopCVProfileController extends GetxController {
     Get.toNamed(AppRoutes.ADDEXPERIENCE);
   }
   void HandleAddAcademicLeverPage() {
-    Get.toNamed(AppRoutes.ADDACADEMICLEVER);
+    Get.toNamed(AppRoutes.ADDEXPERIENCE);
   }
    void HandleSkillPage () {
     Get.toNamed(AppRoutes.SKILL);
