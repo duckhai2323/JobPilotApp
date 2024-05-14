@@ -38,7 +38,7 @@ class JobDetailController extends Controller
             'deadline_job' => $data['deadline_job'],
         ]);
 
-        return response()->json(['job_id' => $jobdetail->id], 200);
+        return response()->json(['job_id' => $jobdetail->job_id], 200);
     }
 
     public function getListJobs () {
