@@ -15,6 +15,7 @@ class HomeController extends GetxController {
   List<Company> listCompanies = <Company>[].obs;
   List<ItemJobDetail> listJobs = <ItemJobDetail>[].obs;
   List<String> listJobIdSave = <String>[].obs;
+  List<String> listJobIdApply = <String>[].obs;
 
   @override
   onInit(){
@@ -22,6 +23,7 @@ class HomeController extends GetxController {
     getListSaveJobId();
     getListJobs();
     getListCompanies();
+    getListApplyJobId();
   }
   Future<void> getListCompanies() async {
     try {
@@ -58,6 +60,23 @@ class HomeController extends GetxController {
     }
   }
 
+  Future<void> getListApplyJobId() async {
+    try {
+      var headers = {'Content-Type' : 'application/json'};
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.jobFairApi.GET_LIST_JOB_ID+ApplicationController.user_id);
+      final response = await http.get(url,headers: headers);
+      if(response.statusCode == 200) {
+        listJobIdApply.clear();
+        listJobIdApply.addAll((jsonDecode(response.body) as List).map((e) => e['job_id'].toString()).toList());
+        return;
+      } else if(response.statusCode == 404) {
+        print('404 not found');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future<void> getListJobs() async {
     try {
       var headers = {'Content-Type' : 'application/json'};
@@ -84,7 +103,9 @@ class HomeController extends GetxController {
   }
 
   void HandleJobdetails (int job_id,int company_id) {
-    Get.toNamed(AppRoutes.JOBDETAILS,parameters: {'job_id':job_id.toString(),'company_id':company_id.toString()});
+    bool apply = listJobIdApply.contains(job_id.toString());
+    bool save = listJobIdSave.contains(job_id.toString());
+    Get.toNamed(AppRoutes.JOBDETAILS,parameters: {'job_id':job_id.toString(),'company_id':company_id.toString(),'apply':apply.toString(),'save':save.toString()});
   }
 
   Future<void> updateSaveJob(int index) async{

@@ -37,6 +37,8 @@ Route::delete('/interviews/delete/{interview_id}',[InterviewController::class,'d
 Route::post('/jobfair/apply',[JobFairController::class,'applyJobFair']);
 Route::get('/jobfair/candidates/{job_id}',[JobFairController::class,'getCandidates']);
 Route::put('/jobfair/{job_fair_id}',[JobFairController::class,'updateStatusJobFair']);
+Route::get('/jobfair/{candidate_id}',[JobFairController::class,'getListJobIdApply']);
+
 
 Route::post('/savejob/create',[SaveJobController::class,'saveJob']);
 Route::delete('/savejob/{job_id}/{candidate_id}',[SaveJobController::class,'deleteSaveJob']);

@@ -9,6 +9,8 @@ import 'package:http/http.dart' as http;
 import '../../common/api/api_backend.dart';
 import '../../common/company.dart';
 import '../../common/item_object/item_job_detail.dart';
+import '../application/application_controller.dart';
+import '../application/home/home_controller.dart';
 
 class JobDetailsController extends GetxController with GetSingleTickerProviderStateMixin{
   late ScrollController scrollController;
@@ -20,13 +22,18 @@ class JobDetailsController extends GetxController with GetSingleTickerProviderSt
   List<JobDetail> jobDetails = <JobDetail>[].obs;
   final job_id = ''.obs;
   final company_id = ''.obs;
+  final apply = ''.obs;
+  final save = ''.obs;
   late TabController tabController;
+  var homController = Get.find<HomeController>();
 
   @override
   onInit(){
     super.onInit();
     job_id.value = Get.parameters['job_id']??"";
     company_id.value = Get.parameters['company_id']??"";
+    apply.value = Get.parameters['apply']??"";
+    save.value = Get.parameters['save']??"";
     getJobDetail();
     getCompany();
     getJobs();
@@ -93,6 +100,25 @@ class JobDetailsController extends GetxController with GetSingleTickerProviderSt
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void> updateSaveJob() async{
+    var headers = {'Content-Type' : 'application/json'};
+
+    if(bool.parse(save.value)) {
+      var url = Uri.parse('${ApiEndPoints.baseUrl}${ApiEndPoints.saveJobApi.DELETE_SAVE_JOB}${job_id.value}/${ApplicationController.user_id}');
+      final response = await http.delete(url,headers: headers);
+      save.value = 'false';
+    } else {
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.saveJobApi.SAVE_JOB);
+      Map body = {
+        'candidate_id':ApplicationController.user_id,
+        'job_id':job_id.value
+      };
+      final response = await http.post(url,body: jsonEncode(body),headers: headers);
+      save.value = 'true';
+    }
+    homController.getListSaveJobId();
   }
 
 

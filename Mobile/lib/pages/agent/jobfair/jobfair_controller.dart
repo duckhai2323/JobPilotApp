@@ -35,13 +35,11 @@ class JobFairControlelr extends GetxController {
             case '1':
               job1s.add(ItemJobDetail.fromJson(e));
               break;
-            case '2':
-              job2s.add(ItemJobDetail.fromJson(e));
-              break;
             case '0':
               job3s.add(ItemJobDetail.fromJson(e));
               break;
             default:
+              job2s.add(ItemJobDetail.fromJson(e));
               break;
           }
         });
