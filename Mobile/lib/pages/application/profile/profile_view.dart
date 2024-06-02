@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/pages/application/profile/item_grid.dart';
 import 'package:jobpilot_app/pages/application/profile/item_setting.dart';
@@ -293,7 +294,7 @@ class ProfilePage extends GetView<ProfileController> {
                       }
                   ),
                   InkWell(
-                      child: ItemGrid(Icon(Icons.bookmarks_rounded,size: 30,color: AppColors.primaryColor1,),'Việc làm đã lưu', '13'),
+                      child: Obx(()=> ItemGrid(Icon(Icons.bookmarks_rounded,size: 30,color: AppColors.primaryColor1,),'Việc làm đã lưu', controller.homController.listJobIdSave.length.toString())),
                       onTap: () {
                         controller.HandleJobSavedPage();
                       }

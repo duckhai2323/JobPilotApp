@@ -8,6 +8,7 @@ import 'package:jobpilot_app/pages/suitablejob/suitablejob_controller.dart';
 import 'package:jobpilot_app/share/jobmain_item.dart';
 
 import '../../common/colors/colors.dart';
+import 'item_job.dart';
 
 class SuitablePage extends GetView<SuitableController> {
 
@@ -37,23 +38,33 @@ class SuitablePage extends GetView<SuitableController> {
           ),
         ),
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.only(top: 20),
-        itemCount: 5,
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, index) {
-          return   JobMainItem(
-           context,
-           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6XvpvndsBxz91yLchUbmiHEGFl9r7XOY2dswC1bLikQ&s',
-           'Công Ty Công Nghệ Viên Thông Viettel',
-           'Tuyển Lập trình Viên Cyber Sercurity',
-           'Hà Nội',
-           '2 năm',
-           '20-25 triệu',
-           false
-          );
-        },
+      body: Obx(
+          ()=> ListView.builder(
+          padding: EdgeInsets.only(top: 20),
+          itemCount: controller.listJobs.length,
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, index) {
+            return   InkWell(
+              onTap: (){
+                controller.HandleJobdetails(controller.listJobs[index].job_id??0,controller.listJobs[index].company_id??0);
+              },
+              child: Obx(
+                  ()=> JobSuitItem(
+                    context,
+                    controller.listJobs[index].company_image??"",
+                    controller.listJobs[index].company_name??"",
+                    controller.listJobs[index].job_title??"",
+                    controller.listJobs[index].job_location??"",
+                    controller.listJobs[index].experience_require??"",
+                    controller.listJobs[index].salary??"",
+                    controller.listJobIdSave.isNotEmpty? controller.listJobIdSave.contains(controller.listJobs[index].job_id.toString()):false,
+                    index
+                ),
+              ),
+            );
+          },
+        ),
       ),
      );
   }

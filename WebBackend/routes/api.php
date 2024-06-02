@@ -7,6 +7,8 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\JobDetailController;
 use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\JobFairController;
+use App\Http\Controllers\SaveJobController;
+
 
 Route::post('/candidate/register',[CandidateController::class, 'registerCandidateApi']);
 Route::post('/candidate/signin',[CandidateController::class,'signInCandidateApi']);
@@ -24,6 +26,7 @@ Route::get('/jobs',[JobDetailController::class,'getListJobs']);
 Route::get('/jobs/{company_id}',[JobDetailController::class,'getListJobsOfCompany']);
 Route::delete('/job_detail/{job_id}',[JobDetailController::class,'deleteJobDetail']);
 Route::get('/job_detail/{job_id}',[JobDetailController::class, 'getJobDetail']);
+Route::put('/job_detail_status/{job_id}',[JobDetailController::class, 'updateStatusJob']);
 Route::put('/job_detail/{job_id}',[JobDetailController::class, 'updateJobDetail']);
 
 Route::post('/interview/create',[InterviewController::class,'addInterview']);
@@ -34,3 +37,11 @@ Route::delete('/interviews/delete/{interview_id}',[InterviewController::class,'d
 Route::post('/jobfair/apply',[JobFairController::class,'applyJobFair']);
 Route::get('/jobfair/candidates/{job_id}',[JobFairController::class,'getCandidates']);
 Route::put('/jobfair/{job_fair_id}',[JobFairController::class,'updateStatusJobFair']);
+
+Route::post('/savejob/create',[SaveJobController::class,'saveJob']);
+Route::delete('/savejob/{job_id}/{candidate_id}',[SaveJobController::class,'deleteSaveJob']);
+Route::get('/savejob/{candidate_id}',[SaveJobController::class,'getListSave']);
+Route::delete('/savejob/{candidate_id}',[SaveJobController::class,'deleteAllJobs']);
+Route::get('/savejob_job_id/{candidate_id}',[SaveJobController::class,'getListIdJob']);
+
+

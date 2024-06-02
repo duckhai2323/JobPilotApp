@@ -8,6 +8,7 @@ import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/application/home/blog_item.dart';
 import 'package:jobpilot_app/pages/application/home/company_item.dart';
 import 'package:jobpilot_app/pages/application/home/home_controller.dart';
+import 'package:jobpilot_app/pages/application/home/item_job.dart';
 import 'package:jobpilot_app/share/jobmain_item.dart';
 import 'package:jobpilot_app/share/jobsub_item.dart';
 
@@ -161,15 +162,18 @@ class HomePage extends GetView<HomeController> {
           Obx(() => SliverList(
             delegate: SliverChildBuilderDelegate(
                   (_, int index) {
-                return InkWell(onTap: () {controller.HandleJobdetails(controller.listJobs[index].job_id??0,controller.listJobs[index].company_id??0);},child: JobMainItem(
-                  context,
-                  controller.listJobs[index].company_image,
-                  controller.listJobs[index].company_name,
-                  controller.listJobs[index].job_title,
-                  controller.listJobs[index].job_location,
-                  controller.listJobs[index].experience_require,
-                  controller.listJobs[index].salary,
-                  false
+                return InkWell(onTap: () {controller.HandleJobdetails(controller.listJobs[index].job_id??0,controller.listJobs[index].company_id??0);},child: Obx(
+                    ()=> JobItemHome(
+                    context,
+                    controller.listJobs[index].company_image??"",
+                    controller.listJobs[index].company_name??"",
+                    controller.listJobs[index].job_title??"",
+                    controller.listJobs[index].job_location??"",
+                    controller.listJobs[index].experience_require??"",
+                    controller.listJobs[index].salary??"",
+                    controller.listJobIdSave.isNotEmpty? controller.listJobIdSave.contains(controller.listJobs[index].job_id.toString()):false,
+                    index
+                  ),
                 ));
               },
               childCount: controller.listJobs.length>3?3:controller.listJobs.length,
