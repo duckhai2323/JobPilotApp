@@ -6,12 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobpilot_app/pages/application/application_controller.dart';
 import 'package:http/http.dart' as http;
+import 'package:jobpilot_app/pages/jobdetails/jobdetails_controller.dart';
 import '../../../common/api/api_backend.dart';
 import '../../../common/colors/colors.dart';
+import '../../application/home/home_controller.dart';
 
 class ApplyJobController extends GetxController {
   final job_id = ''.obs;
   final company_id = ''.obs;
+  var homController = Get.find<HomeController>();
+  var jobDetailController = Get.find<JobDetailsController>();
+
+
   @override
   onInit() {
     super.onInit();
@@ -36,6 +42,8 @@ class ApplyJobController extends GetxController {
       if(response.statusCode == 200) {
         await Future.delayed(const Duration(seconds: 1));
         Navigator.pop(context);
+        homController.getListApplyJobId();
+        jobDetailController.apply.value = 'true';
         Get.back();
       } else {
         print('404 not found');

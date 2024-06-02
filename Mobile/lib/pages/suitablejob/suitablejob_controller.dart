@@ -22,7 +22,9 @@ class SuitableController extends GetxController{
   }
 
   void HandleJobdetails (int job_id,int company_id) {
-    Get.toNamed(AppRoutes.JOBDETAILS,parameters: {'job_id':job_id.toString(),'company_id':company_id.toString()});
+    bool apply = homController.listJobIdApply.contains(job_id.toString());
+    bool save = listJobIdSave.contains(job_id.toString());
+    Get.toNamed(AppRoutes.JOBDETAILS,parameters: {'job_id':job_id.toString(),'company_id':company_id.toString(),'apply':apply.toString(),'save':save.toString()});
   }
 
   Future<void> getListSaveJobId() async {

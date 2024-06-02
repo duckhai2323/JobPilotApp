@@ -52,4 +52,12 @@ class JobFairController extends Controller
               return response()->json(['message' => 'Jobfair not found'], 404);
         }
     }
+
+    public function getListJobIdApply($candidate_id) {
+        $listJobId = DB::table('jobfairs')
+                       ->where('jobfairs.candidate_id','=',$candidate_id)
+                       ->select('jobfairs.job_id')
+                       ->get();
+        return  response() -> json($listJobId,200);
+    }
 }
