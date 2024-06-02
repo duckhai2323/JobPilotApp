@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
+import 'package:jobpilot_app/pages/jobsaved/item_job.dart';
 import 'package:jobpilot_app/pages/jobsaved/jobsaved_controller.dart';
 import 'package:jobpilot_app/share/jobmain_item.dart';
 
@@ -124,7 +127,10 @@ class JobSavedPage extends GetView<JobSavedController> {
                                       borderRadius: BorderRadius.circular(5),
                                     ),
                                   ),
-                                  onPressed: () => Navigator.pop(context, 'Bỏ lưu'),
+                                  onPressed: (){
+                                    controller.deleteAllJob();
+                                    Navigator.pop(context, 'Bỏ lưu');
+                                  },
                                   child: const Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -160,43 +166,48 @@ class JobSavedPage extends GetView<JobSavedController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    RichText(
-                      text: const TextSpan(
-                        text: '13 ',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.primaryColor1,
-                          fontWeight: FontWeight.bold,
+                    Obx(
+                    ()=> RichText(
+                        text: TextSpan(
+                          text: controller.listJobs.length.toString(),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: AppColors.primaryColor1,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children: const <TextSpan>[
+                            TextSpan(text: ' việc làm', style: TextStyle(color: AppColors.placeHolderColor,)),
+                          ],
                         ),
-                        children: <TextSpan>[
-                          TextSpan(text: 'việc làm', style: TextStyle(color: AppColors.placeHolderColor,)),
-                        ],
                       ),
                     ),
                   ],
                 ),
               )
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate((_, int index) {
-              return InkWell(
-                onTap: () {
-                  controller.HandleJobDetails();
-                },
-                child: JobMainItem(
-                  context,
-                  "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                  "Cty Phat Trien Phan Mem Sun Asterisk",
-                  'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                  'Ha Noi',
-                  '1 nam',
-                  '300\u0024',
-                  true
-                )
-              );
-            },
-            childCount: 13,
-            )
+          Obx(
+            ()=> SliverList(
+              delegate: SliverChildBuilderDelegate((_, int index) {
+                return InkWell(
+                  onTap: () {
+                    controller.HandleJobDetails();
+                  },
+                  child: JobSaveItem(
+                      context,
+                      controller.listJobs[index].company_image??"",
+                      controller.listJobs[index].company_name??"",
+                      controller.listJobs[index].job_title??"",
+                      controller.listJobs[index].job_location??"",
+                      controller.listJobs[index].experience_require??"",
+                      controller.listJobs[index].salary??"",
+                      true,
+                      index
+                  )
+                );
+              },
+              childCount: controller.listJobs.length,
+              )
+            ),
           )
         ]
       )

@@ -402,7 +402,7 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                             image: DecorationImage(
                               image: controller.companies.isNotEmpty
                                   ? NetworkImage(controller.companies[0].company_image ?? 'assets/images/sun.png') as ImageProvider<Object>
-                                  : AssetImage('assets/images/sun.png') as ImageProvider<Object>,
+                                  : AssetImage('assets/images/default_image.png') as ImageProvider<Object>,
                               fit: BoxFit.cover,
                             ),
                           ),

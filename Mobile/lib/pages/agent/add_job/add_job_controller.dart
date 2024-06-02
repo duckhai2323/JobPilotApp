@@ -129,7 +129,7 @@ class AddJobController extends GetxController {
       content: Row(
         children: [
           const CircularProgressIndicator(),
-          Container(margin: const EdgeInsets.only(left: 15),child:Text("Loading...", style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16, color: AppColors.primaryColor1), )),
+          Container(margin: const EdgeInsets.only(left: 15),child:const Text("Loading...", style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16, color: AppColors.primaryColor1), )),
         ],),
     );
     showDialog(
