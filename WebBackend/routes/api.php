@@ -38,6 +38,10 @@ Route::post('/jobfair/apply',[JobFairController::class,'applyJobFair']);
 Route::get('/jobfair/candidates/{job_id}',[JobFairController::class,'getCandidates']);
 Route::put('/jobfair/{job_fair_id}',[JobFairController::class,'updateStatusJobFair']);
 Route::get('/jobfair/{candidate_id}',[JobFairController::class,'getListJobIdApply']);
+Route::get('/jobfair/jobs/{candidate_id}',[JobFairController::class,'getListJobsApply']);
+Route::put('/jobfair/status_offer/{job_fair_id}',[JobFairController::class,'updateOfferStatus']);
+
+
 
 
 Route::post('/savejob/create',[SaveJobController::class,'saveJob']);

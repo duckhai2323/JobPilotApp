@@ -9,7 +9,9 @@ import 'package:jobpilot_app/pages/jobdetails/infor_company.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_controller.dart';
 import 'package:jobpilot_app/pages/jobdetails/relatedjobs_component.dart';
 
+import '../agent/job_detail/interview_infor.dart';
 import 'information_component.dart';
+import 'interview_infor.dart';
 
 class JobDetailsPage extends GetView<JobDetailsController> {
   @override
@@ -68,7 +70,7 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                   width: MediaQuery.of(context).size.width-85,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color:bool.parse(controller.apply.value)? AppColors.placeHolderColor: AppColors.primaryColor1,
+                    color:bool.parse(controller.apply.value)? AppColors.primaryColor1: AppColors.primaryColor1,
                   ),
                   child: Center(
                     child: Obx(
@@ -440,9 +442,9 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                     indicatorColor: AppColors.primaryColor1,
                     tabs: const [
                       Tab(child: Text('Thông tin'),),
-                      Tab(child: Text('Việc làm liên quan'),),
+                      Tab(child: Text('Lịch trình PV'),),
                       Tab(child: Text('Công ty'),),
-                      Tab(child: Text('Mức độ cạnh tranh'),),
+                      Tab(child: Text('Việc làm liên quan'),),
                     ],
                   ),
                 ),
@@ -454,9 +456,9 @@ class JobDetailsPage extends GetView<JobDetailsController> {
             controller: controller.tabController,
             children: [
               InforComponent(),
-              RelatedJobs(),
+              InterviewInforCandidateRole(),
               const InforCompany(),
-              const Center(child: Text('Mức độ cạnh tranh'),),
+              RelatedJobs(),
             ],
           ),
         ),

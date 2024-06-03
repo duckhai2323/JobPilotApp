@@ -197,6 +197,6 @@ class AppPages {
       name: AppRoutes.EDIT_JOB,
       page: ()=>EditJobPage(),
       binding: EditJobBinding()
-    )
+    ),
   ];
 }

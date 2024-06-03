@@ -8,6 +8,7 @@ import 'package:jobpilot_app/common/routes/names.dart';
 import 'package:http/http.dart' as http;
 import '../../common/api/api_backend.dart';
 import '../../common/company.dart';
+import '../../common/interview.dart';
 import '../../common/item_object/item_job_detail.dart';
 import '../application/application_controller.dart';
 import '../application/home/home_controller.dart';
@@ -26,6 +27,7 @@ class JobDetailsController extends GetxController with GetSingleTickerProviderSt
   final save = ''.obs;
   late TabController tabController;
   var homController = Get.find<HomeController>();
+  List<Interview> interviews = <Interview>[].obs;
 
   @override
   onInit(){
@@ -35,6 +37,7 @@ class JobDetailsController extends GetxController with GetSingleTickerProviderSt
     apply.value = Get.parameters['apply']??"";
     save.value = Get.parameters['save']??"";
     getJobDetail();
+    getInterviews();
     getCompany();
     getJobs();
     tabController = TabController(length: 4, vsync: this);
@@ -53,6 +56,23 @@ class JobDetailsController extends GetxController with GetSingleTickerProviderSt
       final response = await http.get(url,headers: headers);
       if(response.statusCode ==  200) {
         jobDetails.add(JobDetail.fromJson(jsonDecode(response.body)));
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+
+  Future<void> getInterviews() async {
+    interviews.clear();
+    try{
+      var headers = {'Content-TYpe':'application/json'};
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.interviewApi.INTERVIEW_GET+job_id.value);
+      final response = await http.get(url,headers: headers);
+      if(response.statusCode ==  200) {
+        interviews.add(Interview(int.parse(job_id.value), 'Đóng hồ sơ', 1, jobDetails[0].deadline_job, jobDetails[0].status >= 2 || jobDetails[0].status == 0?1:0));
+        interviews.add(Interview(int.parse(job_id.value), 'Vòng loại hồ sơ', 2, jobDetails[0].deadline_job, jobDetails[0].status >= 3 || jobDetails[0].status == 0?1:0));
+        interviews.addAll((jsonDecode(response.body) as List).map((e) => Interview.fromJson(e)).toList());
       }
     } catch (e) {
       print(e);
@@ -146,6 +166,7 @@ class JobDetailsController extends GetxController with GetSingleTickerProviderSt
    tabController.animateTo(0);
    scrollController.animateTo(0,curve: Curves.easeOut, duration: Duration(milliseconds: 100),);
    getJobDetail();
+   getInterviews();
    getCompany();
    getJobs();
   }

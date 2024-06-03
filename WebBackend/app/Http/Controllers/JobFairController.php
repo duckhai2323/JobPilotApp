@@ -60,4 +60,28 @@ class JobFairController extends Controller
                        ->get();
         return  response() -> json($listJobId,200);
     }
+
+    public function getListJobsApply($candidate_id) {
+        $listJobs = DB::table('jobfairs')
+                      ->where('jobfairs.candidate_id','=',$candidate_id)
+                      ->join('job_details','jobfairs.job_id','=','job_details.job_id')
+                      ->join('companies','jobfairs.company_id','=','companies.company_id')
+                      ->orderBy('job_details.updated_at', 'desc')
+                      ->select('companies.company_image','companies.company_name','companies.company_id','job_details.job_id','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job','job_details.status','job_details.candidate_number','jobfairs.status_offer','jobfairs.status AS jobfair_status','jobfairs.job_fair_id')
+                      ->get();
+
+        return response() -> json($listJobs,200);         
+    }
+
+    public function updateOfferStatus(Request $request,string $job_fair_id){
+        $data = $request->all();
+        $jobfair = JobFair::where('job_fair_id',$job_fair_id)
+                          ->first();
+        if($jobfair) {
+            $jobfair->update(['status_offer' => $data['status_offer']]);
+            return response()->json(['message' => 'Status updated successfully'], 200);
+        }else {
+              return response()->json(['message' => 'Jobfair not found'], 404);
+        }
+    }
 }
