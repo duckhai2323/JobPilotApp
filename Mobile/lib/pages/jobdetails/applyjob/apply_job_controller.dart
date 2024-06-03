@@ -43,6 +43,7 @@ class ApplyJobController extends GetxController {
         await Future.delayed(const Duration(seconds: 1));
         Navigator.pop(context);
         homController.getListApplyJobId();
+        homController.getListJobsApply();
         jobDetailController.apply.value = 'true';
         Get.back();
       } else {

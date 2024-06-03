@@ -9,6 +9,7 @@ import 'package:jobpilot_app/pages/application/application_controller.dart';
 
 import '../../../common/api/api_backend.dart';
 import '../../../common/company.dart';
+import '../../../common/item_object/item_job_apply.dart';
 
 class HomeController extends GetxController {
   PageController pageController = PageController(initialPage: 0);
@@ -16,6 +17,9 @@ class HomeController extends GetxController {
   List<ItemJobDetail> listJobs = <ItemJobDetail>[].obs;
   List<String> listJobIdSave = <String>[].obs;
   List<String> listJobIdApply = <String>[].obs;
+  List<ItemJobApply> job1s = <ItemJobApply>[].obs ;
+  List<ItemJobApply> job2s = <ItemJobApply>[].obs ;
+  List<ItemJobApply> job3s = <ItemJobApply>[].obs ;
 
   @override
   onInit(){
@@ -24,6 +28,7 @@ class HomeController extends GetxController {
     getListJobs();
     getListCompanies();
     getListApplyJobId();
+    getListJobsApply();
   }
   Future<void> getListCompanies() async {
     try {
@@ -68,6 +73,45 @@ class HomeController extends GetxController {
       if(response.statusCode == 200) {
         listJobIdApply.clear();
         listJobIdApply.addAll((jsonDecode(response.body) as List).map((e) => e['job_id'].toString()).toList());
+        return;
+      } else if(response.statusCode == 404) {
+        print('404 not found');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> getListJobsApply() async {
+    try {
+      var headers = {'Content-Type' : 'application/json'};
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.jobFairApi.GET_LIST_JOB_APPLY+ApplicationController.user_id);
+      final response = await http.get(url,headers: headers);
+      if(response.statusCode == 200) {
+        var data = jsonDecode(response.body) as List;
+        job1s.clear();
+        job2s.clear();
+        job3s.clear();
+        data.forEach((e) {
+          var status = e['jobfair_status'].toString();
+          switch (status) {
+            case '1':
+              if(e['status'].toString() == '0' && e['status_offer'].toString() == '1'){
+                job2s.add(ItemJobApply.fromJson(e));
+                break;
+              }
+              if(e['status'].toString() == '0' && e['status_offer'].toString() == '2'){
+                job3s.add(ItemJobApply.fromJson(e));
+                break;
+              }
+              job1s.add(ItemJobApply.fromJson(e));
+              break;
+            case '0':
+              job3s.add(ItemJobApply.fromJson(e));
+              break;
+          }
+        });
+        print(response.body);
         return;
       } else if(response.statusCode == 404) {
         print('404 not found');
