@@ -1,3 +1,4 @@
+import 'package:jobpilot_app/common/api/agent_api.dart';
 import 'package:jobpilot_app/common/api/auth_account.dart';
 import 'package:jobpilot_app/common/api/company_api.dart';
 import 'package:jobpilot_app/common/api/interview.dart';
@@ -13,4 +14,5 @@ class ApiEndPoints {
   static InterviewApi interviewApi  = InterviewApi();
   static JobFairApi jobFairApi = JobFairApi();
   static SaveJobApi saveJobApi = SaveJobApi();
+  static AgentApi agentApi = AgentApi();
 }

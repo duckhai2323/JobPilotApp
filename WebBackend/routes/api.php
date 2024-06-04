@@ -20,6 +20,8 @@ Route::put('/company/{company_id}',[CompanyController::class,'updateInforCompany
 
 Route::post('/agent/register',[AgentController::class,'registerAgentApi']);
 Route::post('/agent/signin',[AgentController::class,'signInAgentApi']);
+Route::get('/agents/{company_id}',[AgentController::class,'getListAgent']);
+
 
 Route::post('/job_detail/create',[JobDetailController::class, 'addJobDetail']);
 Route::get('/jobs',[JobDetailController::class,'getListJobs']);

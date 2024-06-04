@@ -115,21 +115,6 @@ class ApplicationController extends GetxController{
     ];
 
     bottomTabAgent = <BottomNavigationBarItem> [
-      const BottomNavigationBarItem(
-        icon: Icon(
-          CupertinoIcons.home,
-          color: Colors.grey,
-          size: 25,
-        ),
-
-        activeIcon: Icon(
-          CupertinoIcons.house_fill,
-          color: AppColors.primaryColor1,
-          size: 25,
-        ),
-        label: 'Home',
-        backgroundColor: Colors.transparent,
-      ),
 
       const BottomNavigationBarItem(
         icon: Icon(
@@ -160,6 +145,22 @@ class ApplicationController extends GetxController{
           size: 25,
         ),
         label: 'JobFair',
+        backgroundColor: Colors.transparent,
+      ),
+
+      const BottomNavigationBarItem(
+        icon: Icon(
+          CupertinoIcons.person_2,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          CupertinoIcons.person_2_fill,
+          color: AppColors.primaryColor1,
+          size: 25,
+        ),
+        label: 'Employee',
         backgroundColor: Colors.transparent,
       ),
 
