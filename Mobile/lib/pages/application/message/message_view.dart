@@ -21,33 +21,20 @@ class MessagePage extends GetView<MessageController> {
             height: 1,
           ),
         ),
-        title: Row(
+        title: const Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back_ios),
-                  iconSize: 23,
-                  color: AppColors.primaryColor1,
-                  onPressed: (){
-
-                  },
-                ),
-              ],
-            ),
-            const Text(
+            SizedBox(width: 10,height: 10,),
+            Text(
               'Message',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 color:  AppColors.primaryColor1,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               width: 30,
               height: 30,
             ),
