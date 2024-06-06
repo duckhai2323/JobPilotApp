@@ -9,6 +9,7 @@ class ApplicationController extends GetxController{
   static late String user_id;
   static late String user_image;
   static late String user_name;
+  static late String user_email;
   static late String company_id;
   final position = ''.obs;
   ApplicationController();
@@ -23,6 +24,7 @@ class ApplicationController extends GetxController{
     user_id = Get.parameters['user_id']??"";
     user_image = Get.parameters['user_image']??"";
     user_name = Get.parameters['user_name']??"";
+    user_email = Get.parameters['user_email']??"";
     company_id = Get.parameters['company_id']??"";
     position.value = Get.parameters['user_position']??"";
     bottomTab = <BottomNavigationBarItem> [

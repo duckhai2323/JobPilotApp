@@ -18,10 +18,7 @@ class CandidateList extends GetView<JobDetailAgentController> {
           itemCount: controller.listButton.length,
           itemBuilder: (BuildContext context, int index) {
             return ItemCandidate(
-                controller.candidates[index].candidate_name,
-                controller.candidates[index].candidate_email,
-                controller.candidates[index].candidate_image,
-                controller.candidates[index].status_offer??0,
+                controller.candidates[index],
                 controller.listButton[index]
             );
           },
