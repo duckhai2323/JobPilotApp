@@ -37,6 +37,10 @@ import 'package:jobpilot_app/pages/notification/notification_binding.dart';
 import 'package:jobpilot_app/pages/notification/notification_view.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_binding.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_view.dart';
+import '../../pages/agent/employee/employee_binding.dart';
+import '../../pages/agent/employee/employee_view.dart';
+import '../../pages/agent/add_employee/add_employee_binding.dart';
+import '../../pages/agent/add_employee/add_employee_view.dart';
 import '../../pages/jobapplied/jobapplied_binding.dart';
 import '../../pages/jobapplied/jobapplied_view.dart';
 import '../../pages/jobsaved/jobsaved_binding.dart';
@@ -198,5 +202,17 @@ class AppPages {
       page: ()=>EditJobPage(),
       binding: EditJobBinding()
     ),
+
+    GetPage(
+      name: AppRoutes.EMPLOYEE,
+      page: ()=>EmployeePage(),
+      binding: EmployeeBinding()
+    ),
+
+    GetPage(
+      name: AppRoutes.ADD_EMPLOYEE,
+      page: ()=>AddEmployeePage(),
+      binding: AddEmployeeBinding()
+    )
   ];
 }
