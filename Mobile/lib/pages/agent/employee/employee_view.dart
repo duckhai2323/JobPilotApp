@@ -42,7 +42,12 @@ class EmployeePage extends GetView<EmployeeController> {
                   borderRadius: BorderRadius.circular(5),
                   color: AppColors.primaryColor1
               ),
-              child: Icon(Icons.add,color: Colors.white,size: 20,),
+              child: InkWell(
+                onTap: () => {
+                  controller.handleAddEmployee()
+                },
+                child: Icon(Icons.add,color: Colors.white,size: 20,),
+              ),
             ),
           ],
         ),
