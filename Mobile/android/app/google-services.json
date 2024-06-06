@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "916646229332",
+    "project_id": "jobpilot-80666",
+    "storage_bucket": "jobpilot-80666.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916646229332:android:4fdf4aed079beb776e84c1",
+        "android_client_info": {
+          "package_name": "com.example.jobpilot_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0SU-UrT3-CpB9R7m84EzdjyxfFiLG3pw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
