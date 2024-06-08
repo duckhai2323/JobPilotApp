@@ -20,7 +20,7 @@ class AppRoutes {
   static const SKILL = '/candidate/skill';
   static const CERTIFICATE = '/candidate/certificate';
   static const INFO = '/candidate/info';
-  static const ADDACADEMICLEVER = '/candidate/info';
+  static const ADDACADEMICLEVER = '/pages/add_academic_lever';
 
   static const EDIT_COMPANY_INFOR = '/agent/editcompany';
   static const ADD_JOB = '/agent/addjob';

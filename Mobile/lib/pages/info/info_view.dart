@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/info/info_controller.dart';
 
@@ -94,7 +95,9 @@ class InfoPage extends GetView<InfoController> {
                ),
               Row(
               children: [
-                Container(
+                InkWell(onTap: () {
+                  controller.showDialogTime(context, "birth");
+                }, child: Container(
                   height: 45,
                   width: MediaQuery.of(context).size.width-30,
                   padding: const EdgeInsets.only(left: 15, right: 15),
@@ -102,27 +105,29 @@ class InfoPage extends GetView<InfoController> {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(5)
-                    ),
-                  child: TextField(
+                  ),
+                  child: TextFormField(
                     expands: true,
                     maxLines: null,
+                    controller: controller.textController1,
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.calendar_month),
-                      suffixIconConstraints: BoxConstraints(minWidth: 20),
-                      hintText:
-                        
+                        suffixIcon: InkWell(onTap: () {controller.showDialogTime(context, 'birth');},child: Icon(Icons.calendar_month)),
+                        suffixIconConstraints: BoxConstraints(minWidth: 20),
+                        hintText:
+
                         "Ngày sinh của bạn",
-                        
+
                         hintStyle: TextStyle(
-                          color: AppColors.placeHolderColor,
-                          fontSize: 14,
-                          overflow: TextOverflow.visible
-                          ),
+                            color: AppColors.placeHolderColor,
+                            fontSize: 14,
+                            overflow: TextOverflow.visible
+                        ),
                         border: InputBorder.none
-                    
+
                     ),
                   ),
-                ),
+                ),),
+
               ]
               ),
               SizedBox(height: 16),
@@ -152,27 +157,41 @@ class InfoPage extends GetView<InfoController> {
                        height: 10,
                        
                ),
-               Row(
+              Obx(() => Row(
              children: [
-                 Checkbox(
-                     value: controller.gender == 'Nam',
-                     onChanged: (value) {
-                     controller.updateGender(value ?? false ?'Nam' : '');
-                     },
-                     shape: CircleBorder(),
-                ),
-             Text('Nam'),
-             SizedBox(width: 80),
-             Checkbox(
-                 value: controller.gender == 'Nữ',
+               Radio(
+                 value: 1,
+                 groupValue: controller.value_.value,
                  onChanged: (value) {
-                 controller.updateGender(value ?? false ? 'Nữ' : '');
-                },
-                shape: CircleBorder(),
-             ),
-            Text('Nữ'),
+                   controller.ActionRadio(value!);
+                 },
+               ),
+               const Text(
+                 'Nam ',
+                 style: TextStyle(
+                     color: AppColors.placeHolderColor,
+                     fontSize: 16,
+                     fontFamily: "Roboto Regular",
+                     fontWeight: FontWeight.w600),
+               ),
+             SizedBox(width: 80),
+               Radio(
+                 value: 2,
+                 groupValue: controller.value_.value,
+                 onChanged: (value) {
+                   controller.ActionRadio(value!);
+                 },
+               ),
+               const Text(
+                 'Nữ',
+                 style: TextStyle(
+                     color: AppColors.placeHolderColor,
+                     fontSize: 16,
+                     fontFamily: "Roboto Regular",
+                     fontWeight: FontWeight.w600),
+               ),
            ],
-         ),
+         ),),
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 15),
               child: RichText(
@@ -207,9 +226,10 @@ class InfoPage extends GetView<InfoController> {
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(5)
                 ),
-              child: TextField(
+              child: TextFormField(
                 expands: true,
                 maxLines: null,
+                controller: controller.textController2,
                 decoration: InputDecoration(
                   
                   hintText:
@@ -256,9 +276,10 @@ class InfoPage extends GetView<InfoController> {
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(5)
                 ),
-              child: TextField(
+              child: TextFormField(
                 expands: true,
                 maxLines: null,
+                controller: controller.textController3,
                 decoration: InputDecoration(
                   hintText:
                       "VD: 09xxxxxxxxx",
@@ -303,9 +324,10 @@ class InfoPage extends GetView<InfoController> {
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(5)
                 ),
-              child: TextField(
+              child: TextFormField(
                 expands: true,
                 maxLines: null,
+                controller: controller.textController4,
                 decoration: InputDecoration(
                   hintText:
                       "Địa chỉ hiện tại của bạn",
