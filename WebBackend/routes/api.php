@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\CompanyController;
@@ -22,6 +23,7 @@ Route::post('/agent/register',[AgentController::class,'registerAgentApi']);
 Route::post('/agent/signin',[AgentController::class,'signInAgentApi']);
 Route::get('/agents/{company_id}',[AgentController::class,'getListAgent']);
 
+Route::get('/admins', [AdminController::class, 'getListAdmin']);
 
 Route::post('/job_detail/create',[JobDetailController::class, 'addJobDetail']);
 Route::get('/jobs',[JobDetailController::class,'getListJobs']);

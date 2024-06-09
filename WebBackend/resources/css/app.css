@@ -23,4 +23,17 @@
         @apply bg-green-200;
         border-radius: 50px;
     }
+
+    .scrollbar-dark::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .scrollbar-dark::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    .scrollbar-dark::-webkit-scrollbar-thumb {
+        @apply bg-green-500;
+        border-radius: 50px;
+    }
 }
