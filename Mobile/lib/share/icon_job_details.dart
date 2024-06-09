@@ -30,11 +30,14 @@ Widget IconJobDetails (Icon iconRequire, String title, String subTitle) {
               ),
             ),
             SizedBox(height: 3,),
-            Text(
-              subTitle,
-              style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500
+            Container(
+              width: 325,
+              child: Text(
+                subTitle,
+                style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500
+                ),
               ),
             ),
           ],

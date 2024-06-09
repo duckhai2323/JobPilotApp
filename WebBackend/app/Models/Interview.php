@@ -10,6 +10,7 @@ class Interview extends Model
     use HasFactory;
 
      protected $table = 'interviews';
+     protected $primaryKey = 'interview_id';
 
      /**
      * The attributes that are mass assignable.

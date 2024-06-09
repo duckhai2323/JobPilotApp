@@ -83,7 +83,7 @@ class JobFairPage extends GetView<JobFairControlelr>{
               ),
               tabs: [
                 Tab(child: Text('Đang hiển thị'),),
-                Tab(child: Text('Đang phỏng vấn'),),
+                Tab(child: Text('Đóng tiếp nhận hồ sơ'),),
                 Tab(child: Text('Đã kết thúc'),),
               ],
             ),

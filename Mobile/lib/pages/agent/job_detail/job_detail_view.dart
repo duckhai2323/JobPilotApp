@@ -48,14 +48,21 @@ class JobDetailAgentPage extends GetView<JobDetailAgentController> {
               onTap: (){
                 //controller.HandleAddJobPage();
               },
-              child: Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: AppColors.primaryColor1
+              child: InkWell(
+                onTap: (){
+                  if(controller.stateTab.value == 2) {
+                    controller.updateStatusJob(context);
+                  }
+                },
+                child: Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: AppColors.primaryColor1
+                  ),
+                  child: Obx(()=>Icon(controller.stateTab.value == 0 || controller.stateTab.value == 1 ? Icons.settings:CupertinoIcons.checkmark_seal_fill,color: Colors.white,size: 20,)),
                 ),
-                child: Obx(()=>Icon(controller.stateTab.value == 0 || controller.stateTab.value == 1 ? Icons.settings:CupertinoIcons.checkmark_seal_fill,color: Colors.white,size: 20,)),
               ),
             ),
           ],

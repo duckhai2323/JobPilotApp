@@ -28,7 +28,9 @@ class ApplyJobPage extends GetView<ApplyJobController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-              onTap: (){},
+              onTap: (){
+                controller.applyJob(context);
+              },
               child: Container(
                 height: 40,
                 width: MediaQuery.of(context).size.width-50,
@@ -36,7 +38,7 @@ class ApplyJobPage extends GetView<ApplyJobController> {
                   borderRadius: BorderRadius.circular(8),
                   color: AppColors.primaryColor1,
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Ứng tuyển',
                     style: TextStyle(
@@ -52,12 +54,12 @@ class ApplyJobPage extends GetView<ApplyJobController> {
         ),
       ),
       appBar: AppBar(
-          title: Padding(
+          title: const Padding(
         padding: EdgeInsets.only(left: 90),
         child: Text(
           "Ứng tuyển",
           style: TextStyle(
-              fontFamily: "Roboto", fontWeight: FontWeight.w600, fontSize: 20),
+              fontFamily: "Roboto", fontWeight: FontWeight.w600, fontSize: 18),
         ),
       )),
       body: SingleChildScrollView(
@@ -115,7 +117,7 @@ class ApplyJobPage extends GetView<ApplyJobController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                       text: "1.  ",
                       style: TextStyle(
                         fontFamily: "Roboto",
@@ -124,33 +126,29 @@ class ApplyJobPage extends GetView<ApplyJobController> {
                       ),  
                     ),
                   ),
-                  Container(
-                     
-                    //padding: EdgeInsets.only(top: 3),
-                    child: Expanded(
-                      child: RichText(
-                        textAlign: TextAlign.justify,
-                        maxLines: 10, // Số dòng tối đa cần hiển thị
-                        overflow: TextOverflow.ellipsis,
-                        text: TextSpan(
-                          text: "JobPilot khuyên tất cả các bạn hãy luôn cẩn trọng trong quá trình tìm việc và chủ động nghiên cứu về thông tin công ty, vị trí việc làm trước khi ứng tuyển. Ứng viên cần có trách nghiệm với hành vi ứng tuyển của mình. Nếu bạn gặp phải tin tuyển dụng hoặc nhận được liên lạc đáng ngờ của nhà tuyển dụng, hãy báo cáo ngay cho JobPilot qua email hỗ trợ ",
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.black,
-                            fontFamily: "Roboto",
-                            
-                          ),
-                          children: [
-                            TextSpan(
-                              text: 'hotro@jobpilot.com',
-                              style: TextStyle(color: AppColors.primaryColor1,decoration: TextDecoration.underline,),
-                            ),
-                            TextSpan(
-                              text: ' để được hỗ trợ kịp thời',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ],
+                  Expanded(
+                    child: RichText(
+                      textAlign: TextAlign.justify,
+                      maxLines: 10, // Số dòng tối đa cần hiển thị
+                      overflow: TextOverflow.ellipsis,
+                      text: const TextSpan(
+                        text: "JobPilot khuyên tất cả các bạn hãy luôn cẩn trọng trong quá trình tìm việc và chủ động nghiên cứu về thông tin công ty, vị trí việc làm trước khi ứng tuyển. Ứng viên cần có trách nghiệm với hành vi ứng tuyển của mình. Nếu bạn gặp phải tin tuyển dụng hoặc nhận được liên lạc đáng ngờ của nhà tuyển dụng, hãy báo cáo ngay cho JobPilot qua email hỗ trợ ",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                          fontFamily: "Roboto",
+
                         ),
+                        children: [
+                          TextSpan(
+                            text: 'hotro@jobpilot.com',
+                            style: TextStyle(color: AppColors.primaryColor1,decoration: TextDecoration.underline,),
+                          ),
+                          TextSpan(
+                            text: ' để được hỗ trợ kịp thời',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ],
                       ),
                     ),
                   )
@@ -165,7 +163,7 @@ class ApplyJobPage extends GetView<ApplyJobController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                       text: "2.  ",
                       style: TextStyle(
                         fontFamily: "Roboto",
@@ -175,27 +173,25 @@ class ApplyJobPage extends GetView<ApplyJobController> {
                     ),
                   ),
                   
-                  Container(
-                    child: Expanded(
-                      child: RichText(
-                        textAlign: TextAlign.justify,
-                        maxLines: 10, // Số dòng tối đa cần hiển thị
-                        overflow: TextOverflow.ellipsis,
-                        text: TextSpan(
-                          text: "Tìm hiểu thêm kinh nghiệm phòng tránh lừa đảo",
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.black,
-                            fontFamily: "Roboto",
-                            
-                          ),
-                          children: [
-                            TextSpan(
-                              text: ' tại đây',
-                              style: TextStyle(color: AppColors.primaryColor1),
-                            ),
-                          ],
+                  Expanded(
+                    child: RichText(
+                      textAlign: TextAlign.justify,
+                      maxLines: 10, // Số dòng tối đa cần hiển thị
+                      overflow: TextOverflow.ellipsis,
+                      text: const TextSpan(
+                        text: "Tìm hiểu thêm kinh nghiệm phòng tránh lừa đảo",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                          fontFamily: "Roboto",
+
                         ),
+                        children: [
+                          TextSpan(
+                            text: ' tại đây',
+                            style: TextStyle(color: AppColors.primaryColor1),
+                          ),
+                        ],
                       ),
                     ),
                   )

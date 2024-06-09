@@ -40,4 +40,14 @@ class AgentController extends Controller
             return response()->json(['message'=>'user not found'],404);
         }
     } 
+
+    public function getListAgent($company_id) {
+        $listAgents = Agent::where('company_id',$company_id)
+                           ->get();
+        if($listAgents) {
+            return response()->json($listAgents,200);
+        } else {
+            return response()->json(['message'=>'agents not found'],404);
+        }
+    }
 }

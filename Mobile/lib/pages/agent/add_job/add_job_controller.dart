@@ -82,13 +82,13 @@ class AddJobController extends GetxController {
       JobDetail jobDetail = JobDetail(
         int.parse(ApplicationController.company_id),
         textController1.text.toString(),
-        textController4.text.toString(),
+        textController5.text.toString(),
         textController6.text.toString(),
         textController7.text.toString(),
         textController2.text.toString(),
         textController3.text.toString(),
         int.parse(textController9.text.toString()),
-        textController5.text.toString(),
+        textController4.text.toString(),
         textController8.text.toString(),
         1,
         textController10.text.toString(),
@@ -129,7 +129,7 @@ class AddJobController extends GetxController {
       content: Row(
         children: [
           const CircularProgressIndicator(),
-          Container(margin: const EdgeInsets.only(left: 15),child:Text("Loading...", style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16, color: AppColors.primaryColor1), )),
+          Container(margin: const EdgeInsets.only(left: 15),child:const Text("Loading...", style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16, color: AppColors.primaryColor1), )),
         ],),
     );
     showDialog(

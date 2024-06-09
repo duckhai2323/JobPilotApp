@@ -1,12 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:jobpilot_app/pages/sign_in_up/sign_in/signin_view.dart';
-
 import 'common/routes/names.dart';
 import 'common/routes/pages.dart';
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  FirebaseOptions firebaseOptions = const FirebaseOptions(
+      apiKey: 'AIzaSyC0SU-UrT3-CpB9R7m84EzdjyxfFiLG3pw',
+      appId: '1:916646229332:android:4fdf4aed079beb776e84c1',
+      messagingSenderId: '916646229332',
+      projectId: 'jobpilot-80666',
+      storageBucket: "jobpilot-80666.appspot.com"
+  );
+  await Firebase.initializeApp(options: firebaseOptions);
   runApp(const MyApp());
 }
 

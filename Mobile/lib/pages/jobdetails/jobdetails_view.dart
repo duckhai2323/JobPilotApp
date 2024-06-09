@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/jobdetails/infor_company.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_controller.dart';
 import 'package:jobpilot_app/pages/jobdetails/relatedjobs_component.dart';
 
+import '../agent/job_detail/interview_infor.dart';
 import 'information_component.dart';
+import 'interview_infor.dart';
 
 class JobDetailsPage extends GetView<JobDetailsController> {
   @override
@@ -35,39 +39,49 @@ class JobDetailsPage extends GetView<JobDetailsController> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              margin: EdgeInsets.only(left: 15),
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: AppColors.primaryColor1,
-                  width: 1,
-                ),
-              ),
-              child: Icon(Icons.bookmark_border,size: 30,color: AppColors.primaryColor1,),
-            ),
-            SizedBox(width: 10,),
-            InkWell(
-              onTap: (){
-                controller.HandleApplyJobPage();
-              },
-              child: Container(
+            Obx(
+            () => Container(
+                margin: EdgeInsets.only(left: 15),
+                width: 40,
                 height: 40,
-                //margin: EdgeInsets.only(left: 70),
-                width: MediaQuery.of(context).size.width-85,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: AppColors.primaryColor1,
+                  border: Border.all(
+                    color: AppColors.primaryColor1,
+                    width: 1,
+                  ),
                 ),
-                child: Center(
-                  child: Text(
-                    'Ứng tuyển ngay',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white
+                child: InkWell(onTap:(){
+                  controller.updateSaveJob();
+                },child: Icon(bool.parse(controller.save.value)?Icons.bookmark_outlined:Icons.bookmark_outline_rounded, color: bool.parse(controller.save.value)?AppColors.primaryColor1:AppColors.placeHolderColor,size: 30,)),
+              ),
+            ),
+            const SizedBox(width: 10,),
+            Obx(
+                ()=> InkWell(
+                onTap: (){
+                  if(!bool.parse(controller.apply.value)){
+                    controller.HandleApplyJobPage();
+                  }
+                },
+                child: Container(
+                  height: 40,
+                  //margin: EdgeInsets.only(left: 70),
+                  width: MediaQuery.of(context).size.width-85,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color:bool.parse(controller.apply.value)? AppColors.primaryColor1: AppColors.primaryColor1,
+                  ),
+                  child: Center(
+                    child: Obx(
+                      ()=> Text(
+                        bool.parse(controller.apply.value)?'Đã ứng tuyển':'Ứng tuyển ngay',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -402,7 +416,7 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                             image: DecorationImage(
                               image: controller.companies.isNotEmpty
                                   ? NetworkImage(controller.companies[0].company_image ?? 'assets/images/sun.png') as ImageProvider<Object>
-                                  : AssetImage('assets/images/sun.png') as ImageProvider<Object>,
+                                  : AssetImage('assets/images/default_image.png') as ImageProvider<Object>,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -428,9 +442,9 @@ class JobDetailsPage extends GetView<JobDetailsController> {
                     indicatorColor: AppColors.primaryColor1,
                     tabs: const [
                       Tab(child: Text('Thông tin'),),
-                      Tab(child: Text('Việc làm liên quan'),),
+                      Tab(child: Text('Lịch trình PV'),),
                       Tab(child: Text('Công ty'),),
-                      Tab(child: Text('Mức độ cạnh tranh'),),
+                      Tab(child: Text('Việc làm liên quan'),),
                     ],
                   ),
                 ),
@@ -442,9 +456,9 @@ class JobDetailsPage extends GetView<JobDetailsController> {
             controller: controller.tabController,
             children: [
               InforComponent(),
-              RelatedJobs(),
+              InterviewInforCandidateRole(),
               const InforCompany(),
-              const Center(child: Text('Mức độ cạnh tranh'),),
+              RelatedJobs(),
             ],
           ),
         ),

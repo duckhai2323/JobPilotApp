@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,6 +19,8 @@ class SignInController extends GetxController {
   var text2Controller = TextEditingController();
   var obscureText_ = true.obs;
   var value_ = 0.obs;
+  final db = FirebaseFirestore.instance;
+
   void ActionRadio(int index) {
     value_.value = index;
   }
@@ -35,23 +39,30 @@ class SignInController extends GetxController {
         'password' : password
       };
       showLoaderDialog(context);
-      http.Response response = await http.post(url,body: jsonEncode(body),headers: headers);
-      await Future.delayed(const Duration(seconds: 2));
-      if(response.statusCode == 200) {
-        //print(jsonDecode(response.body)['message']??'SignIn Sucessfully');
-        Navigator.pop(context);
-        if(value_.value == 1){
-          Candidate candidate = Candidate.fromJson(jsonDecode(response.body));
-          Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':candidate.candidate_id.toString(),'user_image':candidate.candidate_image.toString(),'user_name':candidate.candidate_name.toString(),'user_position':'candidate'});
-        } else if(value_.value == 2) {;
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: text1Controller.text.toString(),
+        password: text2Controller.text.toString(),
+      );
+      User? user = userCredential.user;
+      if(user!=null) {
+        http.Response response = await http.post(url,body: jsonEncode(body),headers: headers);
+        await Future.delayed(const Duration(seconds: 2));
+        if(response.statusCode == 200) {
+          //print(jsonDecode(response.body)['message']??'SignIn Sucessfully');
+          Navigator.pop(context);
+          if(value_.value == 1){
+            Candidate candidate = Candidate.fromJson(jsonDecode(response.body));
+            Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':candidate.candidate_id.toString(),'user_image':candidate.candidate_image.toString(),'user_name':candidate.candidate_name.toString(),'user_position':'candidate','user_email':candidate.candidate_email.toString()});
+          } else if(value_.value == 2) {;
           Agent agent = Agent.fromJson(jsonDecode(response.body));
-          Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':agent.agent_id.toString(),'user_image':agent.agent_image.toString(),'user_name':agent.agent_name.toString(), 'company_id':agent.company_id.toString(),'user_position':'agent'});
+          Get.toNamed(AppRoutes.APPLICATION,parameters: {'user_id':agent.agent_id.toString(),'user_image':agent.agent_image.toString(),'user_name':agent.agent_name.toString(), 'company_id':agent.company_id.toString(),'user_position':'agent','user_email':agent.agent_email.toString()});
+          }
+        } else if(response.statusCode == 404) {
+          Navigator.pop(context);
         }
-      } else if(response.statusCode == 404) {
-        Navigator.pop(context);
+        text1Controller.clear();
+        text2Controller.clear();
       }
-      text1Controller.clear();
-      text2Controller.clear();
     } catch (e) {
       print(e);
     }

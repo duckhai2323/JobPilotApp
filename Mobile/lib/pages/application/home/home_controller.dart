@@ -5,20 +5,30 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:jobpilot_app/common/item_object/item_job_detail.dart';
 import 'package:jobpilot_app/common/routes/names.dart';
+import 'package:jobpilot_app/pages/application/application_controller.dart';
 
 import '../../../common/api/api_backend.dart';
 import '../../../common/company.dart';
+import '../../../common/item_object/item_job_apply.dart';
 
 class HomeController extends GetxController {
   PageController pageController = PageController(initialPage: 0);
   List<Company> listCompanies = <Company>[].obs;
   List<ItemJobDetail> listJobs = <ItemJobDetail>[].obs;
+  List<String> listJobIdSave = <String>[].obs;
+  List<String> listJobIdApply = <String>[].obs;
+  List<ItemJobApply> job1s = <ItemJobApply>[].obs ;
+  List<ItemJobApply> job2s = <ItemJobApply>[].obs ;
+  List<ItemJobApply> job3s = <ItemJobApply>[].obs ;
 
   @override
   onInit(){
     super.onInit();
+    getListSaveJobId();
     getListJobs();
     getListCompanies();
+    getListApplyJobId();
+    getListJobsApply();
   }
   Future<void> getListCompanies() async {
     try {
@@ -28,6 +38,80 @@ class HomeController extends GetxController {
       if(response.statusCode == 200) {
         listCompanies.addAll((jsonDecode(response.body) as List).map((e) => Company.fromJson(e)).toList());
         // print(response.body);
+        return;
+      } else if(response.statusCode == 404) {
+        print('404 not found');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> getListSaveJobId() async {
+    try {
+      var headers = {'Content-Type' : 'application/json'};
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.saveJobApi.GET_LIST_SAVE_JOB_ID+ApplicationController.user_id);
+      final response = await http.get(url,headers: headers);
+      if(response.statusCode == 200) {
+        listJobIdSave.clear();
+        listJobIdSave.addAll((jsonDecode(response.body) as List).map((e) => e['job_id'].toString()).toList());
+        print(response.statusCode);
+        return;
+      } else if(response.statusCode == 404) {
+        print('404 not found');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> getListApplyJobId() async {
+    try {
+      var headers = {'Content-Type' : 'application/json'};
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.jobFairApi.GET_LIST_JOB_ID+ApplicationController.user_id);
+      final response = await http.get(url,headers: headers);
+      if(response.statusCode == 200) {
+        listJobIdApply.clear();
+        listJobIdApply.addAll((jsonDecode(response.body) as List).map((e) => e['job_id'].toString()).toList());
+        return;
+      } else if(response.statusCode == 404) {
+        print('404 not found');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> getListJobsApply() async {
+    try {
+      var headers = {'Content-Type' : 'application/json'};
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.jobFairApi.GET_LIST_JOB_APPLY+ApplicationController.user_id);
+      final response = await http.get(url,headers: headers);
+      if(response.statusCode == 200) {
+        var data = jsonDecode(response.body) as List;
+        job1s.clear();
+        job2s.clear();
+        job3s.clear();
+        data.forEach((e) {
+          var status = e['jobfair_status'].toString();
+          switch (status) {
+            case '1':
+              if(e['status'].toString() == '0' && e['status_offer'].toString() == '1'){
+                job2s.add(ItemJobApply.fromJson(e));
+                break;
+              }
+              if(e['status'].toString() == '0' && e['status_offer'].toString() == '2'){
+                job3s.add(ItemJobApply.fromJson(e));
+                break;
+              }
+              job1s.add(ItemJobApply.fromJson(e));
+              break;
+            case '0':
+              job3s.add(ItemJobApply.fromJson(e));
+              break;
+          }
+        });
+        print(response.body);
         return;
       } else if(response.statusCode == 404) {
         print('404 not found');
@@ -63,7 +147,31 @@ class HomeController extends GetxController {
   }
 
   void HandleJobdetails (int job_id,int company_id) {
-    Get.toNamed(AppRoutes.JOBDETAILS,parameters: {'job_id':job_id.toString(),'company_id':company_id.toString()});
+    bool apply = listJobIdApply.contains(job_id.toString());
+    bool save = listJobIdSave.contains(job_id.toString());
+    Get.toNamed(AppRoutes.JOBDETAILS,parameters: {'job_id':job_id.toString(),'company_id':company_id.toString(),'apply':apply.toString(),'save':save.toString()});
+  }
+
+  Future<void> updateSaveJob(int index) async{
+    ItemJobDetail tempp = listJobs[index];
+    bool saveJob = listJobIdSave.contains(tempp.job_id.toString());
+    var headers = {'Content-Type' : 'application/json'};
+    if(saveJob) {
+      listJobIdSave.remove(tempp.job_id.toString());
+      var url = Uri.parse('${ApiEndPoints.baseUrl}${ApiEndPoints.saveJobApi.DELETE_SAVE_JOB}${tempp.job_id}/${ApplicationController.user_id}');
+      final response = await http.delete(url,headers: headers);
+      print(response.body);
+    } else {
+      listJobIdSave.add(tempp.job_id.toString());
+      var url = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.saveJobApi.SAVE_JOB);
+      Map body = {
+        'candidate_id':ApplicationController.user_id,
+        'job_id':tempp.job_id
+      };
+      final response = await http.post(url,body: jsonEncode(body),headers: headers);
+      print(response.statusCode);
+    }
+
   }
 
   void HandleCompaniesPage () {

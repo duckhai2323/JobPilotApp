@@ -1,6 +1,12 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:jobpilot_app/pages/add_academic_lever/add_academic_binding.dart';
+import 'package:jobpilot_app/pages/add_academic_lever/add_academic_view.dart';
+import 'package:jobpilot_app/pages/add_experience/add_experience_binding.dart';
+import 'package:jobpilot_app/pages/add_experience/add_experience_view.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_binding.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_view.dart';
+import 'package:jobpilot_app/pages/agent/edit_job/edit_job_binding.dart';
+import 'package:jobpilot_app/pages/agent/edit_job/edit_job_view.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_binding.dart';
 import 'package:jobpilot_app/pages/agent/edit_company_infor/edit_company_view.dart';
 import 'package:jobpilot_app/pages/agent/job_detail/job_detail_binding.dart';
@@ -11,12 +17,18 @@ import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topc
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_view.dart';
 import 'package:jobpilot_app/pages/attractivejob/attractivejob_binding.dart';
 import 'package:jobpilot_app/pages/attractivejob/attractivejob_view.dart';
+import 'package:jobpilot_app/pages/certificate/certificate_binding.dart';
+import 'package:jobpilot_app/pages/certificate/certificate_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
 import 'package:jobpilot_app/pages/companies/companies_view.dart';
+import 'package:jobpilot_app/pages/info/info_binding.dart';
+import 'package:jobpilot_app/pages/info/info_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job.binding.dart';
 import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job_view.dart';
+import 'package:jobpilot_app/pages/skill/skill_binding.dart';
+import 'package:jobpilot_app/pages/skill/skill_view.dart';
 import 'package:jobpilot_app/pages/suitablejob/suitablejob_binding.dart';
 import 'package:jobpilot_app/pages/suitablejob/suitablejob_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_binding.dart';
@@ -25,6 +37,10 @@ import 'package:jobpilot_app/pages/notification/notification_binding.dart';
 import 'package:jobpilot_app/pages/notification/notification_view.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_binding.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_view.dart';
+import '../../pages/agent/employee/employee_binding.dart';
+import '../../pages/agent/employee/employee_view.dart';
+import '../../pages/agent/add_employee/add_employee_binding.dart';
+import '../../pages/agent/add_employee/add_employee_view.dart';
 import '../../pages/jobapplied/jobapplied_binding.dart';
 import '../../pages/jobapplied/jobapplied_view.dart';
 import '../../pages/jobsaved/jobsaved_binding.dart';
@@ -92,6 +108,24 @@ class AppPages {
     ),
 
     GetPage(
+      name: AppRoutes.SKILL,
+      page: ()=>SkillPage(),
+      binding: SkillBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.CERTIFICATE,
+      page: ()=>CertificatePage(),
+      binding: CertificateBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.INFO,
+      page: ()=>InfoPage(),
+      binding: InfoBinding(),
+    ),
+
+    GetPage(
       name: AppRoutes.JOBAPPLIED,
       page: ()=>JobAppliedPage(),
       binding: JobAppliedBinding(),
@@ -115,6 +149,18 @@ class AppPages {
       page: ()=>ApplyJobPage(),
       binding: ApplyJobBinding(),
     ),
+
+    GetPage(
+      name: AppRoutes.CVMANAGE,
+      page: ()=>CVManage(),
+      binding: CVManageBinding(),
+    ),
+
+    GetPage(
+        name: AppRoutes.CVPROFILE,
+        page: ()=>TopCVProfilePage(),
+        binding: TopCVProfileBindings()
+    ),
     
     //Agent
     GetPage(
@@ -130,21 +176,43 @@ class AppPages {
     ),
 
     GetPage(
-      name: AppRoutes.CVMANAGE, 
-      page: ()=>CVManage(),
-      binding: CVManageBinding(),
+        name: AppRoutes.JOB_DETAIL,
+        binding: JobDetailAgentBinding(),
+        page: ()=>JobDetailAgentPage()
     ),
 
     GetPage(
-      name: AppRoutes.CVPROFILE,
-      page: ()=>TopCVProfilePage(),
-      binding: TopCVProfileBindings()      
+        name: AppRoutes.ADDEXPERIENCE,
+        binding: AddExperienceBinding(),
+        page: ()=>AddExperiencePage()
     ),
-
+    GetPage(
+        name: AppRoutes.ADDEXPERIENCE,
+        binding: AddAcademicBinding(),
+        page: ()=>AddAcademicPage()
+     ),
     GetPage(
         name: AppRoutes.JOB_DETAIL,
         binding: JobDetailAgentBinding(),
         page: ()=>JobDetailAgentPage()
+    ),
+
+    GetPage(
+      name: AppRoutes.EDIT_JOB,
+      page: ()=>EditJobPage(),
+      binding: EditJobBinding()
+    ),
+
+    GetPage(
+      name: AppRoutes.EMPLOYEE,
+      page: ()=>EmployeePage(),
+      binding: EmployeeBinding()
+    ),
+
+    GetPage(
+      name: AppRoutes.ADD_EMPLOYEE,
+      page: ()=>AddEmployeePage(),
+      binding: AddEmployeeBinding()
     )
   ];
 }

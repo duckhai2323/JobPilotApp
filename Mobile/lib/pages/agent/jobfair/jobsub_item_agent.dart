@@ -104,14 +104,18 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
                   ),
                 ),
 
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    InkWell(
+                      onTap: () {
+                        controller.HandleEditJobPage(itemJobDetail.job_id??0);
+                      },
+                      child: Container(
                       width: (MediaQuery.of(context).size.width-200)/2,
                       height: 34,
                       decoration: BoxDecoration(
@@ -136,29 +140,36 @@ class JobSubItem1 extends GetView<JobFairControlelr> {
                         ],
                       ),
                     ),
-                    Container(
-                      width: (MediaQuery.of(context).size.width-200)/2,
-                      height: 34,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade400,
-                          borderRadius: BorderRadius.circular(4)
-                      ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(Icons.block,size: 20,color: Colors.white,),
-                          SizedBox(width: 5,),
-                          Text(
-                            'Đóng đơn',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                   ),
+
+                    InkWell(
+                      onTap: (){
+                        controller.updateStatusJob(itemJobDetail.job_id??0);
+                      },
+                      child: Container(
+                        width: (MediaQuery.of(context).size.width-200)/2,
+                        height: 34,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.circular(4)
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.block,size: 20,color: Colors.white,),
+                            SizedBox(width: 5,),
+                            Text(
+                              'Đóng đơn',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     

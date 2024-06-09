@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/academic_lever_component.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/experience_component.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/info.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/skill&certificate.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_controller.dart';
 
 class TabList extends GetView<TopCVProfileController> {
@@ -9,12 +13,12 @@ class TabList extends GetView<TopCVProfileController> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: DefaultTabController(
-        length: 6,
+        length: 4,
         child: SizedBox(
           height: MediaQuery.of(context).size.height -
               kToolbarHeight -
               kBottomNavigationBarHeight,
-          child: const Column(
+          child:  Column(
             children: [
               TabBar(
                   tabAlignment: TabAlignment.start,
@@ -30,16 +34,16 @@ class TabList extends GetView<TopCVProfileController> {
                   labelStyle: TextStyle(
                       fontSize: 16, fontWeight: FontWeight.w600),
                   tabs: [
-                    Tab(
-                      child: SizedBox(
-                        
-                        child: Center(
-                            child: Text(
-                          "Giới thiệu",
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        )),
-                      ),
-                    ),
+                    // Tab(
+                    //   child: SizedBox(
+                    //
+                    //     child: Center(
+                    //         child: Text(
+                    //       "Giới thiệu",
+                    //       style: TextStyle(fontWeight: FontWeight.w600),
+                    //     )),
+                    //   ),
+                    // ),
                     Tab(
                       child: SizedBox(
                         
@@ -67,7 +71,9 @@ class TabList extends GetView<TopCVProfileController> {
                             child: Text(
                           "Kỹ năng & chứng chỉ",
                           style: TextStyle(fontWeight: FontWeight.w600),
-                        )),
+                          
+                            )
+                        ),
                       ),
                     ),
                     Tab(
@@ -94,6 +100,11 @@ class TabList extends GetView<TopCVProfileController> {
               Expanded(
                 child: TabBarView(
                   children: [
+                    // Text("Giới thiệu"),
+                    Experience(),
+                    AcademicLever(),
+                    SkillCertificate(),
+                    Info(),
                   ],
                 ),
               )
