@@ -210,9 +210,11 @@ class AppPages {
         page: ()=>AddIntroPage(),
         binding: AddIntroBinding()
     ),
-      name: AppRoutes.EMPLOYEE,
-      page: ()=>EmployeePage(),
-      binding: EmployeeBinding()
+
+    GetPage(
+        name: AppRoutes.EMPLOYEE,
+        page: ()=>EmployeePage(),
+        binding: EmployeeBinding()
     ),
 
     GetPage(
