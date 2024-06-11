@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/add_experience/add_experience_controller.dart';
@@ -94,9 +94,10 @@ class AddExperiencePage extends GetView<AddExperienceController> {
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(5)
                 ),
-              child: TextField(
+              child: TextFormField(
                 expands: true,
                 maxLines: null,
+                controller: controller.textController1,
                 decoration: InputDecoration(
                   
                   hintText:
@@ -143,9 +144,10 @@ class AddExperiencePage extends GetView<AddExperienceController> {
                   border: Border.all(color: Colors.grey),
                   borderRadius: BorderRadius.circular(5)
                 ),
-              child: TextField(
+              child: TextFormField(
                 expands: true,
                 maxLines: null,
+                controller: controller.textController2,
                 decoration: InputDecoration(
                   hintText:
                       "Chọn vị trí làm việc",
@@ -182,72 +184,82 @@ class AddExperiencePage extends GetView<AddExperienceController> {
             SizedBox(height: 15,),
             Row(
               children: [
-                Container(
-                  height: 45,
-                  width: MediaQuery.of(context).size.width/2-25,
-                  padding: const EdgeInsets.only(left: 15, right: 5),
-                  margin: const EdgeInsets.only(left: 15, right: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5)
+                InkWell(
+                  onTap: () {
+                    controller.showDialogTime(context, 'start');
+                  },
+                  child: Container(
+                    height: 45,
+                    width: MediaQuery.of(context).size.width/2-25,
+                    padding: const EdgeInsets.only(left: 15, right: 5),
+                    margin: const EdgeInsets.only(left: 15, right: 10),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(5)
                     ),
-                  child: TextField(
-                    expands: true,
-                    maxLines: null,
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.calendar_month),
-                      hintText:
-                        
-                        "Bắt đầu",
-                        hintStyle: TextStyle(
-                          color: AppColors.placeHolderColor,
-                          fontSize: 14,
-                          overflow: TextOverflow.visible),
-                        border: InputBorder.none
-                    
+                    child: TextFormField(
+                      controller: controller.textController3,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          suffixIcon: InkWell(onTap: () {controller.showDialogTime(context, 'start');},child: Icon(Icons.calendar_month)),
+                          hintText:
+
+                          "Bắt đầu",
+                          hintStyle: TextStyle(
+                              color: AppColors.placeHolderColor,
+                              fontSize: 14,
+                              overflow: TextOverflow.visible),
+                          border: InputBorder.none
+
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  height: 45,
-                  width: MediaQuery.of(context).size.width/2-25,
-                  padding: const EdgeInsets.only(left: 15, right: 5),
-                  margin: const EdgeInsets.only(left: 10, right: 15),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5)
-                  ),
-                  child: TextField(
-                    expands: true,
-                    maxLines: null,
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.calendar_month),
-                      hintText:
+                InkWell(
+                  onTap: () {
+                    controller.showDialogTime(context, 'end');
+                  },
+                  child: Container(
+                    height: 45,
+                    width: MediaQuery.of(context).size.width/2-25,
+                    padding: const EdgeInsets.only(left: 15, right: 5),
+                    margin: const EdgeInsets.only(left: 10, right: 15),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(5)
+                    ),
+                    child: TextFormField(
+                      controller: controller.textController4,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          suffixIcon: InkWell(onTap: () {controller.showDialogTime(context, 'end');},child: Icon(Icons.calendar_month)),
+                          hintText:
                           "Kết thúc",
-                      hintStyle: TextStyle(
-                          color: AppColors.placeHolderColor,
-                          fontSize: 14,
-                          overflow: TextOverflow.visible),
-                      border: InputBorder.none
+                          hintStyle: TextStyle(
+                              color: AppColors.placeHolderColor,
+                              fontSize: 14,
+                              overflow: TextOverflow.visible),
+                          border: InputBorder.none
+                      ),
                     ),
                   ),
                 ),    
               ],
             ),
-            Row(
+            Obx(() => Row(
               children: [
-                Checkbox(value: false, onChanged: null),
+                Checkbox(value: controller.isChecked.value, onChanged: (value) => {controller.ClickBox()}),
                 SizedBox(height: 5,),
                 Text(
                   "Tôi đang làm việc ở đây",
                   style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600
+                      fontFamily: "Roboto",
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600
                   ),
                 )
               ],
-            ),
+            ),),
             const Padding(
               padding: EdgeInsets.only(left: 15),
               child: Text(
@@ -271,6 +283,7 @@ class AddExperiencePage extends GetView<AddExperienceController> {
               child: TextFormField(
                 expands: true,
                 maxLines: null,
+                  controller: controller.textController5,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(15, 10, 15, 0),
                   hintText:
@@ -343,9 +356,10 @@ class AddExperiencePage extends GetView<AddExperienceController> {
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(5)
                     ),
-                  child: TextField(
+                  child: TextFormField(
                     expands: true,
                     maxLines: null,
+                    controller: controller.textController6,
                     decoration: InputDecoration(
                       suffixIcon: InkWell(
                         child: Container(

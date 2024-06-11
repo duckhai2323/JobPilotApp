@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_controller.dart';
@@ -14,7 +13,9 @@ class SkillCertificate extends GetView<TopCVProfileController> {
      backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(height: 20),
             Padding(
@@ -135,7 +136,7 @@ class SkillCertificate extends GetView<TopCVProfileController> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Center(
                       child: InkWell(
                         onTap: ()  {
@@ -164,6 +165,7 @@ class SkillCertificate extends GetView<TopCVProfileController> {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
