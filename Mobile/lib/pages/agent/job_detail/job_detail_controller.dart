@@ -9,6 +9,7 @@ import 'package:jobpilot_app/common/candidate.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/common/interview.dart';
 import 'package:jobpilot_app/common/item_object/item_candidate_jobfair.dart';
+import 'package:jobpilot_app/pages/agent/company_infor/company_infor_controller.dart';
 import 'package:jobpilot_app/pages/agent/jobfair/jobfair_controller.dart';
 import 'package:jobpilot_app/pages/application/application_controller.dart';
 import '../../../common/api/api_backend.dart';
@@ -16,6 +17,7 @@ import '../../../common/api/chat/msg.dart';
 import '../../../common/item_add_edit/item_add_interview.dart';
 import '../../../common/item_object/item_job_detail.dart';
 import '../../../common/job_detail.dart';
+import '../../../common/notification.dart';
 import '../../../common/routes/names.dart';
 
 class JobDetailAgentController extends GetxController with GetSingleTickerProviderStateMixin {
@@ -30,6 +32,8 @@ class JobDetailAgentController extends GetxController with GetSingleTickerProvid
   final stateTab = 0.obs;
   final job_id = ''.obs;
   final tabTitle = ''.obs;
+  final firebase = FirebaseFirestore.instance;
+  var companyInfor = Get.find<CompanyInforController>();
 
   @override
   onInit(){
@@ -129,7 +133,7 @@ class JobDetailAgentController extends GetxController with GetSingleTickerProvid
       final response = await http.get(url,headers: headers);
       if(response.statusCode ==  200) {
         candidates.addAll((jsonDecode(response.body) as List).map((e) {
-          listButton.add(ItemColor(ItemCandidateApply.fromJson(e).job_fair_id, AppColors.primaryColor1, Colors.red, 0));
+          listButton.add(ItemColor(ItemCandidateApply.fromJson(e).candidate_email,ItemCandidateApply.fromJson(e).job_fair_id, AppColors.primaryColor1, Colors.red, 0));
           return ItemCandidateApply.fromJson(e);
         }).toList());
 
@@ -167,6 +171,12 @@ class JobDetailAgentController extends GetxController with GetSingleTickerProvid
       final response = await http.put(url,headers: headers);
       if(response.statusCode == 200) {
         for(var element in listButton) {
+          String documentId = firebase.collection("notifications").doc().id;
+          var data = Notification1(companyInfor.companies[0].company_name, element.status == 1?'Xin chúc mừng bạn đã qua vòng ' + tabTitle.value:'Hẹn gặp bạn trong đợt tuyển dụng tiếp theo, chúc bạn thành công !', element.candidate_email, false);
+          await firebase.collection('notifications').withConverter(
+            fromFirestore: Notification1.fromFirestore,
+            toFirestore: (Notification1 notification1, options)=>notification1.toFirestore(),
+          ).doc(documentId).set(data);
           if(element.status == 2 || element.status == 0) {
             var url_jobfair = Uri.parse(ApiEndPoints.baseUrl+ ApiEndPoints.jobFairApi.JOBFAIR_UPDATE_STATUS+element.job_fair_id.toString());
             Map statusMap = {
@@ -215,10 +225,11 @@ class JobDetailAgentController extends GetxController with GetSingleTickerProvid
 
 
 class ItemColor {
+  String candidate_email;
   int job_fair_id;
   Color passColor;
   Color failColor;
   int status;
 
-  ItemColor(this.job_fair_id,this.passColor,this.failColor,this.status);
+  ItemColor(this.candidate_email,this.job_fair_id,this.passColor,this.failColor,this.status);
 }

@@ -135,12 +135,17 @@ class JobSubItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Center(
-                        child: Text(
-                          'Hạn nộp: $deadline_job',
-                          style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.primaryColor2
+                        child: SizedBox(
+                          width: 90,
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            'Hạn nộp: $deadline_job',
+                            style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.primaryColor2
+                            ),
                           ),
                         ),
                       ),

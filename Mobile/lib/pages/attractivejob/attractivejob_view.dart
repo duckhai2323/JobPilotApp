@@ -94,7 +94,7 @@ class AttractiveJobPage extends GetView<AttractiveJobController> {
           height: 35,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: 3,
             shrinkWrap: true,
             //physics: NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context,int index) {
@@ -115,8 +115,9 @@ class AttractiveJobPage extends GetView<AttractiveJobController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text('Khu vực',
-                      style: TextStyle(
+                    Text(
+                      (index==0)?'Khu vực':(index == 1?'Mức lương':'Kinh nghiệm'),
+                      style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500
                       ),
@@ -150,17 +151,17 @@ class AttractiveJobPage extends GetView<AttractiveJobController> {
         child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.symmetric(vertical: 15),
-          itemCount: 5,
+          itemCount: controller.homController.listJobs.length,
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (BuildContext context, index) {
             return JobSubItem(
-              "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-              "Cty Phat Trien Phan Mem Sun Asterisk",
-              'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+              controller.homController.listJobs[index].company_image??"",
+              controller.homController.listJobs[index].company_name??"",
+              controller.homController.listJobs[index].job_title??"",
               'Ha Noi',
-              '1 nam',
-              '300s',
+              controller.homController.listJobs[index].deadline_job??"",
+              controller.homController.listJobs[index].salary??"",
             );
           },
         ),

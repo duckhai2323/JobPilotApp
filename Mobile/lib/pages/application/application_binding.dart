@@ -9,6 +9,7 @@ import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topc
 import 'package:jobpilot_app/pages/application/interview/interivew_controller.dart';
 import 'package:jobpilot_app/pages/application/message/message_controller.dart';
 import 'package:jobpilot_app/pages/application/profile/profile_controller.dart';
+import 'package:jobpilot_app/pages/notification/notification_controller.dart';
 
 import 'application_controller.dart';
 import 'home/home_controller.dart';
@@ -17,6 +18,7 @@ class ApplicationBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(ApplicationController());
+    Get.put(NotificationController());
     Get.lazyPut(() => HomeController());
     Get.lazyPut(() => MessageController());
     Get.lazyPut(() => ProfileController());

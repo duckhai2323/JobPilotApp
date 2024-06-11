@@ -16,7 +16,7 @@ class TabList extends GetView<TopCVProfileController> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: DefaultTabController(
-        length: 4,
+        length: 6,
         child: SizedBox(
           height: MediaQuery.of(context).size.height -
               kToolbarHeight -
@@ -37,16 +37,16 @@ class TabList extends GetView<TopCVProfileController> {
                   labelStyle: TextStyle(
                       fontSize: 16, fontWeight: FontWeight.w600),
                   tabs: [
-                    // Tab(
-                    //   child: SizedBox(
-                    //
-                    //     child: Center(
-                    //         child: Text(
-                    //       "Giới thiệu",
-                    //       style: TextStyle(fontWeight: FontWeight.w600),
-                    //     )),
-                    //   ),
-                    // ),
+                    Tab(
+                      child: SizedBox(
+
+                        child: Center(
+                            child: Text(
+                          "Giới thiệu",
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        )),
+                      ),
+                    ),
                     Tab(
                       child: SizedBox(
                         

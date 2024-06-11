@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:jobpilot_app/common/item_object/item_job_detail.dart';
 import 'package:jobpilot_app/common/routes/names.dart';
 import 'package:jobpilot_app/pages/application/application_controller.dart';
+import 'package:jobpilot_app/pages/notification/notification_controller.dart';
 
 import '../../../common/api/api_backend.dart';
 import '../../../common/company.dart';
@@ -20,6 +21,9 @@ class HomeController extends GetxController {
   List<ItemJobApply> job1s = <ItemJobApply>[].obs ;
   List<ItemJobApply> job2s = <ItemJobApply>[].obs ;
   List<ItemJobApply> job3s = <ItemJobApply>[].obs ;
+
+  var notifiController = Get.find<NotificationController>();
+
 
   @override
   onInit(){
@@ -143,6 +147,7 @@ class HomeController extends GetxController {
     statePageView.value = page;
   }
   void HandleNotifiPage () {
+    notifiController.updateRead();
     Get.toNamed(AppRoutes.NOTIFICATION);
   }
 

@@ -19,14 +19,16 @@ class AddAcademicPage extends GetView<AddAcademicController> {
             color: Colors.grey.withOpacity(0.8),
             spreadRadius: 0.25,
             blurRadius: 3,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           )
         ]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                controller.addUniver(context);
+              },
               child: Container(
                 height: 40,
                 width: MediaQuery.of(context).size.width - 50,
@@ -34,7 +36,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                   borderRadius: BorderRadius.circular(8),
                   color: AppColors.primaryColor1,
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Thêm mới',
                     style: TextStyle(
@@ -49,7 +51,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
         ),
       ),
       appBar: AppBar(
-          title: Padding(
+          title: const Padding(
         padding: EdgeInsets.only(left: 70),
         child: Text(
           "Thêm học vấn",
@@ -64,7 +66,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 15),
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text: "Tên trường học ",
                   style: TextStyle(
                     fontFamily: "Roboto",
@@ -98,7 +100,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
               child: TextFormField(
                 controller: controller.textController1,
                 keyboardType: TextInputType.text,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   
                   hintText:
                       "Nhập tên trường học",
@@ -114,7 +116,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 20),
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text: "Chuyên ngành ",
                   style: TextStyle(
                     fontFamily: "Roboto",
@@ -147,7 +149,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
               child: TextFormField(
                 controller: controller.textController2,
                 keyboardType: TextInputType.text,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText:
                       "Nhập chuyên ngành",
                   hintStyle: TextStyle(
@@ -161,7 +163,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 20),
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text: "Thời gian học tập ",
                   style: TextStyle(
                     fontFamily: "Roboto",
@@ -180,7 +182,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                 ),
               ),
             ),
-            SizedBox(height: 15,),
+            const SizedBox(height: 15,),
             Row(
               children: [
                 InkWell(
@@ -204,7 +206,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                           hintText:
 
                           "Bắt đầu",
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               color: AppColors.placeHolderColor,
                               fontSize: 14,
                               overflow: TextOverflow.visible),
@@ -234,7 +236,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                           suffixIcon: InkWell(onTap: () {controller.showDialogTime(context, 'end');},child: Icon(Icons.calendar_month)),
                           hintText:
                           "Kết thúc",
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               color: AppColors.placeHolderColor,
                               fontSize: 14,
                               overflow: TextOverflow.visible),
@@ -248,8 +250,8 @@ class AddAcademicPage extends GetView<AddAcademicController> {
             Obx(() => Row(
               children: [
                 Checkbox(value: controller.isChecked.value, onChanged: (value) => {controller.ClickBox()}),
-                SizedBox(height: 5,),
-                Text(
+                const SizedBox(height: 5,),
+                const Text(
                   "Tôi đang học ở đây",
                   style: TextStyle(
                       fontFamily: "Roboto",
@@ -283,7 +285,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                 expands: true,
                 maxLines: null,
                 controller: controller.textController5,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(15, 10, 15, 0),
                   hintText:
                       "Mô tả chi tiết công việc, những gì đạt được trong quá trình học tập.",
