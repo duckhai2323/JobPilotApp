@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/application/home/blog_item.dart';
 import 'package:jobpilot_app/pages/application/home/company_item.dart';
@@ -72,30 +73,58 @@ class HomePage extends GetView<HomeController> {
                       ),
                     ),
 
-                    Container(
-                      margin: EdgeInsets.only(left: 15),
-                      width: 48,
-                      height: 48,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        color:Colors.grey.shade50,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 0.25,
-                              blurRadius: 10,
-                              offset: Offset(0,2),
-                            )
-                          ],
-                      ),
-
-                      child: InkWell(
-                        onTap: (){
-                          controller.HandleNotifiPage();
-                        },
-                        child: const Center(
-                          child: Icon(Icons.notifications_active,size: 25, color: AppColors.primaryColor1,),
+                    Obx(
+                        ()=> Container(
+                        margin: EdgeInsets.only(left: 15),
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          color:Colors.grey.shade50,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 0.25,
+                                blurRadius: 10,
+                                offset: Offset(0,2),
+                              )
+                            ],
                         ),
+
+                        child: Stack(
+                          children: [
+                            InkWell(
+                              onTap: (){
+                                controller.HandleNotifiPage();
+                              },
+                              child: const Center(
+                                child: Icon(Icons.notifications_active,size: 30, color: AppColors.primaryColor1,),
+                              ),
+                            ),
+
+                            Positioned(
+                              top: 5,
+                              right: 5,
+                              child:  controller.notifiController.newNotifi.value > 0? CircleAvatar(
+                                radius: 9,
+                                backgroundColor: Colors.red,
+                                child: Center(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(bottom: 2),
+                                    child: Text(
+                                      controller.notifiController.newNotifi.value.toString(),
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ):SizedBox(),
+                            ),
+                          ],
+                        )
                       ),
                     )
                   ],
@@ -213,119 +242,121 @@ class HomePage extends GetView<HomeController> {
               )
           ),
 
-          SliverToBoxAdapter(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: 610,
-                  child: PageView(
-                    controller: controller.pageController,
-                    onPageChanged: (index){
-                      controller.ChangePageView(index);
-                    },
-                    children: <Widget>[
-                      ListView.builder(
-                        padding: EdgeInsets.only(top: 10),
-                        itemCount: 4,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (BuildContext context, index) {
-                          return JobSubItem(
-                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                            "Cty Phat Trien Phan Mem Sun Asterisk",
-                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                            'Ha Noi',
-                            '1 nam',
-                            '300s',
-                          );
-                        },
-                      ),
-                      ListView.builder(
-                        padding: EdgeInsets.only(top: 10),
-                        itemCount: 4,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (BuildContext context, index) {
-                          return JobSubItem(
-                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                            "Cty Phat Trien Phan Mem Sun Asterisk",
-                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                            'Ha Noi',
-                            '1 nam',
-                            '300s',
-                          );
-                        },
-                      ),
-                      ListView.builder(
-                        padding: EdgeInsets.only(top: 10),
-                        itemCount: 4,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (BuildContext context, index) {
-                          return JobSubItem(
-                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                            "Cty Phat Trien Phan Mem Sun Asterisk",
-                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                            'Ha Noi',
-                            '1 nam',
-                            '300s',
-                          );
-                        },
-                      ),
-                      ListView.builder(
-                        padding: EdgeInsets.only(top: 10),
-                        itemCount: 4,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (BuildContext context, index) {
-                          return JobSubItem(
-                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                            "Cty Phat Trien Phan Mem Sun Asterisk",
-                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                            'Ha Noi',
-                            '1 nam',
-                            '300s',
-                          );
-                        },
-                      ),
-                      ListView.builder(
-                        padding: EdgeInsets.only(top: 10),
-                        itemCount: 4,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (BuildContext context, index) {
-                          return JobSubItem(
-                            "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
-                            "Cty Phat Trien Phan Mem Sun Asterisk",
-                            'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
-                            'Ha Noi',
-                            '1 nam',
-                            '300s',
-                          );
-                        },
-                      )
-                    ],
+          Obx(
+            ()=> SliverToBoxAdapter(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 610,
+                    child: PageView(
+                      controller: controller.pageController,
+                      onPageChanged: (index){
+                        controller.ChangePageView(index);
+                      },
+                      children: <Widget>[
+                        ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          itemCount: controller.listJobs.length>=4?4:controller.listJobs.length,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemBuilder: (BuildContext context, index) {
+                            return JobSubItem(
+                              controller.listJobs[index].company_image??"",
+                              controller.listJobs[index].company_name??"",
+                              controller.listJobs[index].job_title??"",
+                              'Ha Noi',
+                              controller.listJobs[index].deadline_job??"",
+                              controller.listJobs[index].salary??"",
+                            );
+                          },
+                        ),
+                        ListView.builder(
+                          padding: EdgeInsets.only(top: 10),
+                          itemCount: 4,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (BuildContext context, index) {
+                            return JobSubItem(
+                              "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                              "Cty Phat Trien Phan Mem Sun Asterisk",
+                              'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                              'Ha Noi',
+                              '1 nam',
+                              '300s',
+                            );
+                          },
+                        ),
+                        ListView.builder(
+                          padding: EdgeInsets.only(top: 10),
+                          itemCount: 4,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (BuildContext context, index) {
+                            return JobSubItem(
+                              "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                              "Cty Phat Trien Phan Mem Sun Asterisk",
+                              'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                              'Ha Noi',
+                              '1 nam',
+                              '300s',
+                            );
+                          },
+                        ),
+                        ListView.builder(
+                          padding: EdgeInsets.only(top: 10),
+                          itemCount: 4,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (BuildContext context, index) {
+                            return JobSubItem(
+                              "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                              "Cty Phat Trien Phan Mem Sun Asterisk",
+                              'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                              'Ha Noi',
+                              '1 nam',
+                              '300s',
+                            );
+                          },
+                        ),
+                        ListView.builder(
+                          padding: EdgeInsets.only(top: 10),
+                          itemCount: 4,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (BuildContext context, index) {
+                            return JobSubItem(
+                              "https://wsm.sun-asterisk.vn/assets/logo_framgia-58c446c37727ba4bc8317121c321edd3d4ed081787fac85cb08240dcef9dd062.png",
+                              "Cty Phat Trien Phan Mem Sun Asterisk",
+                              'Tuyen Lap Trinh Vien Fresher WEB MOBILE',
+                              'Ha Noi',
+                              '1 nam',
+                              '300s',
+                            );
+                          },
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                Obx(() => DotsIndicator(
-                  dotsCount: 5,
-                  position:controller.statePageView.value,
-                  decorator: DotsDecorator(
-                    activeColor:AppColors.primaryColor1,
-                    size: const Size.square(8.0),
-                    activeSize: const Size(10.0, 10.0),
-                    activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-                  ),
-                )),
-              ],
+                  Obx(() => DotsIndicator(
+                    dotsCount: 5,
+                    position:controller.statePageView.value,
+                    decorator: DotsDecorator(
+                      activeColor:AppColors.primaryColor1,
+                      size: const Size.square(8.0),
+                      activeSize: const Size(10.0, 10.0),
+                      activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                    ),
+                  )),
+                ],
+              ),
             ),
           ),
 

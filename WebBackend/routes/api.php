@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Http\Controllers\AdminController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\JobDetailController;
 use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\JobFairController;
 use App\Http\Controllers\SaveJobController;
+use App\Http\Controllers\UniversityController;
 
 
 Route::post('/candidate/register',[CandidateController::class, 'registerCandidateApi']);
@@ -46,13 +48,11 @@ Route::get('/jobfair/{candidate_id}',[JobFairController::class,'getListJobIdAppl
 Route::get('/jobfair/jobs/{candidate_id}',[JobFairController::class,'getListJobsApply']);
 Route::put('/jobfair/status_offer/{job_fair_id}',[JobFairController::class,'updateOfferStatus']);
 
-
-
-
 Route::post('/savejob/create',[SaveJobController::class,'saveJob']);
 Route::delete('/savejob/{job_id}/{candidate_id}',[SaveJobController::class,'deleteSaveJob']);
 Route::get('/savejob/{candidate_id}',[SaveJobController::class,'getListSave']);
 Route::delete('/savejob/{candidate_id}',[SaveJobController::class,'deleteAllJobs']);
 Route::get('/savejob_job_id/{candidate_id}',[SaveJobController::class,'getListIdJob']);
 
-
+Route::post('/add_univer',[UniversityController::class,'addUniversity']);
+Route::get('/list_univer/{candidate_id}',[UniversityController::class,'getListUniver']);

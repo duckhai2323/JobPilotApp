@@ -5,6 +5,7 @@ import 'package:jobpilot_app/common/api/interview.dart';
 import 'package:jobpilot_app/common/api/job_api.dart';
 import 'package:jobpilot_app/common/api/jobfair_api.dart';
 import 'package:jobpilot_app/common/api/savejob_api.dart';
+import 'package:jobpilot_app/common/api/university_api.dart';
 
 class ApiEndPoints {
   static final String baseUrl = 'http://10.0.2.2:8000/api/';
@@ -15,4 +16,5 @@ class ApiEndPoints {
   static JobFairApi jobFairApi = JobFairApi();
   static SaveJobApi saveJobApi = SaveJobApi();
   static AgentApi agentApi = AgentApi();
+  static UniverAPi univerAPi = UniverAPi();
 }

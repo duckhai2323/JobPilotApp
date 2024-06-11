@@ -54,19 +54,18 @@ class NotificationPage extends GetView<NotificationController> {
           ],
         ),
       ),
-      body: ListView(
-        children: [
-          NotificationItem(
-            icon: Icons.notifications, 
-            title: 'Công Ty Công Nghệ Viễn Thông - Tập Đoàn Viettel', 
-            description: 'Congratulation!'
-            ),
-          NotificationItem(
-            icon: Icons.notifications, 
-            title: 'Tập đoàn VNG', 
-            description: 'Congratulation!'
-            )
-        ],
+      body: Obx(
+        ()=> ListView.builder(
+          itemCount: controller.listNotifi.isNotEmpty?controller.listNotifi.length:0,
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, int index) {
+            return NotificationItem(
+                icon: Icons.notifications,
+                title: controller.listNotifi[index].company_name,
+                description: controller.listNotifi[index].description
+            );
+          },
+        ),
       )
     );
   }
@@ -85,18 +84,13 @@ class NotificationItem extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
+      leading: Icon(icon,color: AppColors.primaryColor1,),
+      title: Text(title,style: TextStyle(color: AppColors.primaryColor1),),
       subtitle: Text(description),
       onTap: () {
-        // Xử lý khi người dùng nhấn vào một thông báo
+        Get.back();
+        controller.applicationController.jumToPageJobFair();
       },
     );
   }
 }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }

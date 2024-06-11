@@ -216,4 +216,8 @@ class ApplicationController extends GetxController{
   void handNavBarTap(int index) {
     pageController.jumpToPage(index);
   }
+
+  void jumToPageJobFair() {
+    pageController.jumpToPage(3);
+  }
 }
