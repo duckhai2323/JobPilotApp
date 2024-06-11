@@ -8,6 +8,9 @@ import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/info
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/skill&certificate.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_controller.dart';
 
+import 'intro.dart';
+import 'my_project.dart';
+
 class TabList extends GetView<TopCVProfileController> {
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class TabList extends GetView<TopCVProfileController> {
               kBottomNavigationBarHeight,
           child:  Column(
             children: [
-              TabBar(
+              const TabBar(
                   tabAlignment: TabAlignment.start,
                   isScrollable: true,
                   indicator: BoxDecoration(
@@ -100,11 +103,12 @@ class TabList extends GetView<TopCVProfileController> {
               Expanded(
                 child: TabBarView(
                   children: [
-                    Text("Giới thiệu"),
+                    IntroScreen(),
                     Experience(),
                     AcademicLever(),
                     SkillCertificate(),
                     Info(),
+                    MyProject(),
                   ],
                 ),
               )

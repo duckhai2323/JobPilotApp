@@ -4,9 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
-import 'package:jobpilot_app/pages/add_experience/add_experience_controller.dart';
 
-class AddExperiencePage extends GetView<AddExperienceController> {
+import 'add_academic_controller.dart';
+
+class AddAcademicPage extends GetView<AddAcademicController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,9 +50,9 @@ class AddExperiencePage extends GetView<AddExperienceController> {
       ),
       appBar: AppBar(
           title: Padding(
-        padding: EdgeInsets.only(left: 50),
+        padding: EdgeInsets.only(left: 70),
         child: Text(
-          "Thêm kinh nghiệm",
+          "Thêm học vấn",
           style: TextStyle(
               fontFamily: "Roboto", fontWeight: FontWeight.w600, fontSize: 18),
         ),
@@ -64,7 +65,7 @@ class AddExperiencePage extends GetView<AddExperienceController> {
               padding: const EdgeInsets.only(left: 15, top: 15),
               child: RichText(
                 text: TextSpan(
-                  text: "Tên công ty ",
+                  text: "Tên trường học ",
                   style: TextStyle(
                     fontFamily: "Roboto",
                       fontSize: 16,
@@ -95,13 +96,12 @@ class AddExperiencePage extends GetView<AddExperienceController> {
                   borderRadius: BorderRadius.circular(5)
                 ),
               child: TextFormField(
-                expands: true,
-                maxLines: null,
                 controller: controller.textController1,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   
                   hintText:
-                      "Chọn công ty",
+                      "Nhập tên trường học",
                   hintStyle: TextStyle(
                       color: AppColors.placeHolderColor,
                       fontSize: 14,
@@ -115,7 +115,7 @@ class AddExperiencePage extends GetView<AddExperienceController> {
               padding: const EdgeInsets.only(left: 15, top: 20),
               child: RichText(
                 text: TextSpan(
-                  text: "Vị trí làm việc ",
+                  text: "Chuyên ngành ",
                   style: TextStyle(
                     fontFamily: "Roboto",
                       fontSize: 16,
@@ -145,12 +145,11 @@ class AddExperiencePage extends GetView<AddExperienceController> {
                   borderRadius: BorderRadius.circular(5)
                 ),
               child: TextFormField(
-                expands: true,
-                maxLines: null,
                 controller: controller.textController2,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   hintText:
-                      "Chọn vị trí làm việc",
+                      "Nhập chuyên ngành",
                   hintStyle: TextStyle(
                       color: AppColors.placeHolderColor,
                       fontSize: 14,
@@ -163,7 +162,7 @@ class AddExperiencePage extends GetView<AddExperienceController> {
               padding: const EdgeInsets.only(left: 15, top: 20),
               child: RichText(
                 text: TextSpan(
-                  text: "Thời gian làm việc ",
+                  text: "Thời gian học tập ",
                   style: TextStyle(
                     fontFamily: "Roboto",
                       fontSize: 16,
@@ -243,7 +242,7 @@ class AddExperiencePage extends GetView<AddExperienceController> {
                       ),
                     ),
                   ),
-                ),    
+                ),
               ],
             ),
             Obx(() => Row(
@@ -251,7 +250,7 @@ class AddExperiencePage extends GetView<AddExperienceController> {
                 Checkbox(value: controller.isChecked.value, onChanged: (value) => {controller.ClickBox()}),
                 SizedBox(height: 5,),
                 Text(
-                  "Tôi đang làm việc ở đây",
+                  "Tôi đang học ở đây",
                   style: TextStyle(
                       fontFamily: "Roboto",
                       fontSize: 15,
@@ -283,11 +282,11 @@ class AddExperiencePage extends GetView<AddExperienceController> {
               child: TextFormField(
                 expands: true,
                 maxLines: null,
-                  controller: controller.textController5,
+                controller: controller.textController5,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(15, 10, 15, 0),
                   hintText:
-                      "Mô tả chi tiết công việc, những gì đạt được trong quá trình làm việc.",
+                      "Mô tả chi tiết công việc, những gì đạt được trong quá trình học tập.",
                   hintStyle: TextStyle(
                       color: AppColors.placeHolderColor,
                       fontSize: 14,
@@ -296,101 +295,7 @@ class AddExperiencePage extends GetView<AddExperienceController> {
                 )
               ),
             ),
-            SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Text(
-                "Thêm ảnh",
-                style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            SizedBox(height: 15,),
-            Container(
-              height: 45,
-              margin: const EdgeInsets.only(left: 15, right: 15),
-              decoration: BoxDecoration(
-                color: AppColors.bgTextFeild,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.image),
-                    
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Chọn ảnh",
-                        style: TextStyle(
-                          fontFamily: "Roboto",
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Text(
-                "Thêm link",
-                style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Container(
-                  height: 45,
-                  padding: const EdgeInsets.only(left: 15, right: 5),
-                  margin: const EdgeInsets.only(left: 15, right: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5)
-                    ),
-                  child: TextFormField(
-                    expands: true,
-                    maxLines: null,
-                    controller: controller.textController6,
-                    decoration: InputDecoration(
-                      suffixIcon: InkWell(
-                        child: Container(
-                          padding: EdgeInsets.only(left: 10, right: 10),
-                          margin: EdgeInsets.only(top:10, bottom: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: AppColors.bgTextFeild
-                          ),
-                          child: Text(
-                            "Thêm",
-                            style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold
-                            ),
-                          ),
-                        ),
-                      ),
-                      hintText:
-                        "Nhập link",
-                        hintStyle: TextStyle(
-                          color: AppColors.placeHolderColor,
-                          fontSize: 14,
-                          overflow: TextOverflow.visible),
-                        border: InputBorder.none
-                    
-                    ),
-                  ),
-                ),
-            SizedBox(height: 100,)
+            
           ],
         ),
       ),

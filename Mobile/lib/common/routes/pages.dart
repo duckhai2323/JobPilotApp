@@ -1,8 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:jobpilot_app/pages/add_academic_lever/add_academic_binding.dart';
-import 'package:jobpilot_app/pages/add_academic_lever/add_academic_view.dart';
-import 'package:jobpilot_app/pages/add_experience/add_experience_binding.dart';
-import 'package:jobpilot_app/pages/add_experience/add_experience_view.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_binding.dart';
 import 'package:jobpilot_app/pages/agent/add_job/add_job_view.dart';
 import 'package:jobpilot_app/pages/agent/edit_job/edit_job_binding.dart';
@@ -13,12 +9,12 @@ import 'package:jobpilot_app/pages/agent/job_detail/job_detail_binding.dart';
 import 'package:jobpilot_app/pages/agent/job_detail/job_detail_view.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_binding.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/cv_manage_view.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/tab_list/add_intro/add_intro_binding.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/tab_list/add_intro/add_intro_page.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_binding.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_view.dart';
 import 'package:jobpilot_app/pages/attractivejob/attractivejob_binding.dart';
 import 'package:jobpilot_app/pages/attractivejob/attractivejob_view.dart';
-import 'package:jobpilot_app/pages/certificate/certificate_binding.dart';
-import 'package:jobpilot_app/pages/certificate/certificate_view.dart';
 import 'package:jobpilot_app/pages/chat/chat_binding.dart';
 import 'package:jobpilot_app/pages/chat/chat_view.dart';
 import 'package:jobpilot_app/pages/companies/companies_binding.dart';
@@ -27,8 +23,6 @@ import 'package:jobpilot_app/pages/info/info_binding.dart';
 import 'package:jobpilot_app/pages/info/info_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job.binding.dart';
 import 'package:jobpilot_app/pages/jobdetails/applyjob/apply_job_view.dart';
-import 'package:jobpilot_app/pages/skill/skill_binding.dart';
-import 'package:jobpilot_app/pages/skill/skill_view.dart';
 import 'package:jobpilot_app/pages/suitablejob/suitablejob_binding.dart';
 import 'package:jobpilot_app/pages/suitablejob/suitablejob_view.dart';
 import 'package:jobpilot_app/pages/jobdetails/jobdetails_binding.dart';
@@ -37,6 +31,14 @@ import 'package:jobpilot_app/pages/notification/notification_binding.dart';
 import 'package:jobpilot_app/pages/notification/notification_view.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_binding.dart';
 import 'package:jobpilot_app/pages/sign_in_up/sign_up/signup_view.dart';
+import '../../pages/application/cv_manage/topcv_profile_page/tab_list/add_academic_lever/add_academic_binding.dart';
+import '../../pages/application/cv_manage/topcv_profile_page/tab_list/add_academic_lever/add_academic_view.dart';
+import '../../pages/application/cv_manage/topcv_profile_page/tab_list/add_experience/add_experience_binding.dart';
+import '../../pages/application/cv_manage/topcv_profile_page/tab_list/add_experience/add_experience_view.dart';
+import '../../pages/application/cv_manage/topcv_profile_page/tab_list/certificate/certificate_binding.dart';
+import '../../pages/application/cv_manage/topcv_profile_page/tab_list/certificate/certificate_view.dart';
+import '../../pages/application/cv_manage/topcv_profile_page/tab_list/skill/skill_binding.dart';
+import '../../pages/application/cv_manage/topcv_profile_page/tab_list/skill/skill_view.dart';
 import '../../pages/jobapplied/jobapplied_binding.dart';
 import '../../pages/jobapplied/jobapplied_view.dart';
 import '../../pages/jobsaved/jobsaved_binding.dart';
@@ -197,6 +199,12 @@ class AppPages {
       name: AppRoutes.EDIT_JOB,
       page: ()=>EditJobPage(),
       binding: EditJobBinding()
-    )
+    ),
+
+    GetPage(
+        name: AppRoutes.ADDINTRO,
+        page: ()=>AddIntroPage(),
+        binding: AddIntroBinding()
+    ),
   ];
 }

@@ -4,10 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
-import 'package:jobpilot_app/pages/add_academic_lever/add_academic_controller.dart';
 
+import 'add_experience_controller.dart';
 
-class AddAcademicPage extends GetView<AddAcademicController> {
+class AddExperiencePage extends GetView<AddExperienceController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,10 +49,10 @@ class AddAcademicPage extends GetView<AddAcademicController> {
         ),
       ),
       appBar: AppBar(
-          title: Padding(
-        padding: EdgeInsets.only(left: 70),
+          title: const Padding(
+        padding: EdgeInsets.only(left: 50),
         child: Text(
-          "Thêm học vấn",
+          "Thêm kinh nghiệm",
           style: TextStyle(
               fontFamily: "Roboto", fontWeight: FontWeight.w600, fontSize: 18),
         ),
@@ -64,8 +64,8 @@ class AddAcademicPage extends GetView<AddAcademicController> {
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 15),
               child: RichText(
-                text: TextSpan(
-                  text: "Tên trường học ",
+                text: const TextSpan(
+                  text: "Tên công ty ",
                   style: TextStyle(
                     fontFamily: "Roboto",
                       fontSize: 16,
@@ -96,12 +96,13 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                   borderRadius: BorderRadius.circular(5)
                 ),
               child: TextFormField(
+                expands: true,
+                maxLines: null,
                 controller: controller.textController1,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   
                   hintText:
-                      "Nhập tên trường học",
+                      "Chọn công ty",
                   hintStyle: TextStyle(
                       color: AppColors.placeHolderColor,
                       fontSize: 14,
@@ -115,7 +116,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
               padding: const EdgeInsets.only(left: 15, top: 20),
               child: RichText(
                 text: TextSpan(
-                  text: "Chuyên ngành ",
+                  text: "Vị trí làm việc ",
                   style: TextStyle(
                     fontFamily: "Roboto",
                       fontSize: 16,
@@ -145,11 +146,12 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                   borderRadius: BorderRadius.circular(5)
                 ),
               child: TextFormField(
+                expands: true,
+                maxLines: null,
                 controller: controller.textController2,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText:
-                      "Nhập chuyên ngành",
+                      "Chọn vị trí làm việc",
                   hintStyle: TextStyle(
                       color: AppColors.placeHolderColor,
                       fontSize: 14,
@@ -161,8 +163,8 @@ class AddAcademicPage extends GetView<AddAcademicController> {
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 20),
               child: RichText(
-                text: TextSpan(
-                  text: "Thời gian học tập ",
+                text: const TextSpan(
+                  text: "Thời gian làm việc ",
                   style: TextStyle(
                     fontFamily: "Roboto",
                       fontSize: 16,
@@ -234,7 +236,7 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                           suffixIcon: InkWell(onTap: () {controller.showDialogTime(context, 'end');},child: Icon(Icons.calendar_month)),
                           hintText:
                           "Kết thúc",
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               color: AppColors.placeHolderColor,
                               fontSize: 14,
                               overflow: TextOverflow.visible),
@@ -242,15 +244,15 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                       ),
                     ),
                   ),
-                ),
+                ),    
               ],
             ),
             Obx(() => Row(
               children: [
                 Checkbox(value: controller.isChecked.value, onChanged: (value) => {controller.ClickBox()}),
-                SizedBox(height: 5,),
-                Text(
-                  "Tôi đang học ở đây",
+                const SizedBox(height: 5,),
+                const Text(
+                  "Tôi đang làm việc ở đây",
                   style: TextStyle(
                       fontFamily: "Roboto",
                       fontSize: 15,
@@ -282,11 +284,11 @@ class AddAcademicPage extends GetView<AddAcademicController> {
               child: TextFormField(
                 expands: true,
                 maxLines: null,
-                controller: controller.textController5,
-                decoration: InputDecoration(
+                  controller: controller.textController5,
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(15, 10, 15, 0),
                   hintText:
-                      "Mô tả chi tiết công việc, những gì đạt được trong quá trình học tập.",
+                      "Mô tả chi tiết công việc, những gì đạt được trong quá trình làm việc.",
                   hintStyle: TextStyle(
                       color: AppColors.placeHolderColor,
                       fontSize: 14,
@@ -295,7 +297,101 @@ class AddAcademicPage extends GetView<AddAcademicController> {
                 )
               ),
             ),
-            
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(left: 15),
+              child: Text(
+                "Thêm ảnh",
+                style: TextStyle(
+                    fontFamily: "Roboto",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+            const SizedBox(height: 15,),
+            Container(
+              height: 45,
+              margin: const EdgeInsets.only(left: 15, right: 15),
+              decoration: BoxDecoration(
+                color: AppColors.bgTextFeild,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: const Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.image),
+                    
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Chọn ảnh",
+                        style: TextStyle(
+                          fontFamily: "Roboto",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(left: 15),
+              child: Text(
+                "Thêm link",
+                style: TextStyle(
+                    fontFamily: "Roboto",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+            const SizedBox(height: 20,),
+            Container(
+                  height: 45,
+                  padding: const EdgeInsets.only(left: 15, right: 5),
+                  margin: const EdgeInsets.only(left: 15, right: 10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5)
+                    ),
+                  child: TextFormField(
+                    expands: true,
+                    maxLines: null,
+                    controller: controller.textController6,
+                    decoration: InputDecoration(
+                      suffixIcon: InkWell(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          margin: EdgeInsets.only(top:10, bottom: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: AppColors.bgTextFeild
+                          ),
+                          child: const Text(
+                            "Thêm",
+                            style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ),
+                      ),
+                      hintText:
+                        "Nhập link",
+                        hintStyle: const TextStyle(
+                          color: AppColors.placeHolderColor,
+                          fontSize: 14,
+                          overflow: TextOverflow.visible),
+                        border: InputBorder.none
+                    
+                    ),
+                  ),
+                ),
+            const SizedBox(height: 100,)
           ],
         ),
       ),

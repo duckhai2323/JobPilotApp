@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
-import 'package:jobpilot_app/pages/skill/skill_controller.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/tab_list/skill/skill_controller.dart';
 
 class SkillPage extends GetView<SkillController> {
   @override
