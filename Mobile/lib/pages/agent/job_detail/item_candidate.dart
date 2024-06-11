@@ -2,18 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
+import 'package:jobpilot_app/common/item_object/item_candidate_jobfair.dart';
 import 'package:jobpilot_app/pages/agent/job_detail/job_detail_controller.dart';
 
 class ItemCandidate extends GetView<JobDetailAgentController> {
-  final String candidate_name;
-  final String candidate_image;
-  final String candidate_email;
-  final int status_offer;
+  final ItemCandidateApply itemCandidateApply;
   final ItemColor itemColor;
 
-  ItemCandidate(this.candidate_name,this.candidate_email,this.candidate_image,this.status_offer,this.itemColor);
+  ItemCandidate(this.itemCandidateApply,this.itemColor);
   @override
   Widget build(BuildContext context) {
+    var status_offer = itemCandidateApply.status_offer;
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 155,
@@ -38,7 +37,7 @@ class ItemCandidate extends GetView<JobDetailAgentController> {
         children: [
           CircleAvatar(
             radius: 30,
-            backgroundImage: NetworkImage(candidate_image),
+            backgroundImage: NetworkImage(itemCandidateApply.candidate_image),
           ),
           Container(
             width: MediaQuery.of(context).size.width-135,
@@ -49,15 +48,15 @@ class ItemCandidate extends GetView<JobDetailAgentController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  candidate_name,
-                  style: TextStyle(
+                  itemCandidateApply.candidate_name,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
-                  candidate_email,
-                  style: TextStyle(
+                  itemCandidateApply.candidate_email,
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500
                   ),
@@ -71,7 +70,7 @@ class ItemCandidate extends GetView<JobDetailAgentController> {
                     color: AppColors.bgSearch,
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  child: Text(
+                  child: const Text(
                     '1 nam kinh nghiem',
                     style: TextStyle(
                       fontSize: 14,
@@ -148,15 +147,20 @@ class ItemCandidate extends GetView<JobDetailAgentController> {
                       ),
                     ),
 
-                    Container(
-                      width: 34,
-                      height: 34,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade400,
-                          borderRadius: BorderRadius.circular(4)
-                      ),
-                      child: const Center(
-                        child: Icon(Icons.remove_red_eye,color: Colors.white,size: 22,),
+                    InkWell(
+                      onTap: (){
+                        controller.ClickItemChat(itemCandidateApply);
+                      },
+                      child: Container(
+                        width: 34,
+                        height: 34,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.circular(4)
+                        ),
+                        child: const Center(
+                          child: Icon(Icons.chat,color: Colors.white,size: 22,),
+                        ),
                       ),
                     ),
                   ],
@@ -190,17 +194,22 @@ class ItemCandidate extends GetView<JobDetailAgentController> {
                       ),
                     ),
 
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
 
-                    Container(
-                      width: 34,
-                      height: 34,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade400,
-                          borderRadius: BorderRadius.circular(4)
-                      ),
-                      child: Center(
-                        child: Icon(Icons.remove_red_eye,color: Colors.white,size: 22,),
+                    InkWell(
+                      onTap: (){
+                        controller.ClickItemChat(itemCandidateApply);
+                      },
+                      child: Container(
+                        width: 34,
+                        height: 34,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.circular(4)
+                        ),
+                        child: const Center(
+                          child: Icon(Icons.chat,color: Colors.white,size: 22,),
+                        ),
                       ),
                     ),
                   ],

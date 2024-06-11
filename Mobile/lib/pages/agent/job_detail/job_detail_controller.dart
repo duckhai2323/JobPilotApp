@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,12 +10,17 @@ import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/common/interview.dart';
 import 'package:jobpilot_app/common/item_object/item_candidate_jobfair.dart';
 import 'package:jobpilot_app/pages/agent/jobfair/jobfair_controller.dart';
+import 'package:jobpilot_app/pages/application/application_controller.dart';
 import '../../../common/api/api_backend.dart';
+import '../../../common/api/chat/msg.dart';
 import '../../../common/item_add_edit/item_add_interview.dart';
 import '../../../common/item_object/item_job_detail.dart';
 import '../../../common/job_detail.dart';
+import '../../../common/routes/names.dart';
 
 class JobDetailAgentController extends GetxController with GetSingleTickerProviderStateMixin {
+  final db = FirebaseFirestore.instance;
+  var listener;
   List<JobDetail> jobDetails = <JobDetail>[].obs;
   List<Interview> interviews = <Interview>[].obs;
   List<ItemCandidateApply> candidates = <ItemCandidateApply>[].obs;
@@ -33,6 +39,32 @@ class JobDetailAgentController extends GetxController with GetSingleTickerProvid
     getJobDetail();
     getInterviews();
     getCandidates();
+  }
+
+  Future<void> ClickItemChat(ItemCandidateApply to_user) async {
+    String checkFist = 'false';
+    String doc_id="";
+
+    var from_messages = await db.collection("message").withConverter(
+        fromFirestore:Msg.fromFirestore,
+        toFirestore: (Msg msg, options) => msg.toFirestore()
+    ).where(
+        "from_email", isEqualTo: ApplicationController.user_email
+    ).where("to_email",isEqualTo: to_user.candidate_email).get();
+
+    var to_messages = await db.collection("message").withConverter(
+        fromFirestore:Msg.fromFirestore,
+        toFirestore: (Msg msg, options) => msg.toFirestore()
+    ).where(
+        "from_email", isEqualTo: to_user.candidate_email
+    ).where("to_email",isEqualTo: ApplicationController.user_email).get();
+
+    if(from_messages.docs.isNotEmpty || to_messages.docs.isNotEmpty){
+      checkFist = 'true';
+      if(from_messages.docs.isNotEmpty){doc_id = from_messages.docs.first.id;}
+      if(to_messages.docs.isNotEmpty){doc_id = to_messages.docs.first.id;}
+    }
+    Get.toNamed(AppRoutes.CHAT,parameters: {"to_email": to_user.candidate_email??"","to_name":to_user.candidate_name??"","to_avatar":to_user.candidate_image??"","check_first":checkFist??"","doc_id":doc_id??""});
   }
 
   Future<void> getJobDetail() async {

@@ -35,8 +35,8 @@ export default function Authenticated({ user, header, children, image_logo }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
+                                    href={route("jobfairs.display")}
+                                    active={route().current("jobfairs.display")}
                                 >
                                     JobFairs
                                 </NavLink>
@@ -44,8 +44,8 @@ export default function Authenticated({ user, header, children, image_logo }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
+                                    href={route("companies.display")}
+                                    active={route().current("companies.display")}
                                 >
                                     Companies
                                 </NavLink>
@@ -53,10 +53,10 @@ export default function Authenticated({ user, header, children, image_logo }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
+                                    href={route("admins.display")}
+                                    active={route().current("admins.display")}
                                 >
-                                    admins
+                                    Admins
                                 </NavLink>
                             </div>
                         </div>

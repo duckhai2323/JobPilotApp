@@ -9,6 +9,7 @@ class ApplicationController extends GetxController{
   static late String user_id;
   static late String user_image;
   static late String user_name;
+  static late String user_email;
   static late String company_id;
   final position = ''.obs;
   ApplicationController();
@@ -23,6 +24,7 @@ class ApplicationController extends GetxController{
     user_id = Get.parameters['user_id']??"";
     user_image = Get.parameters['user_image']??"";
     user_name = Get.parameters['user_name']??"";
+    user_email = Get.parameters['user_email']??"";
     company_id = Get.parameters['company_id']??"";
     position.value = Get.parameters['user_position']??"";
     bottomTab = <BottomNavigationBarItem> [
@@ -115,21 +117,6 @@ class ApplicationController extends GetxController{
     ];
 
     bottomTabAgent = <BottomNavigationBarItem> [
-      const BottomNavigationBarItem(
-        icon: Icon(
-          CupertinoIcons.home,
-          color: Colors.grey,
-          size: 25,
-        ),
-
-        activeIcon: Icon(
-          CupertinoIcons.house_fill,
-          color: AppColors.primaryColor1,
-          size: 25,
-        ),
-        label: 'Home',
-        backgroundColor: Colors.transparent,
-      ),
 
       const BottomNavigationBarItem(
         icon: Icon(
@@ -160,6 +147,22 @@ class ApplicationController extends GetxController{
           size: 25,
         ),
         label: 'JobFair',
+        backgroundColor: Colors.transparent,
+      ),
+
+      const BottomNavigationBarItem(
+        icon: Icon(
+          CupertinoIcons.person_2,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          CupertinoIcons.person_2_fill,
+          color: AppColors.primaryColor1,
+          size: 25,
+        ),
+        label: 'Employee',
         backgroundColor: Colors.transparent,
       ),
 

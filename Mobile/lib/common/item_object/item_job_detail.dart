@@ -22,7 +22,7 @@ class ItemJobDetail {
       this.salary,
       this.candidate_number,
       this.deadline_job,
-      this.status
+      this.status,
       );
 
   factory ItemJobDetail.fromJson(dynamic json) {
@@ -37,7 +37,7 @@ class ItemJobDetail {
         json['salary'] as String,
         json['candidate_number'] as int,
         json['deadline_job'] as String,
-        json['status'] as int
+        json['status'] as int,
     );
   }
 }

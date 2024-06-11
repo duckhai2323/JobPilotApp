@@ -23,6 +23,6 @@ class JobFair extends Model
         'job_id',
         'company_id',
         'status',
-        'offer'
+        'status_offer'
     ];
 }

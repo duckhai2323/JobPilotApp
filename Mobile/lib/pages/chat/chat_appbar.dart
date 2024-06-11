@@ -13,18 +13,18 @@ class ChatAppBar extends GetView<ChatController>{
     return Container(
       margin: const EdgeInsets.only(left: 50, top: 15),
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: const Row(
+      child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
               CircleAvatar(
-                radius: 23,
-                backgroundImage: CachedNetworkImageProvider('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZq66WVks16lIeCywf8KVHzY0qhIssigwvBACI9Xnxi3qjKtBwiEipejNi7sbg-8cxe8o&usqp=CAU'),
+                radius: 22,
+                backgroundImage: CachedNetworkImageProvider("${controller.to_avatar}"),
               ),
 
-              SizedBox(width: 15,),
+              const SizedBox(width: 15,),
 
               Center(
                 child: Column(
@@ -33,15 +33,15 @@ class ChatAppBar extends GetView<ChatController>{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Tuan Tien Ty',
-                      style: TextStyle(
+                      controller.to_name??"",
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
                     ),
 
-                    Text(
+                    const Text(
                       'Đang hoạt động',
                       style: TextStyle(
                         fontSize: 13,

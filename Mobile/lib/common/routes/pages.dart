@@ -39,6 +39,10 @@ import '../../pages/application/cv_manage/topcv_profile_page/tab_list/certificat
 import '../../pages/application/cv_manage/topcv_profile_page/tab_list/certificate/certificate_view.dart';
 import '../../pages/application/cv_manage/topcv_profile_page/tab_list/skill/skill_binding.dart';
 import '../../pages/application/cv_manage/topcv_profile_page/tab_list/skill/skill_view.dart';
+import '../../pages/agent/employee/employee_binding.dart';
+import '../../pages/agent/employee/employee_view.dart';
+import '../../pages/agent/add_employee/add_employee_binding.dart';
+import '../../pages/agent/add_employee/add_employee_view.dart';
 import '../../pages/jobapplied/jobapplied_binding.dart';
 import '../../pages/jobapplied/jobapplied_view.dart';
 import '../../pages/jobsaved/jobsaved_binding.dart';
@@ -185,7 +189,7 @@ class AppPages {
         page: ()=>AddExperiencePage()
     ),
     GetPage(
-        name: AppRoutes.ADDACADEMICLEVER,
+        name: AppRoutes.ADDEXPERIENCE,
         binding: AddAcademicBinding(),
         page: ()=>AddAcademicPage()
      ),
@@ -206,5 +210,15 @@ class AppPages {
         page: ()=>AddIntroPage(),
         binding: AddIntroBinding()
     ),
+      name: AppRoutes.EMPLOYEE,
+      page: ()=>EmployeePage(),
+      binding: EmployeeBinding()
+    ),
+
+    GetPage(
+      name: AppRoutes.ADD_EMPLOYEE,
+      page: ()=>AddEmployeePage(),
+      binding: AddEmployeeBinding()
+    )
   ];
 }
