@@ -10,7 +10,7 @@ export default function Display({ auth, image_logo }) {
     const [companies, setCompanies] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/companies')
+        axios.get('http://127.0.0.1:8000/api/companies')
             .then(res => setCompanies(res.data));
     }, []);
 

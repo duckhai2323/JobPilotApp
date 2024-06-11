@@ -9,7 +9,7 @@ export default function Display ({ auth, image_logo }) {
     const [jobfairs, setJobfairs] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/jobs')
+        axios.get('http://127.0.0.1:8000/api/jobs2')
             .then(res => setJobfairs(res.data));
     },[])
 

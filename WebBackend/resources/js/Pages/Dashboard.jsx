@@ -31,7 +31,7 @@ export default function Dashboard({ auth, image_logo }) {
                     </div>
                 </div>
                 <div className="w-full mt-2 flex gap-2">
-                    <div className="p-4 w-[25%] h-[490px] green-linear shadow-sm rounded-md flex flex-col items-center gap-3">
+                    <div className="p-4 w-[25%] h-[70vh] green-linear shadow-sm rounded-md flex flex-col items-center gap-3">
                         <img 
                             src="/images/blog1.png"
                             alt="robot logo" 
@@ -41,7 +41,7 @@ export default function Dashboard({ auth, image_logo }) {
                             <p className="text-lg text-white font-semibold">
                                 Việc làm mới nhất  
                             </p>
-                            <div className="h-[210px] overflow-auto flex flex-col gap-2 mt-2 scrollbar">
+                            <div className="h-[100%] overflow-auto flex flex-col gap-2 mt-2 scrollbar">
                                 <div className="flex gap-4 w-[98%] h-[60px] bg-green-400 rounded-md p-2">
                                     <img 
                                         src="/images/sun.png" 
@@ -109,23 +109,23 @@ export default function Dashboard({ auth, image_logo }) {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[75%] h-[490px] green-linear shadow-sm rounded-md p-4">
+                    <div className="w-[75%] h-[70vh] green-linear shadow-sm rounded-md p-4">
                         <div className="w-full h-[120px] grid grid-cols-3 gap-3">
                             <div className="dark-green-linear rounded-sm flex flex-col justify-center gap-2 text-green-100 p-5">
                                 <p className="text-4xl font-bold">
-                                    4890
+                                    15
                                 </p>
                                 <p className="text-sm">Việc làm mới 24h gần nhất</p>
                             </div>
                             <div className="dark-green-linear rounded-sm flex flex-col justify-center gap-2 text-green-100 p-5">
                                 <p className="text-4xl font-bold">
-                                    45.774
+                                    10
                                 </p>
                                 <p className="text-sm">Việc làm đang tuyển</p>
                             </div>
                             <div className="dark-green-linear rounded-sm flex flex-col justify-center gap-2 text-green-100 p-5">
                                 <p className="text-4xl font-bold">
-                                    15.218
+                                    5
                                 </p>
                                 <p className="text-sm">Công ty đang tuyển</p>
                             </div>
