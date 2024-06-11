@@ -52,6 +52,17 @@ class JobDetailController extends Controller
         return response() -> json($jobs,200);
     }
 
+    public function getListJobs2 () {
+        $jobs = DB::table('job_details')
+                    ->orderBy('job_details.updated_at', 'desc')
+                    ->join('companies', 'job_details.company_id','=', 'companies.company_id')
+                    ->select('companies.company_image','companies.company_name','companies.company_id','job_details.job_id','job_details.job_title','job_details.job_location','job_details.experience_require','job_details.salary','job_details.deadline_job','job_details.status','job_details.candidate_number')
+                    ->get();
+
+        return response() -> json($jobs,200);
+    }
+
+
     public function getListJobsOfCompany (string $company_id) {
         $jobs = DB::table('job_details')
                     ->join('companies', 'job_details.company_id','=', 'companies.company_id')
