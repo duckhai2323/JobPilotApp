@@ -19,4 +19,8 @@ class TopCVProfileController extends GetxController {
   void HandleInfoPage () {
     Get.toNamed(AppRoutes.INFO);
   }
+
+  void HandleAddIntro () {
+    Get.toNamed(AppRoutes.ADDINTRO);
+  }
 }

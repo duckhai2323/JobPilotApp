@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:jobpilot_app/pages/certificate/certificate_controller.dart';
+
+import 'certificate_controller.dart';
 
 class CertificateBinding extends Bindings {
 

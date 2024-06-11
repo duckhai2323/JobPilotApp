@@ -131,7 +131,9 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
                             borderRadius: BorderRadius.all(Radius.circular(5)),
                             color: Color.fromARGB(66, 215, 213, 213),
                           ),
-                          child: const Row(
+                          child: InkWell(onTap: () {
+                            controller.HandleInfoPage();
+                          }, child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
@@ -147,7 +149,7 @@ class TopCVProfilePage extends GetView<TopCVProfileController> {
                                     fontSize: 14, fontWeight: FontWeight.bold),
                               )
                             ],
-                          ),
+                          ),),
                         ),
                       ),
                       InkWell(

@@ -4,20 +4,20 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:jobpilot_app/common/colors/colors.dart';
 import 'package:jobpilot_app/pages/application/cv_manage/topcv_profile_page/topcv_profile_controller.dart';
 
-class SkillCertificate extends GetView<TopCVProfileController> {
+class MyProject extends GetView<TopCVProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 300,
@@ -39,7 +39,7 @@ class SkillCertificate extends GetView<TopCVProfileController> {
                     Padding(
                       padding: EdgeInsets.all(15),
                       child: Text(
-                        "Kỹ năng",
+                        "Dự án",
                         style: const TextStyle(
                           fontFamily: "Roboto",
                           fontSize: 18,
@@ -52,7 +52,7 @@ class SkillCertificate extends GetView<TopCVProfileController> {
                     ),
                     Center(
                       child: Text(
-                        "Chưa có thông tin kỹ năng",
+                        "Chưa có thông tin dự án",
                         style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 15,
@@ -75,7 +75,7 @@ class SkillCertificate extends GetView<TopCVProfileController> {
                           ),
                           child: Center(
                             child: Text(
-                              "Thêm kỹ năng",
+                              "Thêm dự án",
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -113,7 +113,7 @@ class SkillCertificate extends GetView<TopCVProfileController> {
                     Padding(
                       padding: EdgeInsets.all(15),
                       child: Text(
-                        "Chứng chỉ",
+                        "Sản phẩm",
                         style: const TextStyle(
                           fontFamily: "Roboto",
                           fontSize: 18,
@@ -126,7 +126,7 @@ class SkillCertificate extends GetView<TopCVProfileController> {
                     ),
                     Center(
                       child: Text(
-                        "Chưa có thông tin chứng chỉ",
+                        "Chưa có thông tin sản phẩm",
                         style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 15,
@@ -149,7 +149,7 @@ class SkillCertificate extends GetView<TopCVProfileController> {
                           ),
                           child: Center(
                             child: Text(
-                              "Thêm chứng chỉ",
+                              "Thêm sản phẩm",
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,

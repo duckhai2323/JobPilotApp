@@ -1,19 +1,22 @@
-import 'package:get/get.dart';
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class InfoController extends GetxController{
+class AddAcademicController extends GetxController {
   DateTime date = DateTime(2024, 5, 20);
 
   var textController1 = TextEditingController();
   var textController2 = TextEditingController();
   var textController3 = TextEditingController();
   var textController4 = TextEditingController();
+  var textController5 = TextEditingController();
 
-  var value_ = 0.obs;
-
-  void ActionRadio(int index) {
-    value_.value = index;
+  var isChecked = false.obs;
+  void ClickBox() {
+    if(isChecked.value) {isChecked.value = false;}
+    else {isChecked.value = true;}
   }
 
   void showDialogTime (BuildContext context, String type) {
@@ -24,11 +27,13 @@ class InfoController extends GetxController{
           use24hFormat: true,
           onDateTimeChanged: (DateTime newDate) {
             date = newDate;
-            if (type == "birth") {
-              textController1.text = '${date.day}/${date.month}/${date.year}';
+            if(type == "start") {
+              textController3.text = '${date.day}/${date.month}/${date.year}';
+            } else if(type == "end"){
+              textController4.text = '${date.day}/${date.month}/${date.year}';
             }
           },
-        ), context
+        ),context
     );
   }
 

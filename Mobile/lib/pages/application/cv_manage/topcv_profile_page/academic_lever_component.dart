@@ -27,11 +27,11 @@ class AcademicLever extends GetView<TopCVProfileController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 15, top: 15),
               child: Text(
-                "Kinh nghiệm",
-                style: const TextStyle(
+                "Học vấn",
+                style: TextStyle(
                   fontFamily: "Roboto",
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -41,7 +41,7 @@ class AcademicLever extends GetView<TopCVProfileController> {
             Center(
               child: Image.asset('assets/images/not_content.png')
             ),
-            Center(
+            const Center(
               child: Text(
                 "Chưa có thông tin học vấn",
                 style: TextStyle(
